@@ -1,17 +1,14 @@
-<script setup lang="ts">
+<script setup>
 const route = useRoute()
-
-const { data: doc } = await useAsyncData(() =>
-  queryContent('/publication')
-    .where({ _path: `/publication/${route.params.slug}` })
-    .findOne()
-)
+const data = await queryContent(
+  'publication',
+  route.params.slug
+).findOne()
 </script>
 
 <template>
   <main>
-    <h1>{{ doc?.title }}</h1>
-    <ContentRenderer :value="doc" />
+    <h1>{{ publication.title }}</h1>
+    <ContentRenderer :publication="data" />
   </main>
 </template>
-
