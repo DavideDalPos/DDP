@@ -23,13 +23,13 @@
 
       <!-- Center Navigation (hidden on mobile) -->
       <div
-        class="hidden md:flex justify-center gap-6 text-white text-lg flex-1"
+        class="hidden md:flex justify-center gap-6 text-gray-700 text-lg flex-1"
       >
         <NuxtLink
           v-for="{ label, link } in links"
           :key="link"
           :to="link"
-          class="hover:underline"
+          class="hover:underline "
           >{{ label }}</NuxtLink
         >
       </div>
