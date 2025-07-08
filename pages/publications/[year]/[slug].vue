@@ -1,15 +1,18 @@
 <template>
   <main>
-    <section class="container mx-auto px-4 my-10">
-      <h1>{{ publication.title }}</h1>
-      <ContentRenderer value="data" />
-    </section>
+    <PublicationsView :publication="publication" />
   </main>
 </template>
 
 <script setup>
+import PublicationsView from '~/components/Publications/PublicationsView.vue';
+
 const route = useRoute()
-const publication = await queryCollection('publications')
+
+const publication = await queryCollection('publications', route.params.year, route.params.slug)
   .path(route.path)
   .first()
 </script>
+
+
+
