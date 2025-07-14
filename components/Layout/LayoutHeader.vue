@@ -94,10 +94,6 @@ const isMenuOpen = ref(false)
 
 const links = [
   {
-    label: 'About',
-    link: '/about'
-  },
-  {
     label: 'Research',
     link: '/research'
   },
@@ -108,6 +104,14 @@ const links = [
   {
     label: 'CV',
     link: '/cv'
+  },
+  {
+    label: 'Species',
+    link: '/species'
+  },
+    {
+    label: 'Network',
+    link: '/network'
   },
   {
     label: 'News',
