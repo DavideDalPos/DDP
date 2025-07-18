@@ -11,45 +11,37 @@
 
       <div class="flex flex-row justify-between gap-8">
         <div class="w-[calc(100%-26rem)] max-w-[65rem]">
-          <div class="flex flex-row justify-between my-4 gap-4 text-gray-800">
-            <div>
-              <ul v-if="publication.meta.authors">
-                <li
-                  v-for="{
-                    first_name,
-                    last_name,
-                    affiliation,
-                    orcid
-                  } in publication.meta.authors"
-                  class="py-2"
-                >
-                  <p class="font-bold text-[20px]">
-                    {{ first_name }} {{ last_name }}
-                  </p>
-                  <p class="text-[15px] text-gray-500 prose leading-tight">
-                    {{ affiliation }}
-                  </p>
+          <!-- Author block -->
+          <div v-if="publication.meta.authors" class="my-4 text-gray-800">
+            <!-- Inline authors -->
+            <p class="text-[18px] leading-snug flex flex-wrap gap-x-2">
+              <template v-for="(author, index) in publication.meta.authors" :key="'auth-' + index">
+                <span class="inline-flex items-center">
+                  {{ author.first_name }} {{ author.last_name }}<sup>{{ getAffiliationNumber(author.affiliation) }}</sup>
                   <a
-                    v-if="orcid"
-                    :href="orcid"
-                    class="text-sm text-quinary hover:underline hover:text-quaternary inline-flex items-center gap-1"
+                    v-if="author.orcid"
+                    :href="author.orcid"
+                    class="ml-1 text-quinary hover:underline hover:text-quaternary inline-flex items-center gap-1"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <img
-                      src="/images/orcid.svg"
-                      alt="ORCID icon"
-                      class="w-4 h-4"
-                    />
-                    {{ orcid }}
+                    <img src="/images/orcid.svg" alt="ORCID icon" class="w-4 h-4" />
                   </a>
-                </li>
-              </ul>
-            </div>
+                  <span v-if="index < publication.meta.authors.length - 1">;</span>
+                </span>
+              </template>
+            </p>
+
+            <!-- Deduplicated affiliation list -->
+            <ol class="mt-2 text-sm text-gray-500 list-decimal list-inside">
+              <li v-for="(affil, idx) in uniqueAffiliations.list" :key="'aff-' + idx">
+                {{ affil }}
+              </li>
+            </ol>
           </div>
-          <div
-            v-if="publication.meta.doi"
-            class="flex flex-row justify-between my-4 gap-4"
-          >
+
+          <!-- DOI -->
+          <div v-if="publication.meta.doi" class="flex flex-row justify-between my-4 gap-4">
             <p>
               <span class="text-gray-700 font-bold">DOI: </span>
               <a
@@ -62,21 +54,24 @@
               </a>
             </p>
           </div>
-          
 
+          <!-- Abstract -->
           <div class="prose w-full max-w-[65rem]">
             <template v-if="publication.meta.abstract">
               <h3 class="text-2xl">Abstract</h3>
-              <p
-                v-html="publication.meta.abstract"
-                class="text-justify"
-              />
+              <p v-html="publication.meta.abstract" class="text-justify" />
             </template>
           </div>
         </div>
 
-       </div>
 
+        <div class="mt-10 w-[24rem] pl-8 border-l border-gray-200 text-gray-700" ><!-- Import and use the right column component -->
+          <PublicationsViewGoogleScholar :title="publication.title" :doi="cleanedDoi" />
+          <PublicationsViewRightColumn :rawDoi="publication.meta.doi" />
+      </div>
+    </div>
+
+      <!-- Back Button -->
       <button
         type="button"
         class="uppercase items-center flex my-10 gap-1.5 cursor-pointer"
@@ -90,12 +85,15 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { useRouter } from 'vue-router'
+import IconArrowLeft from '../Icon/IconArrowLeft.vue'
+import PublicationsViewGoogleScholar from './PublicationsViewGoogleScholar.vue'
+import PublicationsViewRightColumn from './PublicationsViewRightColumn.vue'
 
-defineProps({
+const props = defineProps({
   publication: Object
 })
-
 
 const router = useRouter()
 
@@ -108,4 +106,41 @@ function goBack() {
     }
   }
 }
+
+// Unique affiliations map and list
+const uniqueAffiliations = computed(() => {
+  const seen = new Map()
+  const list = []
+
+  if (
+    props.publication &&
+    props.publication.meta &&
+    Array.isArray(props.publication.meta.authors)
+  ) {
+    props.publication.meta.authors.forEach((author) => {
+      const affil = author.affiliation?.trim()
+      if (affil && !seen.has(affil)) {
+        seen.set(affil, list.length + 1)
+        list.push(affil)
+      }
+    })
+  }
+
+  return {
+    map: seen,
+    list
+  }
+})
+
+// Get affiliation number for superscript
+function getAffiliationNumber(affil) {
+  return uniqueAffiliations.value.map.get(affil?.trim())
+}
+
+const cleanedDoi = computed(() => {
+  if (!props.publication?.meta?.doi) return null
+  return props.publication.meta.doi.replace(/^https?:\/\/(dx\.)?doi\.org\//i, '')
+})
+
+
 </script>
