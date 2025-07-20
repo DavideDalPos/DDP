@@ -1,9 +1,10 @@
 ---
 title: 'A revised terminology for male genitalia in Hymenoptera (Insecta), with a special emphasis on Ichneumonoidea'
 date: '2023-10-17' 
-journal: 'PeerK'
+journal: 'PeerJ'
 volume: '11'
 issue: ''
+pdf: '/PDFs/2023/Dal Pos_2023_Genitalia.pdf'
 pagination: 'e15874'
 doi: 'http://doi.org/10.7717/peerj.15874'
 authors:

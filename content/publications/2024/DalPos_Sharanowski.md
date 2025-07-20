@@ -6,6 +6,7 @@ volume: '19'
 issue: '9'
 pagination: 'e0311365'
 doi: 'https://doi.org/10.1371/journal.pone.0311365'
+pdf: '/PDFs/2024/DalPos_2024_Plos.pdf'
 altmetric: '168806105'
 authors:
   - first_name: 'Davide'

@@ -1,21 +1,23 @@
 :root {
-  --color-avocado-100: oklch(0.99 0 0);
-  --color-avocado-200: oklch(0.98 0.04 113.22);
-  --color-avocado-300: oklch(0.94 0.11 115.03);
+  --color-avocado-100: oklch(0.95 0.20 340);  /* deep plum */
+  --color-avocado-200: oklch(0.90 0.18 280);  /* steel blue (secondary) */
+  --color-avocado-300: oklch(0.85 0.16 130);  /* elegant forest green */
 }
 
 @theme {
-  --font-sans: 'Roboto', sans-serif;
-  --color-background: #ffffff;
-  --color-foreground: oklch(98.5% 0 0);
-  --color-primary: #7ca2a1;
-  --color-primary-content: #ffffff;
-  --color-secondary: #c1d5c9;
-  --color-tertiary: #ecd2a1;
-  --color-quaternary: #dfa75a;
-  --color-quinary: #b0b182;
-  --color-senary: #a3652e;
-  --color-setenary: #5f7a79;
-  --color-otenary: #7d4b4b;
-  --color-novenary: #a1675e;
+  --font-sans: 'Georgia', serif;
+  --color-background: #f8f7f6;                 /* soft warm off-white */
+  --color-foreground: #2c2a29;                 /* almost black brown */
+
+  --color-primary: #5a2245;                    /* deep royal purple */
+  --color-primary-content: #f3ece9;
+
+  --color-secondary: #3a4a6f;                  /* steel blue */
+  --color-tertiary: #3f6b42;                   /* elegant forest green */
+  --color-quaternary: #8b5e3c;                 /* warm chestnut brown */
+  --color-quinary: #a47c85;                    /* muted dusty rose */
+  --color-senary: #645150;                     /* rich taupe */
+  --color-setenary: #b7b1ac;                   /* warm gray */
+  --color-otenary: #d1c1b9;                    /* soft beige */
+  --color-novenary: #ad8079;                   /* muted rose */
 }

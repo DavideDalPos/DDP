@@ -38,7 +38,7 @@
               :href="publication.meta.doi"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-blue-600 hover:text-blue-800 hover:underline"
+              class="text-quinary hover:text-blue-800 hover:underline"
             >{{ publication.meta.doi }}</a>
 
             <!-- Gray line between items except last -->
