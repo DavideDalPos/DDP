@@ -6,18 +6,19 @@
 
 @theme {
   --font-sans: 'Georgia', serif;
-  --color-background: #f8f7f6;                 /* soft warm off-white */
-  --color-foreground: #2c2a29;                 /* almost black brown */
 
-  --color-primary: #5a2245;                    /* deep royal purple */
-  --color-primary-content: #f3ece9;
+  --color-background: #1e1b1a;         /* new dark base */
+  --color-foreground: #f8f7f6;         /* previous bg becomes text color */
 
-  --color-secondary: #3a4a6f;                  /* steel blue */
-  --color-tertiary: #3f6b42;                   /* elegant forest green */
-  --color-quaternary: #8b5e3c;                 /* warm chestnut brown */
-  --color-quinary: #a47c85;                    /* muted dusty rose */
-  --color-senary: #645150;                     /* rich taupe */
-  --color-setenary: #b7b1ac;                   /* warm gray */
-  --color-otenary: #d1c1b9;                    /* soft beige */
-  --color-novenary: #ad8079;                   /* muted rose */
+  --color-primary: #e0b8cc;            /* light dusty rose */
+  --color-primary-content: #1e1b1a;    /* dark text on primary buttons */
+
+  --color-secondary: #93a1c3;
+  --color-tertiary: #90b28f;
+  --color-quaternary: #d6aa8c;
+  --color-quinary: #c6a0a9;
+  --color-senary: #a08d8b;
+  --color-setenary: #ccc6c1;
+  --color-otenary: #e7ddd6;
+  --color-novenary: #d5a6a0;
 }

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { PublicationsPublicaitonsList } from '#components';
+import { PublicationsList } from '#components';
 
 </script>
 
 <template>
-  <PublicationsPublicaitonsList />
+  <PublicationsList />
 </template>

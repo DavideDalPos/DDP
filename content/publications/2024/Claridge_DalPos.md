@@ -6,6 +6,7 @@ volume: '5453'
 issue: '4'
 pagination: '549-557'
 doi: 'https://doi.org/10.11646/zootaxa.5453.4.5'
+researchgate: 'https://www.researchgate.net/publication/380784005_Revision_of_Nearctic_Eparces_Hymenoptera_Ichneumonidae_Ichneumoninae_description_Eparces_australis_Claridge_Dal_Pos_sp_nov_nomenclatural_notes_and_new_records_of_Eparces_quadriceps_Cresson_1867'
 authors:
   - first_name: 'Brandon'
     last_name: 'Claridge'

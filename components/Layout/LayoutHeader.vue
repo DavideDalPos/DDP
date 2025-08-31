@@ -9,7 +9,7 @@
           to="/"
           class="text-xl font-semibold hover:underline"
         >
-          Davide Dal Pos
+          Davide Dal Pos, Ph.D.
         </NuxtLink>
 
         <button
