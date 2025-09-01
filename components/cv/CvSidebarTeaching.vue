@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import { teachingCourses } from './CvSidebarTeaching.js';
+import { teachingCourses } from './CvSidebarTeachingData.js';
 
 const courses = teachingCourses
 </script>

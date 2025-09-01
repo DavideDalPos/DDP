@@ -13,5 +13,5 @@
 </template>
 
 <script setup>
-import { education } from './CvEducation.js';
+import { education } from './CvEducationData.js';
 </script>
