@@ -126,7 +126,7 @@ const links = reactive([
   { 
     label: 'Research',
     submenu: [
-      { label: 'Evolutionary Morphology', link:'/evolution' },
+      { label: 'Taxonomy', link:'/research/taxonomy' },
       { label: 'Ontology', link: '/ontology' }
     ],
     isOpen: false
@@ -134,14 +134,7 @@ const links = reactive([
   { label: 'Publications', link: '/publications', isOpen: false },
   { label: 'CV', link: '/cv', isOpen: false },
   { label: 'Species', link: '/species', isOpen: false },
-  { 
-    label: 'Teaching', 
-    submenu: [
-      { label: 'Teaching Philosophy', link: '/teaching/teachingphilosophy' },
-      { label: 'Mentorship', link: '/teaching' }
-    ],
-    isOpen: false
-  },
+  { label: 'Teaching', link: '/teaching' },
   { label: 'Network', link: '/network', isOpen: false },
   { label: 'News', link: '/news', isOpen: false },
   { label: 'Contact', link: '/contact', isOpen: false }

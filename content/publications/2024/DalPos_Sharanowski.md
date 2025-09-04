@@ -18,6 +18,12 @@ authors:
     last_name: 'Sharanowski'
     affiliation: 'Department of Biology, University of Central Florida, Orlando, Florida, United States of America'
 
+category:
+  - Ichneumonidae
+  - Phylogeny
+  - Evolution
+
+
 abstract: 'The evolution of convergent phenotypes is of major interest in biology because of their omnipresence and ability to inform the study of evolutionary novelty and constraint. Convergent phenotypes can be combinations of traits that evolve concertedly, called syndromes, and these can be shaped by a common environmental pressure. Parasitoid wasps which use a wide variety of arthropod hosts have also repeatedly and convergently switched host use across their evolutionary history. They thus represent a natural laboratory for the evolution of trait syndromes that are associated with parasitism of specific hosts and host substrates. In this study, we tested the evolution of co-evolving characters in the highly diverse family Ichneumonidae associated with ovipositing in a specific and well-defined substrate: wood. Using a newly constructed phylogeny and an existing morphological dataset, we identified six traits correlated with the wood-boring lifestyle that demonstrate convergent evolution. At least one trait, the presence of teeth on the ovipositor, typically preceded the evolution of other traits and possibly the switch to parasitism of wood-boring hosts. For each trait, we provide a historical review of their associations with wood-boring parasitoids, reevaluate the function of some characters, and suggest future coding improvements. Overall, we demonstrate the convergent evolution of multiple traits associated with parasitism of woodboring hosts and propose a syndrome in a hyper diverse lineage of parasitoid wasps.'
 
 ---

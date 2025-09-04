@@ -22,6 +22,9 @@ authors:
     affiliation: 'Museo di Storia Naturale di Venezia Giancarlo Ligabue, S. Croce 1730, 30135 Venezia'
     orcid: 'https://orcid.org/0000-0001-7180-6659'
 
+category:
+  - Collection
+  - Vespidae
 
 abstract: 'An account of the Antonio Giordani Soika Eumeninae collection housed at the Natural History Museum of Venice Giancarlo Ligabue is presented, following its recent reorganization. A list of identified species, with the count of specimens, is provided, as well as details on type specimens. With over 21,000 identified specimens and 2,756 type specimens from all zoogeographical regions, the collection covers over 60% of the world’s Eumeninae species. Several incongruities emerged during the verification of type specimens. A brief history of the collection is presented, with comments on Giordani Soika’s activity.'
 

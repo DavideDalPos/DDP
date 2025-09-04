@@ -18,6 +18,11 @@ authors:
     affiliation: 'Department of Biology, University of Central Florida, Orlando, Florida, United States of America'
     orcid: 'https://orcid.org/0000-0002-9122-934X'
 
+category:
+  - Ichneumonidae
+  - Ichneumoninae
+  - Taxonomy
+
 abstract: 'The Nearctic species of the parasitoid wasp genus Eparces are revised. A new species, <i>Eparces australis</i> Claridge & Dal Pos sp. nov., is described from the southeastern USA. Additionally, nomenclatural comments on the other Nearctic species, <i>Eparces quadriceps</i> (Cresson, 1867) are provided, along with new records for the species from various states in the USA.'
 
 ---

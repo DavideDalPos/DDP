@@ -1,6 +1,5 @@
 <template>
-  <div class="container mx-auto my-10 px-8 max-w-[70rem]">
-    <CvContact />
+  <div class="container mx-auto my-15 px-8 max-w-[70rem]">
 
     <div class="flex flex-col lg:flex-row gap-8">
       <!-- Left column -->
@@ -32,7 +31,6 @@
 </template>
 
 <script setup>
-import CvContact from './CvContact.vue'
 import CvEducation from './CvEducation.vue'
 import CvJob from './CvJob.vue'
 import { jobs } from './CvJobs.js'
