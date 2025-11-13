@@ -1,29 +1,22 @@
 <template>
-  <div class="mb-6">
-    <p class="font-bold text-lg">
-      {{ title }}
-      <a
-        v-if="link"
-        :href="link"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="ml-2 text-blue-600 hover:underline text-sm"
-      >
-        🔗
-      </a>
-    </p>
-    <p class="text-gray-700">{{ institution }}</p>
-    <p class="text-sm text-gray-500">{{ start }} - {{ end || 'Present' }}</p>
-    <p v-if="role" class="text-gray-600 mt-1">Role: {{ role }}</p>
+  <div class="border border-gray-200 rounded-lg p-4 bg-white shadow-sm">
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+      <div>
+        <h3 class="font-bold text-lg text-gray-800">{{ title }}</h3>
+        <p class="text-gray-700">{{ institution }}</p>
+      </div>
+      <p class="text-sm text-gray-500 mt-2 md:mt-0">{{ start }} – {{ end || 'Present' }}</p>
+    </div>
 
-    <!-- Description as list -->
-    <ul v-if="Array.isArray(description)" class="list-disc list-inside text-gray-600 mt-1">
-      <li v-for="(item, index) in description" :key="index">{{ item }}</li>
-    </ul>
+    <div v-if="description" class="mt-3 bg-gray-50 border border-gray-100 rounded p-3">
+      <p class="text-sm text-gray-600 font-medium mb-1">Responsibilities:</p>
 
-    <p v-else-if="description" class="text-gray-600 mt-1">{{ description }}</p>
+      <ul v-if="Array.isArray(description)" class="list-disc list-inside space-y-1 text-gray-700 text-sm">
+        <li v-for="(item, index) in description" :key="index">{{ item }}</li>
+      </ul>
 
-    <hr class="my-3 border-gray-300" />
+      <p v-else class="text-gray-700 text-sm">{{ description }}</p>
+    </div>
   </div>
 </template>
 
@@ -33,8 +26,6 @@ const props = defineProps({
   institution: String,
   start: String,
   end: String,
-  role: String,
-  description: [String, Array],
-  link: String
-})
+  description: [String, Array]
+});
 </script>
