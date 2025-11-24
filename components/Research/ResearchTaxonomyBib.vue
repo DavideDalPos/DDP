@@ -25,7 +25,7 @@
 
           <!-- Title -->
           <NuxtLink
-            :to="publication._path"
+            :to="publication.path"
             class="ml-1 text-base font-medium text-gray-800 hover:underline hover:decoration-gray-400 transition"
             itemprop="name"
             title="View publication"
@@ -46,20 +46,6 @@
             v-if="publication.meta.doi"
             class="ml-3 inline-flex items-center text-gray-600 text-xs"
           >
-            <svg
-              class="w-4 h-4 mr-1 text-gray-500"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M10 14l2-2-2-2" />
-              <path d="M14 10l-2 2 2 2" />
-              <path d="M15 12H9" />
-            </svg>
             <a
               :href="publication.meta.doi"
               target="_blank"
@@ -87,7 +73,7 @@
 
             <!-- Details -->
             <NuxtLink
-              :to="publication._path"
+              :to="publication.path"
               class="inline-flex border border-gray-300 rounded-md px-3 py-1 items-center gap-1 hover:text-gray-900 transition"
               title="View full publication"
             >

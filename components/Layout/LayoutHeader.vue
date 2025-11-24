@@ -3,39 +3,41 @@
     <nav class="container mx-auto p-4 flex items-center justify-between">
       <!-- Left: Name + Hamburger -->
       <div class="flex items-center gap-4 justify-between w-full md:w-auto">
-        <NuxtLink to="/" class="text-xl font-semibold hover:underline">
+        <NuxtLink 
+          to="/" 
+          class="text-gray-600 text-xl font-semibold hover:underline hover:text-red-900"
+        >
           Davide Dal Pos, Ph.D.
         </NuxtLink>
         <button
-          class="md:hidden text-gray-900"
+          class="md:hidden text-gray-600 hover:text-red-900"
           aria-label="Toggle menu"
           @click="toggleMenu"
         >
-          <IconHamburger />
+          <IconHamburger class="w-6 h-6" />
         </button>
       </div>
 
       <!-- Desktop Menu -->
       <div class="hidden md:flex justify-center gap-6 text-gray-700 text-lg flex-1">
-        <div
-          v-for="item in links"
-          :key="item.label"
-          class="relative group"
-        >
+        <div v-for="item in links" :key="item.label" class="relative group">
           <!-- Parent link + arrow -->
-          <div class="flex items-center gap-1 cursor-pointer">
-            <NuxtLink
-              v-if="item.link"
-              :to="item.link"
-              class="hover:underline flex items-center gap-1"
+          <div
+            class="flex items-center gap-1 cursor-pointer hover:text-red-900"
+          >
+            <NuxtLink 
+              v-if="item.link" 
+              :to="item.link" 
+              class="flex items-center gap-1"
             >
               {{ item.label }}
             </NuxtLink>
-            <span v-else>{{ item.label }}</span>
-
+            <span v-else class="flex items-center gap-1">
+              {{ item.label }}
+            </span>
             <svg
               v-if="item.submenu"
-              class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180"
+              class="w-3 h-3 transition-transform duration-200"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
@@ -45,16 +47,16 @@
             </svg>
           </div>
 
-          <!-- Submenu -->
+          <!-- Desktop submenu -->
           <div
             v-if="item.submenu"
-            class="absolute left-0 mt-1 flex-col bg-white shadow-lg rounded-md z-50 hidden group-hover:flex"
+            class="absolute top-full left-1/2 transform -translate-x-1/2 flex-col bg-white shadow-lg rounded-md z-40 hidden group-hover:flex whitespace-normal min-w-[120px]"
           >
             <NuxtLink
               v-for="child in item.submenu"
               :key="child.link"
               :to="child.link"
-              class="block px-4 py-2 hover:bg-gray-100 whitespace-nowrap"
+              class="block px-4 py-2 hover:bg-gray-100 text-sm hover:text-red-900"
             >
               {{ child.label }}
             </NuxtLink>
@@ -64,13 +66,13 @@
 
       <!-- Social icons -->
       <div class="hidden md:flex items-center gap-4">
-        <a href="mailto:your.email@example.com" class="hover:text-gray-400">
+        <a href="mailto:your.email@example.com" class="text-gray-600 hover:text-red-900">
           <IconEmail class="w-6 h-6" />
         </a>
-        <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="hover:text-gray-400">
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="text-gray-600 hover:text-red-900">
           <IconGithub class="w-6 h-6" />
         </a>
-        <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener" class="hover:text-gray-400">
+        <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener" class="text-gray-600 hover:text-red-900">
           <IconGoogleScholar class="w-6 h-6" />
         </a>
       </div>
@@ -79,11 +81,12 @@
     <!-- Mobile menu -->
     <div v-if="isMenuOpen" class="md:hidden bg-white shadow p-4 flex flex-col text-gray-900">
       <div v-for="item in links" :key="item.label" class="flex flex-col">
-        <div class="flex items-center justify-between py-2 cursor-pointer" @click="toggleSubmenu(item)">
+        <div 
+          class="flex items-center justify-between py-2 cursor-pointer hover:text-red-900" 
+          @click="toggleSubmenu(item)"
+        >
           <NuxtLink v-if="item.link" :to="item.link">{{ item.label }}</NuxtLink>
           <span v-else>{{ item.label }}</span>
-
-          <!-- Arrow for mobile -->
           <svg
             v-if="item.submenu"
             class="w-3 h-3 transition-transform duration-200"
@@ -97,13 +100,13 @@
           </svg>
         </div>
 
-        <!-- Submenu for mobile -->
-        <div v-if="item.submenu && item.isOpen" class="pl-4 flex flex-col">
+        <!-- Mobile submenu -->
+        <div v-if="item.submenu && item.isOpen" class="flex flex-col pl-4">
           <NuxtLink
             v-for="child in item.submenu"
             :key="child.link"
             :to="child.link"
-            class="hover:underline py-1"
+            class="py-1 hover:underline hover:text-red-900"
           >
             {{ child.label }}
           </NuxtLink>
@@ -126,7 +129,7 @@ const links = reactive([
   { 
     label: 'Research',
     submenu: [
-      { label: 'Taxonomy', link:'/research/taxonomy' },
+      { label: 'Systematics of Ichneumonidae', link:'/research/systematics' },
       { label: 'Ontology', link: '/ontology' }
     ],
     isOpen: false
