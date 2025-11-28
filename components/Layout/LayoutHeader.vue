@@ -1,5 +1,5 @@
 <template>
-  <header class="shadow-sm relative">
+  <header class="shadow-sm relative border-b border-gray-400">
     <nav class="container mx-auto p-4 flex items-center justify-between">
       <!-- Left: Name + Hamburger -->
       <div class="flex items-center gap-4 justify-between w-full md:w-auto">
@@ -22,9 +22,7 @@
       <div class="hidden md:flex justify-center gap-6 text-gray-700 text-lg flex-1">
         <div v-for="item in links" :key="item.label" class="relative group">
           <!-- Parent link + arrow -->
-          <div
-            class="flex items-center gap-1 cursor-pointer hover:text-red-900"
-          >
+          <div class="flex items-center gap-1 cursor-pointer hover:text-red-900">
             <NuxtLink 
               v-if="item.link" 
               :to="item.link" 
@@ -50,13 +48,13 @@
           <!-- Desktop submenu -->
           <div
             v-if="item.submenu"
-            class="absolute top-full left-1/2 transform -translate-x-1/2 flex-col bg-white shadow-lg rounded-md z-40 hidden group-hover:flex whitespace-normal min-w-[120px]"
+            class="absolute top-full left-1/2 transform -translate-x-1/2 flex-col bg-white shadow-lg rounded-md z-40 hidden group-hover:flex whitespace-normal min-w-[150px]"
           >
             <NuxtLink
               v-for="child in item.submenu"
               :key="child.link"
               :to="child.link"
-              class="block px-4 py-2 hover:bg-gray-100 text-sm hover:text-red-900"
+              class="block px-4 py-2 hover:bg-gray-100 text-xs hover:text-red-900"
             >
               {{ child.label }}
             </NuxtLink>
@@ -130,7 +128,8 @@ const links = reactive([
     label: 'Research',
     submenu: [
       { label: 'Systematics of Ichneumonidae', link:'/research/systematics' },
-      { label: 'Ontology', link: '/ontology' }
+      { label: 'Phenomics Evolution', link: '/research/evolution' },
+      { label: 'Collection-Based Research', link: '/research/collection' }
     ],
     isOpen: false
   },

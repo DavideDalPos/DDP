@@ -91,9 +91,9 @@ const { data } = await useAsyncData('publications', () =>
   queryCollection('publications').all()
 )
 
-// Filter publications by category "Taxonomy"
+// Filter publications by category "Collection"
 const filteredPublications = computed(() =>
-  data.value?.filter(pub => pub.meta?.category?.includes('Taxonomy')) || []
+  data.value?.filter(pub => pub.meta?.category?.includes('Collection')) || []
 )
 
 // Helper to format authors
