@@ -5,6 +5,7 @@ import ResearchTaxonomyBib from '~/components/Research/ResearchTaxonomyBib.vue';
 </script>
 
 <template>
+    
     <ResearchTaxonomy />
     <ResearchTaxonomyBib />
 

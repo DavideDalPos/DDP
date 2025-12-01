@@ -1,15 +1,15 @@
 <template>
   <main>
-    <section class="container mx-auto px-4 my-10">
-      <h1>{{ publication.title }}</h1>
-      <ContentRenderer value="data" />
-    </section>
+    <NewsView :news="news" />
   </main>
 </template>
 
 <script setup>
+import NewsView from '~/components/News/NewsView.vue';
+
 const route = useRoute()
-const publication = await queryCollection('news')
+
+const news = await queryCollection('news', route.params.year, route.params.slug)
   .path(route.path)
   .first()
 </script>

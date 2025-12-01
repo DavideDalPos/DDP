@@ -1,115 +1,73 @@
-<template> <div class="container mx-auto px-6 my-16 max-w-5xl"> 
-  <h1 class="text-4xl font-extrabold mb-2 text-gray-700 mb-10">Systematics of Parasitoid Wasps</h1> 
-<div class="space-y-4 text-justify text-base sm:text-lg text-gray-800 leading-relaxed"> <p>One of my primary research interests is the <strong>systematics, taxonomy, and classification</strong> of parasitoid wasps, with a particular emphasis on <strong>Ichneumonidae</strong> (Hymenoptera, Ichneumonoidea), a hyperdiverse family with approximately <strong>25,000 described species</strong> and an estimated <strong>100,000 species</strong> yet to be described.</p> 
-  <p>My taxonomic work has mainly focused on the subfamily <strong>Ichneumoninae</strong>, the largest within Ichneumonidae, where I have described <strong>several new species</strong>. However, my expertise extends across the entire family and even to related groups, such as <strong>Braconidae</strong>, allowing me to contribute broadly to parasitoid wasp systematics.</p> 
-  <p>My research includes the <strong>description of new species</strong>, revisions of key genera, and the development of comprehensive resources such as the <strong>World Ichneumonidae Database (WID)</strong>, which provides researchers worldwide with essential tools for studying the <strong>evolution</strong>, <strong>ecology</strong>, and <strong>diversity</strong> of these ecologically important insects.</p> 
-<p>Recently, I have investigated the evolution of key <strong>trait syndromes</strong> in Ichneumonidae and produced a <strong>phylogeny combining genomic data and Sanger sequences</strong> (Dal Pos & Sharanowski, 2024). I am currently working on the <strong>first calibrated phylogeny</strong> of the group, aimed at identifying major shifts in morphological evolution.</p>
-    </div>
+<template>
+  <div class="container mx-auto px-6 my-16 max-w-6xl">
 
-    <!-- Two phylogenetic trees -->
-    <div class="mt-12">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-
-        <!-- Image 1 -->
-        <div
-          class="bg-white shadow-md rounded-xl overflow-hidden cursor-pointer"
-          @click="openLightbox('/images/DalPos2024_1.png')"
-        >
-          <img src="/public/images/DalPos2024_1.png" class="w-full object-contain" />
-        </div>
-
-        <!-- Image 2 -->
-        <div
-          class="bg-white shadow-md rounded-xl overflow-hidden cursor-pointer"
-          @click="openLightbox('/images/DalPos2024_2.png')"
-        >
-          <img src="/public/images/DalPos2024_2.png" class="w-full object-contain" />
-        </div>
-      </div>
-
-      <p class="text-center text-sm text-gray-600 mt-4 italic">
-        Phylogenetic trees from Dal Pos &amp; Sharanowski (2024). Evolution of trait syndromes in Ichneumonidae.
+    <!-- Hero Intro -->
+    <div class="bg-gray-50 p-12 rounded-xl shadow-lg mb-16">
+      <h1 class="text-5xl text-center font-extrabold mb-6 text-gray-800">Systematics of Parasitoid Wasps</h1>
+      <p class="text-lg sm:text-xl text-gray-700 leading-relaxed">
+        One of my primary research interests is the <strong>systematics, taxonomy, and classification</strong> of parasitoid wasps, 
+        with a particular emphasis on <strong>Ichneumonidae</strong> (Hymenoptera, Ichneumonoidea), a hyperdiverse family with approximately 
+        <strong>25,000 described species</strong> and an estimated <strong>100,000 species</strong> yet to be described.
       </p>
     </div>
 
-    <!-- Lightbox with zoom + drag -->
-<div
-  v-if="lightboxSrc"
-  class="fixed inset-0 bg-gray-900/70 backdrop-blur-sm flex justify-center items-center p-4 z-50 select-none"
-  @click.self="closeLightbox"
->
+    <!-- Two-column layout (2/3 text left, 1/3 info right) -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
 
-  <!-- the BIG container must scroll, not clip -->
-  <div
-    class="cursor-grab"
-    @mousedown="startDrag"
-    @mouseup="stopDrag"
-    @mouseleave="stopDrag"
-    @mousemove="drag"
-    @wheel.prevent="zoom"
-  >
-    <img
-      ref="zoomImg"
-      :src="lightboxSrc"
-      class="rounded-xl shadow-xl"
-      :style="{
-        width: 'auto',
-        height: 'auto',
-        maxWidth: '80vw',
-        maxHeight: '80vh',
-        transform: 'translate(' + translateX + 'px, ' + translateY + 'px) scale(' + scale + ')'
-      }"
-    />
-  </div>
-</div>
+      <!-- Left: Text (2/3 width) -->
+      <div class="col-span-2 flex flex-col space-y-6 text-gray-800">
+        <p class="text-base sm:text-lg leading-relaxed">
+          My taxonomic work has mainly focused on the subfamily <strong>Ichneumoninae</strong>, the largest within Ichneumonidae, where I have described <strong>several new species</strong>. 
+          My expertise extends across the entire family and even to related groups, such as <strong>Braconidae</strong>, allowing me to contribute broadly to parasitoid wasp systematics.
+        </p>
+
+        <p class="text-base sm:text-lg leading-relaxed">
+          My research includes the <strong>description of new species</strong>, revisions of key genera, and the development of comprehensive resources such as the <strong>World Ichneumonidae Database (WID)</strong>, 
+          which provides researchers worldwide with essential tools for studying the <strong>evolution</strong>, <strong>ecology</strong>, and <strong>diversity</strong> of these ecologically important insects.
+        </p>
+
+        <p class="text-base sm:text-lg leading-relaxed">
+          Recently, I have investigated the evolution of key <strong>trait syndromes</strong> in Ichneumonidae and produced a <strong>phylogeny combining genomic data and Sanger sequences</strong> (Dal Pos & Sharanowski, 2024). 
+          I am currently working on the <strong>first calibrated phylogeny</strong> of the group, aimed at identifying major shifts in morphological evolution.
+        </p>
+      </div>
+
+      <!-- Right: Info Card (1/3 width) -->
+      <div class="bg-gray-50 p-6 rounded-xl shadow-lg flex flex-col justify-start space-y-6 text-gray-800 w-full">
+        <h2 class="text-xl font-bold text-gray-700">Ichneumonidae at a glance</h2>
+
+        <div class="flex flex-col space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="font-medium">Described species</span>
+            <span class="text-blue-600 font-semibold">~25,000</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="font-medium">Estimated total species</span>
+            <span class="text-blue-600 font-semibold">~100,000</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="font-medium">Subfamilies</span>
+            <span class="text-blue-600 font-semibold">42+</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="font-medium">Focus of my work</span>
+            <span class="text-blue-600 font-semibold">Ichneumoninae</span>
+          </div>
+        </div>
+
+        <!-- Link to species you described -->
+        <router-link
+          to="/species"
+          class="mt-4 inline-block text-center bg-blue-100 hover:bg-blue-200 text-blue-700 font-medium py-2 rounded transition"
+        >
+          Explore Species I Described
+        </router-link>
+      </div>
+
+    </div>
 
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-
-const lightboxSrc = ref(null)
-
-function openLightbox(src) {
-  lightboxSrc.value = src
-  scale.value = 1
-  translateX.value = 0
-  translateY.value = 0
-}
-
-function closeLightbox() {
-  lightboxSrc.value = null
-}
-
-/* --- ZOOM & PAN LOGIC --- */
-const scale = ref(1)
-const translateX = ref(0)
-const translateY = ref(0)
-
-const isDragging = ref(false)
-let startX = 0
-let startY = 0
-
-function zoom(event) {
-  const delta = event.deltaY > 0 ? -0.1 : 0.1
-  scale.value = Math.min(Math.max(scale.value + delta, 1), 5)
-}
-
-function startDrag(event) {
-  isDragging.value = true
-  startX = event.clientX - translateX.value
-  startY = event.clientY - translateY.value
-}
-
-function drag(event) {
-  if (!isDragging.value) return
-  translateX.value = event.clientX - startX
-  translateY.value = event.clientY - startY
-}
-
-
-function stopDrag() {
-  isDragging.value = false
-}
 </script>
