@@ -15,95 +15,120 @@
         class="w-full p-2 mb-10 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
       />
 
-      <template v-for="[year, pubs] in grouped" :key="year">
+      <template
+        v-for="[year, pubs] in grouped"
+        :key="year"
+      >
         <h2
           class="text-2xl font-bold mb-4 text-gray-600 bg-white py-2 border-b border-gray-200"
         >
           {{ year }}
         </h2>
 
-        <ol class="list-decimal list-inside marker:text-gray-400 marker:text-xl">
-<li
-  v-for="(news, index) in pubs"
-  :key="news._path"
-  class="pt-4 pb-4 pl-6 relative text-sm leading-relaxed hover:bg-gray-50 transition rounded-md"
-  itemscope
-  itemtype="https://schema.org/ScholarlyArticle"
->
-  <!-- Authors -->
-  <span
-    v-html="formatAuthors(news.meta.authors)"
-    class="text-gray-800 font-semibold"
-    itemprop="author"
-  ></span>
+        <ol
+          class="list-decimal list-inside marker:text-gray-400 marker:text-xl"
+        >
+          <li
+            v-for="(news, index) in pubs"
+            :key="news._path"
+            class="pt-4 pb-4 pl-6 relative text-sm leading-relaxed hover:bg-gray-50 transition rounded-md"
+            itemscope
+            itemtype="https://schema.org/ScholarlyArticle"
+          >
+            <!-- Authors -->
+            <span
+              v-html="formatAuthors(news.meta.authors)"
+              class="text-gray-800 font-semibold"
+              itemprop="author"
+            ></span>
 
-  <!-- Year -->
-  <span class="text-gray-600 ml-1" itemprop="datePublished">
-    ({{ new Date(news.meta.date).getFullYear() }}).
-  </span>
+            <!-- Year -->
+            <span
+              class="text-gray-600 ml-1"
+              itemprop="datePublished"
+            >
+              ({{ new Date(news.meta.date).getFullYear() }}).
+            </span>
 
-  <!-- Title -->
-  <NuxtLink
-    :to="news.path"
-    class="ml-1 text-base font-medium text-gray-900 hover:underline hover:decoration-gray-400 transition"
-    itemprop="name"
-    title="View news"
-  >
-    <span v-html="news.title"></span>
-  </NuxtLink>.
+            <!-- Title -->
+            <NuxtLink
+              :to="news.path"
+              class="ml-1 text-base font-medium text-gray-900 hover:underline hover:decoration-gray-400 transition"
+              itemprop="name"
+              title="View news"
+            >
+              <span v-html="news.title"></span> </NuxtLink
+            >.
 
-  <!-- Journal info -->
-  <span class="text-gray-700 italic ml-1" itemprop="isPartOf">
-    {{ news.meta.journal }}, {{ news.meta.volume }}
-    <span v-if="news.meta.issue">({{ news.meta.issue }})</span>,
-    {{ news.meta.pagination }}.
-  </span>
+            <!-- Journal info -->
+            <span
+              class="text-gray-700 italic ml-1"
+              itemprop="isPartOf"
+            >
+              {{ news.meta.journal }}, {{ news.meta.volume }}
+              <span v-if="news.meta.issue">({{ news.meta.issue }})</span>,
+              {{ news.meta.pagination }}.
+            </span>
 
-  <!-- DOI (inline) -->
-  <span
-    v-if="news.meta.doi"
-    class="ml-1 inline-flex items-center text-gray-600 text-[0.85rem] align-baseline hover:bg-gray-100 px-1 rounded transition"
-  >
-    <a
-      :href="news.meta.doi"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="hover:underline"
-    >
-      doi: {{ news.meta.doi.replace('https://doi.org/', '') }}
-    </a>
-  </span>
+            <!-- DOI (inline) -->
+            <span
+              v-if="news.meta.doi"
+              class="ml-1 inline-flex items-center text-gray-600 text-[0.85rem] align-baseline hover:bg-gray-100 px-1 rounded transition"
+            >
+              <a
+                :href="news.meta.doi"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:underline"
+              >
+                doi: {{ news.meta.doi.replace('https://doi.org/', '') }}
+              </a>
+            </span>
 
-  <!-- Buttons (PDF / Details) -->
-  <div class="mt-2 flex gap-2 text-[0.75rem] text-gray-700">
-    <a
-      v-if="news.meta.pdf"
-      :href="news.meta.pdf"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="inline-flex items-center border border-gray-300 rounded-lg px-3 py-1.5 gap-1 hover:bg-gray-50 transition"
-      title="Download PDF"
-    >
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-      </svg>
-      PDF
-    </a>
+            <!-- Buttons (PDF / Details) -->
+            <div class="mt-2 flex gap-2 text-[0.75rem] text-gray-700">
+              <a
+                v-if="news.meta.pdf"
+                :href="news.meta.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center border border-gray-300 rounded-lg px-3 py-1.5 gap-1 hover:bg-gray-50 transition"
+                title="Download PDF"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 4v16m8-8H4"
+                  />
+                </svg>
+                PDF
+              </a>
 
-    <NuxtLink
-      :to="news.path"
-      class="inline-flex items-center border border-gray-300 rounded-lg px-3 py-1.5 gap-1 hover:bg-gray-50 transition"
-      title="View full news"
-    >
-      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-        <path d="M10 2a1 1 0 011 1v6h6a1 1 0 110 2h-6v6a1 1 0 11-2 0v-6H3a1 1 0 110-2h6V3a1 1 0 011-1z" />
-      </svg>
-      Details
-    </NuxtLink>
-  </div>
-</li>
-
-
+              <NuxtLink
+                :to="news.path"
+                class="inline-flex items-center border border-gray-300 rounded-lg px-3 py-1.5 gap-1 hover:bg-gray-50 transition"
+                title="View full news"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M10 2a1 1 0 011 1v6h6a1 1 0 110 2h-6v6a1 1 0 11-2 0v-6H3a1 1 0 110-2h6V3a1 1 0 011-1z"
+                  />
+                </svg>
+                Details
+              </NuxtLink>
+            </div>
+          </li>
         </ol>
       </template>
     </div>
@@ -114,7 +139,7 @@
 const route = useRoute()
 
 const { data } = await useAsyncData(route.path, () => {
-    return queryCollection('news').all()
+  return queryCollection('news').all()
 })
 
 const searchQuery = ref('')
@@ -131,13 +156,15 @@ const filteredData = computed(() => {
 })
 
 function formatAuthors(authors) {
+  if (!authors) return ''
   const formatted = authors.map(({ first_name, last_name }) => {
-    const initials = first_name.split(' ').map((n) => n[0] + '.').join(' ')
+    const initials = first_name
+      .split(' ')
+      .map((n) => n[0] + '.')
+      .join(' ')
     const full = `${last_name}, ${initials}`
 
-    return full === 'Dal Pos, D.'
-      ? `<strong>${full}</strong>`
-      : full
+    return full === 'Dal Pos, D.' ? `<strong>${full}</strong>` : full
   })
 
   if (formatted.length <= 2) {
@@ -149,7 +176,6 @@ function formatAuthors(authors) {
   // Dal Pos, D., Mikó, I., Talamas, E. J., Vilhelmsen, L. & Sharanowski, B. J.
   return formatted.slice(0, -1).join(', ') + ' & ' + formatted.at(-1)
 }
-
 
 const grouped = computed(() => {
   const groups = {}

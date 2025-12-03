@@ -12,6 +12,7 @@
   "dependencies": {
     "@nuxt/content": "^3.6.3",
     "@nuxtjs/leaflet": "^1.2.6",
+    "better-sqlite3": "^12.5.0",
     "leaflet.markercluster": "^1.5.3",
     "nuxt": "^3.17.6",
     "overlapping-marker-spiderfier-leaflet": "^0.2.7",

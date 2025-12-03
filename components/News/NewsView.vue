@@ -27,7 +27,11 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src="/images/orcid.svg" alt="ORCID icon" class="w-4 h-4" />
+                <img
+                  src="/images/orcid.svg"
+                  alt="ORCID icon"
+                  class="w-4 h-4"
+                />
               </a>
               <span v-if="index < news.meta.authors.length - 1">;</span>
             </span>
@@ -49,8 +53,13 @@
         <!-- Left column -->
         <div class="flex-1">
           <!-- Abstract -->
-          <div v-if="news.meta.abstract" class="prose pt-3">
-            <h3 class="text-3xl font-bold text-gray-700 text-center">Abstract</h3>
+          <div
+            v-if="news.meta.abstract"
+            class="prose pt-3"
+          >
+            <h3 class="text-3xl font-bold text-gray-700 text-center">
+              Abstract
+            </h3>
             <p
               v-html="news.meta.abstract"
               class="text-justify text-gray-700 mt-2"
@@ -92,7 +101,10 @@
           </div>
 
           <!-- Altmetric Badge -->
-          <div class="scale-[1.4] origin-left ml-22 mt-6">
+          <div
+            v-if="news.meta.doi"
+            class="scale-[1.4] origin-left ml-22 mt-6"
+          >
             <AltmetricBadge :rawDoi="news.meta.doi" />
           </div>
         </div>
@@ -115,8 +127,8 @@
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import IconArrowLeft from '../Icon/IconArrowLeft.vue'
-import AltmetricBadge from './AltmetricBadge.vue'
-import PDFPreview from './PDFPreview.vue'
+import AltmetricBadge from '../Publications/AltmetricBadge.vue'
+import PDFPreview from '../Publications/PDFPreview.vue'
 
 const props = defineProps({
   news: Object
@@ -139,11 +151,7 @@ const uniqueAffiliations = computed(() => {
   const seen = new Map()
   const list = []
 
-  if (
-    props.news &&
-    props.news.meta &&
-    Array.isArray(props.news.meta.authors)
-  ) {
+  if (props.news && props.news.meta && Array.isArray(props.news.meta.authors)) {
     props.news.meta.authors.forEach((author) => {
       const affil = author.affiliation?.trim()
       if (affil && !seen.has(affil)) {
@@ -166,9 +174,6 @@ function getAffiliationNumber(affil) {
 
 const cleanedDoi = computed(() => {
   if (!props.news?.meta?.doi) return null
-  return props.news.meta.doi.replace(
-    /^https?:\/\/(dx\.)?doi\.org\//i,
-    ''
-  )
+  return props.news.meta.doi.replace(/^https?:\/\/(dx\.)?doi\.org\//i, '')
 })
 </script>

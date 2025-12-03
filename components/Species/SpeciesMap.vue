@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted } from 'vue'
-import { speciesPoints } from './speciesData'
+import { speciesPoints } from './SpeciesData.js'
 
 let map
 
@@ -10,21 +10,28 @@ onMounted(async () => {
   map = L.map('map').setView([20, 0], 2)
 
   // Tile layers
-  const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; OpenStreetMap contributors'
-  })
+  const osm = L.tileLayer(
+    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
+    }
+  )
 
-  const cartoPositron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    maxZoom: 19,
-    attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
-  })
+  const cartoPositron = L.tileLayer(
+    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+    {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+    }
+  )
 
   const esriWorldStreet = L.tileLayer(
     'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
     {
       maxZoom: 19,
-      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, EPA, NPS'
+      attribution:
+        'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, EPA, NPS'
     }
   )
 
@@ -60,7 +67,7 @@ onMounted(async () => {
   }
 
   const baseMaps = {
-    'OpenStreetMap': osm,
+    OpenStreetMap: osm,
     'CartoDB Positron': cartoPositron,
     'Esri WorldStreetMap': esriWorldStreet
   }
@@ -68,7 +75,9 @@ onMounted(async () => {
   L.control.layers(baseMaps).addTo(map)
 
   for (const [i, point] of speciesPoints.entries()) {
-    const marker = L.marker([point.lat, point.lng], { icon: createRedSquareIcon() }).addTo(map)
+    const marker = L.marker([point.lat, point.lng], {
+      icon: createRedSquareIcon()
+    }).addTo(map)
 
     const popupContent = `
       <div style="
@@ -123,11 +132,13 @@ onMounted(async () => {
 })
 </script>
 
-
 <template>
   <div class="container mx-auto px-6 my-16 max-w-10xl">
     <client-only>
-      <div id="map" style="height: 600px; width: 100%;"></div>
+      <div
+        id="map"
+        style="height: 600px; width: 100%"
+      ></div>
     </client-only>
   </div>
 </template>
