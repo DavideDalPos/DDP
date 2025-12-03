@@ -33,7 +33,7 @@
   <!-- Authors -->
   <span
     v-html="formatAuthors(publication.meta.authors)"
-    class="text-gray-800 font-semibold"
+    class="text-gray-800"
     itemprop="author"
   ></span>
 
@@ -68,7 +68,7 @@
       :href="publication.meta.doi"
       target="_blank"
       rel="noopener noreferrer"
-      class="hover:underline"
+      class="hover:underline text-quinary"
     >
       doi: {{ publication.meta.doi.replace('https://doi.org/', '') }}
     </a>
@@ -81,7 +81,7 @@
       :href="publication.meta.pdf"
       target="_blank"
       rel="noopener noreferrer"
-      class="inline-flex items-center border border-gray-300 rounded-lg px-3 py-1.5 gap-1 hover:bg-gray-50 transition"
+      class="inline-flex items-center border border-gray-300 rounded-lg px-3 py-1.5 gap-1 hover:bg-quinary transition shadow-md"
       title="Download PDF"
     >
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -92,7 +92,7 @@
 
     <NuxtLink
       :to="publication.path"
-      class="inline-flex items-center border border-gray-300 rounded-lg px-3 py-1.5 gap-1 hover:bg-gray-50 transition"
+      class="inline-flex items-center border border-gray-300 rounded-lg px-3 py-1.5 gap-1 hover:bg-quaternary transition shadow-md"
       title="View full publication"
     >
       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
