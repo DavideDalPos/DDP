@@ -4,9 +4,12 @@
     <canvas ref="networkCanvas" class="absolute inset-0 z-0"></canvas>
 
     <div class="text-center px-1 relative z-10">
-      <!-- Image -->
+
+      <!-- Profile Image -->
       <transition name="fade" appear>
-        <div class="mx-auto w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden shadow-md opacity-0 animate-fade-in animation-delay-100">
+        <div 
+          class="mx-auto w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden shadow-md opacity-0 animate-fade-in animation-delay-100 transform transition-all duration-700"
+        >
           <img
             src="/images/profile3.jpg"
             alt="Davide Dal Pos"
@@ -24,34 +27,80 @@
         </div>
       </transition>
 
-      <!-- Welcome Message -->
-<!-- Welcome Message + Typewriter -->
-<transition name="fade" appear>
-  <p class="text-2xl md:text-3xl text-gray-600 mt-8 opacity-0 animate-fade-in animation-delay-700">
-    Hi! Welcome to my academic website. <br />
-    I work on <span id="typewriter" class="text-indigo-600 font-semibold text-2xl md:text-3xl"></span>
-  </p>
-</transition>
-
-
-
-      <!-- Typewriter Research Interests -->
+      <!-- Welcome Message + Typewriter -->
       <transition name="fade" appear>
-        <p class="text-xl text-indigo-600 mt-6 opacity-0 animate-fade-in animation-delay-900">
-          <span id="typewriter"></span>
+        <p class="text-2xl md:text-3xl text-gray-600 mt-8 opacity-0 animate-fade-in animation-delay-700">
+          Hi! Welcome to my academic website. <br />
+          I work on <span id="typewriter" class="text-indigo-600 font-semibold"></span>
         </p>
       </transition>
+
+      <!-- Explore Button -->
+      <div v-if="!showCards" class="mt-6">
+        <button 
+          @click="showCards = true"
+          class="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+        >
+          Explore My Work
+        </button>
+      </div>
+
+      <!-- Cards Section -->
+      <transition name="fade-slide">
+        <div v-if="showCards" class="mt-12 grid gap-6 md:grid-cols-3 md:justify-start">
+
+          <!-- Card 1: Research Interests -->
+          <div class="bg-white rounded-2xl shadow-lg p-6 text-center transform hover:scale-105 transition duration-300">
+            <h3 class="text-xl font-semibold text-indigo-600 mb-2">Research Interests</h3>
+            <ul class="text-gray-700 mb-2 space-y-1">
+              <li>Evolutionary Morphology</li>
+              <li>Phenomics</li>
+              <li>Comparative Anatomy</li>
+            </ul>
+            <button class="mt-2 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">
+              Learn More
+            </button>
+          </div>
+
+          <!-- Card 2: Species I Described -->
+          <div class="bg-white rounded-2xl shadow-lg p-6 text-center transform hover:scale-105 transition duration-300">
+            <h3 class="text-xl font-semibold text-indigo-600 mb-2">Species I Described</h3>
+            <p class="text-gray-700 mb-2">
+              A curated list of Ichneumonidae species I have published and described.
+            </p>
+            <button class="mt-2 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">
+              View Species
+            </button>
+          </div>
+
+          <!-- Card 3: Teaching -->
+          <div class="bg-white rounded-2xl shadow-lg p-6 text-center transform hover:scale-105 transition duration-300">
+            <h3 class="text-xl font-semibold text-indigo-600 mb-2">Teaching</h3>
+            <p class="text-gray-700 mb-2">
+              Courses taught, mentoring, and other educational contributions.
+            </p>
+            <button class="mt-2 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">
+              See Teaching
+            </button>
+          </div>
+
+        </div>
+      </transition>
+
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const networkCanvas = ref(null)
+const showCards = ref(false)
 
 onMounted(() => {
-  // Typewriter
+  // -------------------
+  // Typewriter Effect
+  // -------------------
   const el = document.getElementById('typewriter')
   const texts = [
     'Evolutionary Morphology',
@@ -63,11 +112,20 @@ onMounted(() => {
     'Databasing',
     'Semantics'
   ]
-  let i = 0, j = 0, currentText = '', isDeleting = false
+  let i = 0, j = 0, isDeleting = false
 
   function type() {
     const fullText = texts[i]
-    currentText = isDeleting ? fullText.substring(0, j--) : fullText.substring(0, j++)
+    let currentText = ''
+
+    if (isDeleting) {
+      currentText = fullText.substring(0, j)
+      j--
+    } else {
+      currentText = fullText.substring(0, j)
+      j++
+    }
+
     el.textContent = currentText
 
     if (!isDeleting && j === fullText.length + 1) {
@@ -81,9 +139,12 @@ onMounted(() => {
       setTimeout(type, isDeleting ? 50 : 100)
     }
   }
+
   type()
 
+  // -------------------
   // Particle Network
+  // -------------------
   const canvas = networkCanvas.value
   const ctx = canvas.getContext('2d')
   canvas.width = window.innerWidth
@@ -93,7 +154,6 @@ onMounted(() => {
   const particleCount = 60
   const maxDistance = 150
 
-  // Initialize particles
   for (let i = 0; i < particleCount; i++) {
     particles.push({
       x: Math.random() * canvas.width,
@@ -121,7 +181,7 @@ onMounted(() => {
       ctx.fill()
     })
 
-    // Draw lines between close particles
+    // Draw lines
     for (let i = 0; i < particleCount; i++) {
       for (let j = i + 1; j < particleCount; j++) {
         const dx = particles[i].x - particles[j].x
@@ -143,9 +203,14 @@ onMounted(() => {
 
   animate()
 
+  // Handle resize
   window.addEventListener('resize', () => {
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
+    particles.forEach(p => {
+      p.x = Math.random() * canvas.width
+      p.y = Math.random() * canvas.height
+    })
   })
 })
 </script>
@@ -160,5 +225,17 @@ onMounted(() => {
 .animation-delay-100 { animation-delay: 0.1s; }
 .animation-delay-300 { animation-delay: 0.3s; }
 .animation-delay-700 { animation-delay: 0.7s; }
-.animation-delay-900 { animation-delay: 0.9s; }
+
+/* Slide + Fade Animation for cards */
+.fade-slide-enter-active, .fade-slide-leave-active {
+  transition: all 0.7s ease;
+}
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.fade-slide-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
