@@ -1,135 +1,60 @@
 <template>
-  <section>
+  <section class="bg-gray-900 text-gray-200">
     <div class="container mx-auto px-6 my-16 max-w-5xl">
-      <h1 class="text-4xl font-extrabold mb-2 text-gray-700">newss</h1>
+      <h1 class="text-4xl font-extrabold mb-4 text-white">News</h1>
 
-      <h3 class="text-lg font-medium mb-6 text-gray-600">
-        Total newss: {{ filteredData.length }}
-      </h3>
-
-      <!-- Search -->
-      <input
-        v-model="searchQuery"
-        type="text"
-        placeholder="Search by title, journal, or author"
-        class="w-full p-2 mb-10 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
-      />
-
-      <template
-        v-for="[year, pubs] in grouped"
-        :key="year"
-      >
-        <h2
-          class="text-2xl font-bold mb-4 text-gray-600 bg-white py-2 border-b border-gray-200"
-        >
+      <template v-for="[year, items] in grouped" :key="year">
+        <!-- Year header -->
+        <h2 class="text-2xl font-bold mb-6 text-amber-400 py-2 border-b border-gray-700">
           {{ year }}
         </h2>
 
-        <ol
-          class="list-decimal list-inside marker:text-gray-400 marker:text-xl"
-        >
+        <ul class="space-y-4">
           <li
-            v-for="(news, index) in pubs"
+            v-for="news in items"
             :key="news._path"
-            class="pt-4 pb-4 pl-6 relative text-sm leading-relaxed hover:bg-gray-50 transition rounded-md"
-            itemscope
-            itemtype="https://schema.org/ScholarlyArticle"
+            class="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition border-l-4 border-amber-400"
           >
-            <!-- Authors -->
-            <span
-              v-html="formatAuthors(news.meta.authors)"
-              class="text-gray-800 font-semibold"
-              itemprop="author"
-            ></span>
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+              <!-- Left: Title + Category/NEW badges -->
+              <div class="flex items-center gap-2 flex-wrap">
+                <!-- Title -->
+                <p class="text-lg font-semibold text-gray-200">{{ news.title }}</p>
 
-            <!-- Year -->
-            <span
-              class="text-gray-600 ml-1"
-              itemprop="datePublished"
-            >
-              ({{ new Date(news.meta.date).getFullYear() }}).
-            </span>
+                <!-- Category badge -->
+<!-- Category badge -->
+<span
+  v-if="news.meta.categories && news.meta.categories.length > 0"
+  :class="[
+    'text-xs font-bold px-2 py-0.5 rounded',
+    news.meta.categories[0] === 'Milestone'
+      ? 'bg-green-500 text-white'
+      : 'bg-amber-400 text-gray-900'
+  ]"
+>
+  {{ news.meta.categories[0] }}
+</span>
 
-            <!-- Title -->
-            <NuxtLink
-              :to="news.path"
-              class="ml-1 text-base font-medium text-gray-900 hover:underline hover:decoration-gray-400 transition"
-              itemprop="name"
-              title="View news"
-            >
-              <span v-html="news.title"></span> </NuxtLink
-            >.
 
-            <!-- Journal info -->
-            <span
-              class="text-gray-700 italic ml-1"
-              itemprop="isPartOf"
-            >
-              {{ news.meta.journal }}, {{ news.meta.volume }}
-              <span v-if="news.meta.issue">({{ news.meta.issue }})</span>,
-              {{ news.meta.pagination }}.
-            </span>
-
-            <!-- DOI (inline) -->
-            <span
-              v-if="news.meta.doi"
-              class="ml-1 inline-flex items-center text-gray-600 text-[0.85rem] align-baseline hover:bg-gray-100 px-1 rounded transition"
-            >
-              <a
-                :href="news.meta.doi"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hover:underline"
-              >
-                doi: {{ news.meta.doi.replace('https://doi.org/', '') }}
-              </a>
-            </span>
-
-            <!-- Buttons (PDF / Details) -->
-            <div class="mt-2 flex gap-2 text-[0.75rem] text-gray-700">
-              <a
-                v-if="news.meta.pdf"
-                :href="news.meta.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center border border-gray-300 rounded-lg px-3 py-1.5 gap-1 hover:bg-gray-50 transition"
-                title="Download PDF"
-              >
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                <!-- NEW badge for recent posts -->
+                <span
+                  v-if="isNew(news.meta.date)"
+                  class="text-xs font-bold text-white bg-red-500 px-2 py-0.5 rounded"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 4v16m8-8H4"
-                  />
-                </svg>
-                PDF
-              </a>
+                  NEW
+                </span>
+              </div>
 
-              <NuxtLink
-                :to="news.path"
-                class="inline-flex items-center border border-gray-300 rounded-lg px-3 py-1.5 gap-1 hover:bg-gray-50 transition"
-                title="View full news"
-              >
-                <svg
-                  class="w-4 h-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    d="M10 2a1 1 0 011 1v6h6a1 1 0 110 2h-6v6a1 1 0 11-2 0v-6H3a1 1 0 110-2h6V3a1 1 0 011-1z"
-                  />
-                </svg>
-                Details
-              </NuxtLink>
+              <!-- Right: Date -->
+              <span class="text-gray-400 mt-2 md:mt-0">
+                {{ new Date(news.meta.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) }}
+              </span>
             </div>
+
+            <!-- Optional description with HTML support -->
+            <p v-if="news.description" class="mt-2 text-gray-300" v-html="news.description"></p>
           </li>
-        </ol>
+        </ul>
       </template>
     </div>
   </section>
@@ -144,51 +69,35 @@ const { data } = await useAsyncData(route.path, () => {
 
 const searchQuery = ref('')
 
+// Filter by search query
 const filteredData = computed(() => {
   if (!searchQuery.value) return data.value
   const q = searchQuery.value.toLowerCase()
-  return data.value.filter((pub) => {
-    const text = `${pub.title} ${pub.meta.journal} ${pub.meta.authors
-      .map((a) => a.last_name)
-      .join(' ')}`.toLowerCase()
-    return text.includes(q)
-  })
+  return data.value.filter((item) => item.title.toLowerCase().includes(q))
 })
 
-function formatAuthors(authors) {
-  if (!authors) return ''
-  const formatted = authors.map(({ first_name, last_name }) => {
-    const initials = first_name
-      .split(' ')
-      .map((n) => n[0] + '.')
-      .join(' ')
-    const full = `${last_name}, ${initials}`
-
-    return full === 'Dal Pos, D.' ? `<strong>${full}</strong>` : full
-  })
-
-  if (formatted.length <= 2) {
-    // Dal Pos, D. & Mikó, I.
-    return formatted.join(' & ')
-  }
-
-  // For 3+ authors:
-  // Dal Pos, D., Mikó, I., Talamas, E. J., Vilhelmsen, L. & Sharanowski, B. J.
-  return formatted.slice(0, -1).join(', ') + ' & ' + formatted.at(-1)
-}
-
+// Group by year
 const grouped = computed(() => {
   const groups = {}
-  for (const pub of filteredData.value) {
-    const year = new Date(pub.meta.date).getFullYear()
+  for (const item of filteredData.value) {
+    const year = new Date(item.meta.date).getFullYear()
     if (!groups[year]) groups[year] = []
-    groups[year].push(pub)
+    groups[year].push(item)
   }
 
+  // Sort within each year (newest first)
   for (const year in groups) {
     groups[year].sort((a, b) => new Date(b.meta.date) - new Date(a.meta.date))
   }
 
   return Object.entries(groups).sort((a, b) => b[0] - a[0])
 })
+
+// Highlight news from the last 7 days
+function isNew(dateStr) {
+  const newsDate = new Date(dateStr)
+  const today = new Date()
+  const diff = (today - newsDate) / (1000 * 60 * 60 * 24)
+  return diff <= 7
+}
 </script>

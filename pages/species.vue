@@ -4,6 +4,8 @@ import SpeciesMap from '~/components/Species/SpeciesMap.vue';
 
 <template>
   <div>
+    <SpeciesDescription />
     <SpeciesMap />
+    <SpeciesList />
   </div>
 </template>
