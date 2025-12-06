@@ -1,9 +1,12 @@
 <template>
   <section>
     <div class="container mx-auto px-6 my-16 max-w-5xl">
-      <h1 class="text-xl font-semibold mb-6 text-gray-700">Relevant Publications</h1>
+      <!-- Heading -->
+      <h1 class="text-xl font-semibold mb-6 text-white">
+        Relevant Publications
+      </h1>
 
-      <ol class="list-decimal list-inside marker:text-gray-400 marker:text-xl">
+      <ol class="list-decimal list-inside marker:text-amber-400 marker:text-xl">
         <li
           v-for="(publication, index) in filteredPublications"
           :key="publication._path"
@@ -14,19 +17,19 @@
           <!-- Authors -->
           <span
             v-html="formatAuthors(publication.meta.authors)"
-            class="text-gray-800"
+            class="text-gray-200"
             itemprop="author"
           ></span>
 
           <!-- Year -->
-          <span class="text-gray-600" itemprop="datePublished">
+          <span class="text-gray-400" itemprop="datePublished">
             ({{ new Date(publication.meta.date).getFullYear() }}).
           </span>
 
           <!-- Title -->
           <NuxtLink
             :to="publication.path"
-            class="ml-1 text-base font-medium text-gray-800 hover:underline hover:decoration-gray-400 transition"
+            class="ml-1 text-base font-medium text-white hover:underline hover:text-amber-400 transition"
             itemprop="name"
             title="View publication"
           >
@@ -34,7 +37,7 @@
           </NuxtLink>.
 
           <!-- Journal info -->
-          <span class="text-gray-800 italic" itemprop="isPartOf">
+          <span class="text-gray-300 italic" itemprop="isPartOf">
             {{ publication.meta.journal }},
             {{ publication.meta.volume }}
             <span v-if="publication.meta.issue">({{ publication.meta.issue }})</span>,
@@ -44,7 +47,7 @@
           <!-- DOI link -->
           <span
             v-if="publication.meta.doi"
-            class="ml-3 inline-flex items-center text-quinary text-xs"
+            class="ml-3 inline-flex items-center text-amber-400 text-xs"
           >
             <a
               :href="publication.meta.doi"
@@ -58,14 +61,14 @@
           </span>
 
           <!-- PDF / Details -->
-          <div class="mt-1 flex gap-1 text-xs text-gray-700">
+          <div class="mt-1 flex gap-1 text-xs text-gray-400">
             <!-- PDF -->
             <a
               v-if="publication.meta.pdf"
               :href="publication.meta.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center border border-gray-300 rounded-md px-3 py-1 gap-1 hover:bg-quinary transition shadow-md"
+              class="inline-flex items-center border border-gray-600 rounded-md px-3 py-1 gap-1 hover:bg-gray-700 hover:text-amber-400 transition shadow-md"
               title="Download PDF"
             >
               PDF
@@ -74,7 +77,7 @@
             <!-- Details -->
             <NuxtLink
               :to="publication.path"
-              class="inline-flex border border-gray-300 rounded-md px-3 py-1 items-center gap-1 hover:bg-quaternary transition shadow-md"
+              class="inline-flex border border-gray-600 rounded-md px-3 py-1 items-center gap-1 hover:bg-gray-700 hover:text-amber-400 transition shadow-md"
               title="View full publication"
             >
               Details
@@ -86,12 +89,13 @@
   </section>
 </template>
 
+
 <script setup>
 const { data } = await useAsyncData('publications', () =>
   queryCollection('publications').all()
 )
 
-// Filter publications by category "Collection"
+// Filter publications by category "Taxonomy"
 const filteredPublications = computed(() =>
   data.value?.filter(pub => pub.meta?.category?.includes('Collection')) || []
 )

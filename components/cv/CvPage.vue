@@ -6,7 +6,7 @@
         <CvEducation />
 
         <div class="mt-10">
-          <h2 class="text-3xl font-bold text-gray-800 mb-6">Professional Experience</h2>
+          <h2 class="text-3xl font-bold text-gray-200 mb-6">Professional Experience</h2>
 
           <div class="space-y-6">
             <CvJob

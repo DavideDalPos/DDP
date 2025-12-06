@@ -1,9 +1,9 @@
 <template>
-  <section>
+  <section class="bg-gray-900 text-gray-200">
     <div class="container mx-auto px-6 my-16 max-w-5xl">
-      <h1 class="text-4xl font-extrabold mb-2 text-gray-700">Publications</h1>
+      <h1 class="text-4xl font-extrabold mb-2 text-white">Publications</h1>
 
-      <h3 class="text-lg font-medium mb-6 text-gray-600">
+      <h3 class="text-lg font-medium mb-6 text-gray-300">
         Total publications: {{ filteredData.length }}
       </h3>
 
@@ -12,103 +12,102 @@
         v-model="searchQuery"
         type="text"
         placeholder="Search by title, journal, or author"
-        class="w-full p-2 mb-10 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
+        class="w-full p-2 mb-10 border border-gray-700 rounded-md shadow-sm bg-gray-800 text-gray-200 focus:outline-none focus:ring-2 focus:ring-amber-400"
       />
 
       <template v-for="[year, pubs] in grouped" :key="year">
         <h2
-          class="text-2xl font-bold mb-4 text-gray-600 bg-white py-2 border-b border-gray-200"
+          class="text-2xl font-bold mb-4 text-amber-400 py-2 border-b border-gray-700"
         >
           {{ year }}
         </h2>
 
         <ol class="list-decimal list-inside marker:text-gray-400 marker:text-xl">
-<li
-  v-for="(publication, index) in pubs"
-  :key="publication._path"
-  class="pt-4 pb-4 pl-6 relative text-sm leading-relaxed hover:bg-gray-50 transition rounded-md"
-  itemscope
-  itemtype="https://schema.org/ScholarlyArticle"
->
-  <!-- Authors -->
-  <span
-    v-html="formatAuthors(publication.meta.authors)"
-    class="text-gray-800"
-    itemprop="author"
-  ></span>
+          <li
+            v-for="(publication, index) in pubs"
+            :key="publication._path"
+            class="pt-4 pb-4 pl-6 relative text-sm leading-relaxed hover:bg-gray-800 transition rounded-md"
+            itemscope
+            itemtype="https://schema.org/ScholarlyArticle"
+          >
+            <!-- Authors -->
+            <span
+              v-html="formatAuthors(publication.meta.authors)"
+              class="text-gray-200"
+              itemprop="author"
+            ></span>
 
-  <!-- Year -->
-  <span class="text-gray-600 ml-1" itemprop="datePublished">
-    ({{ new Date(publication.meta.date).getFullYear() }}).
-  </span>
+            <!-- Year -->
+            <span class="text-gray-400 ml-1" itemprop="datePublished">
+              ({{ new Date(publication.meta.date).getFullYear() }}).
+            </span>
 
-  <!-- Title -->
-  <NuxtLink
-    :to="publication.path"
-    class="ml-1 text-base font-medium text-gray-900 hover:underline hover:decoration-gray-400 transition"
-    itemprop="name"
-    title="View publication"
-  >
-    <span v-html="publication.title"></span>
-  </NuxtLink>.
+            <!-- Title -->
+            <NuxtLink
+              :to="publication.path"
+              class="ml-1 text-base font-medium text-white hover:underline hover:decoration-amber-400 transition"
+              itemprop="name"
+              title="View publication"
+            >
+              <span v-html="publication.title"></span>
+            </NuxtLink>.
 
-  <!-- Journal info -->
-  <span class="text-gray-700 italic ml-1" itemprop="isPartOf">
-    {{ publication.meta.journal }}, {{ publication.meta.volume }}
-    <span v-if="publication.meta.issue">({{ publication.meta.issue }})</span>,
-    {{ publication.meta.pagination }}.
-  </span>
+            <!-- Journal info -->
+            <span class="text-gray-300 italic ml-1" itemprop="isPartOf">
+              {{ publication.meta.journal }}, {{ publication.meta.volume }}
+              <span v-if="publication.meta.issue">({{ publication.meta.issue }})</span>,
+              {{ publication.meta.pagination }}.
+            </span>
 
-  <!-- DOI (inline) -->
-  <span
-    v-if="publication.meta.doi"
-    class="ml-1 inline-flex items-center text-gray-600 text-[0.85rem] align-baseline hover:bg-gray-100 px-1 rounded transition"
-  >
-    <a
-      :href="publication.meta.doi"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="hover:underline text-quinary"
-    >
-      doi: {{ publication.meta.doi.replace('https://doi.org/', '') }}
-    </a>
-  </span>
+            <!-- DOI (inline) -->
+            <span
+              v-if="publication.meta.doi"
+              class="ml-1 inline-flex items-center text-gray-400 text-[0.85rem] align-baseline hover:bg-gray-800 px-1 rounded transition"
+            >
+              <a
+                :href="publication.meta.doi"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:underline text-amber-400"
+              >
+                doi: {{ publication.meta.doi.replace('https://doi.org/', '') }}
+              </a>
+            </span>
 
-  <!-- Buttons (PDF / Details) -->
-  <div class="mt-2 flex gap-2 text-[0.75rem] text-gray-700">
-    <a
-      v-if="publication.meta.pdf"
-      :href="publication.meta.pdf"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="inline-flex items-center border border-gray-300 rounded-lg px-3 py-1.5 gap-1 hover:bg-quinary transition shadow-md"
-      title="Download PDF"
-    >
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-      </svg>
-      PDF
-    </a>
+            <!-- Buttons (PDF / Details) -->
+            <div class="mt-2 flex gap-2 text-[0.75rem] text-gray-300">
+              <a
+                v-if="publication.meta.pdf"
+                :href="publication.meta.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center border border-gray-700 rounded-lg px-3 py-1.5 gap-1 hover:bg-amber-400 hover:text-gray-900 transition shadow-md"
+                title="Download PDF"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                PDF
+              </a>
 
-    <NuxtLink
-      :to="publication.path"
-      class="inline-flex items-center border border-gray-300 rounded-lg px-3 py-1.5 gap-1 hover:bg-quaternary transition shadow-md"
-      title="View full publication"
-    >
-      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-        <path d="M10 2a1 1 0 011 1v6h6a1 1 0 110 2h-6v6a1 1 0 11-2 0v-6H3a1 1 0 110-2h6V3a1 1 0 011-1z" />
-      </svg>
-      Details
-    </NuxtLink>
-  </div>
-</li>
-
-
+              <NuxtLink
+                :to="publication.path"
+                class="inline-flex items-center border border-gray-700 rounded-lg px-3 py-1.5 gap-1 hover:bg-amber-400 hover:text-gray-900 transition shadow-md"
+                title="View full publication"
+              >
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 2a1 1 0 011 1v6h6a1 1 0 110 2h-6v6a1 1 0 11-2 0v-6H3a1 1 0 110-2h6V3a1 1 0 011-1z" />
+                </svg>
+                Details
+              </NuxtLink>
+            </div>
+          </li>
         </ol>
       </template>
     </div>
   </section>
 </template>
+
 
 <script setup>
 const route = useRoute()

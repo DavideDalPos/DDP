@@ -2,11 +2,11 @@
   <div class="container mx-auto px-6 my-16 max-w-10xl">
     <client-only>
       <!-- Collaborators map -->
-      <h2 class="text-xl font-bold mb-4">Collaborators</h2>
+      <h2 class="text-xl font-bold mb-4 text-amber-400">Collaborators</h2>
       <div id="collaborators-map" style="height: 500px; width: 100%; margin-bottom: 50px;"></div>
 
       <!-- Institutions map -->
-      <h2 class="text-xl font-bold mb-4">Institutions</h2>
+      <h2 class="text-xl font-bold mb-4 text-amber-400">Institutions</h2>
       <div id="institutions-map" style="height: 500px; width: 100%;"></div>
     </client-only>
   </div>

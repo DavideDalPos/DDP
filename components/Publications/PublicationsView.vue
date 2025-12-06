@@ -1,18 +1,18 @@
 <template>
-  <section class="container mx-auto my-10 px-8 max-w-[70rem]">
+  <section class="bg-gray-900 text-gray-200 container mx-auto my-10 px-8 max-w-[70rem]">
     <article>
       <!-- Title -->
       <h2
-        class="font-serif font-semibold text-[35px] leading-tight text-tertiary transition-colors mb-6"
+        class="font-serif font-semibold text-[35px] leading-tight text-amber-400 transition-colors mb-6"
         v-html="publication.title"
       ></h2>
 
       <!-- Authors block -->
       <div
         v-if="publication.meta.authors"
-        class="mb-2 text-gray-800 border-b border-gray-300 pb-4"
+        class="mb-2 border-b border-gray-700 pb-4"
       >
-        <p class="text-[18px] leading-snug flex flex-wrap gap-x-2">
+        <p class="text-[18px] leading-snug flex flex-wrap gap-x-2 text-gray-200">
           <template
             v-for="(author, index) in publication.meta.authors"
             :key="'auth-' + index"
@@ -23,7 +23,7 @@
               <a
                 v-if="author.orcid"
                 :href="author.orcid"
-                class="ml-1 text-quinary hover:underline hover:text-quaternary inline-flex items-center gap-1"
+                class="ml-1 text-amber-400 hover:underline hover:text-amber-300 inline-flex items-center gap-1"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -34,7 +34,7 @@
           </template>
         </p>
 
-        <ol class="mt-2 text-sm text-gray-500 list-decimal list-inside mb-2">
+        <ol class="mt-2 text-sm text-gray-400 list-decimal list-inside mb-2">
           <li
             v-for="(affil, idx) in uniqueAffiliations.list"
             :key="'aff-' + idx"
@@ -50,10 +50,10 @@
         <div class="flex-1">
           <!-- Abstract -->
           <div v-if="publication.meta.abstract" class="prose pt-3">
-            <h3 class="text-3xl font-bold text-gray-700 text-center">Abstract</h3>
+            <h3 class="text-3xl font-bold text-white text-center">Abstract</h3>
             <p
               v-html="publication.meta.abstract"
-              class="text-justify text-gray-700 mt-2"
+              class="text-gray-200 text-justify mt-2"
             />
           </div>
 
@@ -65,21 +65,22 @@
         </div>
 
         <!-- Vertical Divider -->
-        <div class="hidden lg:block w-px bg-gray-300"></div>
+        <div class="hidden lg:block w-px bg-gray-700"></div>
 
         <!-- Right column -->
         <div
-          class="w-full lg:w-[260px] flex-shrink-0 space-y-4 text-sm text-gray-700 mt-3"
+          class="w-full lg:w-[260px] flex-shrink-0 space-y-4 text-sm text-gray-200 mt-3"
         >
           <!-- Publication Info -->
-          <div class="border border-gray-300 rounded-md p-4">
+          <div class="border border-gray-700 rounded-md p-4 bg-gray-800">
             <p>
               <strong>DOI:</strong>
               <a
                 :href="publication.meta.doi"
-                class="text-novenary hover:underline"
-                >{{ cleanedDoi }}</a
+                class="text-amber-400 hover:underline"
               >
+                {{ cleanedDoi }}
+              </a>
             </p>
             <p><strong>Journal:</strong> {{ publication.meta.journal }}</p>
             <p v-if="publication.meta.volume">
@@ -101,7 +102,7 @@
       <!-- Back Button -->
       <button
         type="button"
-        class="uppercase items-center flex my-10 gap-1.5 cursor-pointer mx-auto"
+        class="uppercase flex items-center my-10 gap-1.5 cursor-pointer mx-auto text-amber-400 hover:text-amber-300 transition"
         @click="goBack"
       >
         <IconArrowLeft class="h-4 inline-block" />
@@ -110,6 +111,7 @@
     </article>
   </section>
 </template>
+
 
 <script setup>
 import { computed } from 'vue'

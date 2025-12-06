@@ -1,18 +1,18 @@
 <template>
-  <header class="shadow-sm relative border-b border-blue-800 bg-[#0b1a33] text-white transition-all duration-300">
+  <header class="shadow-sm relative border-b border-gray-400 bg-gray-900 text-white transition-all duration-300">
     <nav class="container mx-auto p-4 flex items-center justify-between">
 
       <!-- Left: Name + Hamburger -->
       <div class="flex items-center gap-4 justify-between w-full md:w-auto">
         <NuxtLink 
           to="/" 
-          class="text-white text-lg hover:underline hover:text-blue-200 transition duration-200"
+          class="text-white text-lg hover:underline hover:text-amber-400 transition duration-200"
         >
           Davide Dal Pos, Ph.D.
         </NuxtLink>
 
         <button
-          class="md:hidden text-white hover:text-blue-200 transition duration-200"
+          class="md:hidden text-white hover:text-amber-400 transition duration-200"
           aria-label="Toggle menu"
           @click="toggleMenu"
         >
@@ -25,11 +25,11 @@
         <div v-for="item in links" :key="item.label" class="relative group transition">
           
           <!-- Link + dropdown arrow -->
-          <div class="flex items-center gap-1 cursor-pointer hover:text-blue-200 transition duration-200">
+          <div class="flex items-center gap-1 cursor-pointer hover:text-amber-400 transition duration-200">
             <NuxtLink 
               v-if="item.link" 
               :to="item.link"
-              class="flex items-center gap-1 hover:text-blue-200"
+              class="flex items-center gap-1 hover:text-amber-400"
             >
               {{ item.label }}
             </NuxtLink>
@@ -60,7 +60,7 @@
               v-for="child in item.submenu"
               :key="child.link"
               :to="child.link"
-              class="block px-4 py-2 text-sm hover:bg-[#13315a] hover:text-blue-200 transition duration-200"
+              class="block px-4 py-2 text-sm hover:bg-[#13315a] hover:text-amber-400 transition duration-200"
             >
               {{ child.label }}
             </NuxtLink>
@@ -70,13 +70,13 @@
 
       <!-- Social Icons -->
       <div class="hidden md:flex items-center gap-4">
-        <a href="mailto:your.email@example.com" class="text-white hover:text-blue-200 transition">
+        <a href="mailto:your.email@example.com" class="text-white hover:text-amber-400 transition">
           <IconEmail class="w-6 h-6" />
         </a>
-        <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="text-white hover:text-blue-200 transition">
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="text-white hover:text-amber-400 transition">
           <IconGithub class="w-6 h-6" />
         </a>
-        <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener" class="text-white hover:text-blue-200 transition">
+        <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener" class="text-white hover:text-amber-400 transition">
           <IconGoogleScholar class="w-6 h-6" />
         </a>
       </div>

@@ -1,29 +1,29 @@
 <template>
-  <div class="bg-white border border-gray-300 p-6 rounded shadow-sm mb-10 mt-10 max-w-[70rem] mx-auto">
-    <h2 class="text-3xl font-bold text-gray-800 mb-4">Contact Information</h2>
+  <div class="bg-gray-800 border border-gray-700 p-6 rounded shadow-sm mb-10 mt-10 max-w-[70rem] mx-auto">
+    <h2 class="text-3xl font-bold text-amber-400 mb-4">Contact Information</h2>
 
-    <p class="text-gray-700 mb-2">
+    <p class="text-gray-200 mb-2">
       <strong>Email: </strong>
-      <a :href="'mailto:' + email" class="text-novenary hover:underline"> {{ email }}</a>
+      <a :href="'mailto:' + email" class="text-amber-400 hover:underline">{{ email }}</a>
     </p>
 
-    <p class="text-gray-700">
+    <p class="text-gray-200">
       {{ institution }}
     </p>
 
-    <p class="text-gray-700">
+    <p class="text-gray-200">
        {{ college }}
     </p>
 
-    <p class="text-gray-700 ">
+    <p class="text-gray-200">
        {{ department }}
     </p>
 
-    <p class="text-gray-700">
+    <p class="text-gray-200">
        {{ address }}
     </p>
 
-    <p class="text-gray-700">
+    <p class="text-gray-200">
        {{ location }}
     </p>
   </div>
