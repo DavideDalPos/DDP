@@ -13,7 +13,7 @@
         >
           Download CV
         </a>
-        <p class="text-sm text-gray-200 mt-1">Last updated: August 31, 2025</p>
+        <p class="text-sm text-gray-200 mt-1">Last updated: December 07, 2025</p>
       </div>
     </div>
 
