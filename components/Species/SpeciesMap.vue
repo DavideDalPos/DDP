@@ -1,150 +1,143 @@
 <script setup>
+import 'leaflet.markercluster/dist/MarkerCluster.css'
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
+import 'leaflet/dist/leaflet.css'
 import { onMounted } from 'vue'
 import { speciesPoints } from './SpeciesData.js'
 
 let map
 
+// Colors for families
+const familyColors = {}
+const defaultColors = [
+  'rgba(255, 99, 71, 0.85)',    // tomato
+  'rgba(30, 144, 255, 0.85)',   // dodgerblue
+  'rgba(50, 205, 50, 0.85)',    // limegreen
+  'rgba(238, 130, 238, 0.85)',  // violet
+  'rgba(255, 165, 0, 0.85)'     // orange
+]
+
+const getFamilyColor = (family) => {
+  if (!familyColors[family]) {
+    familyColors[family] = defaultColors[
+      Object.keys(familyColors).length % defaultColors.length
+    ]
+  }
+  return familyColors[family]
+}
+
+// Small jitter to avoid exact overlap
+const jitter = (value) => value + (Math.random() - 0.5) * 0.01
+
 onMounted(async () => {
   const L = await import('leaflet')
+  await import('leaflet.markercluster') // Make sure plugin is loaded
 
   map = L.map('map').setView([20, 0], 2)
 
-  // Tile layers
-  const osm = L.tileLayer(
-    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    {
-      maxZoom: 19,
-      attribution: '&copy; OpenStreetMap contributors'
-    }
-  )
+  // Base layers
+  const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map)
 
-  const cartoPositron = L.tileLayer(
-    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-    {
-      maxZoom: 19,
-      attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
-    }
-  )
+  // Marker Cluster Group
+  const markers = L.markerClusterGroup({
+    spiderfyOnMaxZoom: true,
+    showCoverageOnHover: false
+  })
 
-  const esriWorldStreet = L.tileLayer(
-    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
-    {
-      maxZoom: 19,
-      attribution:
-        'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, EPA, NPS'
-    }
-  )
+  // Create markers
+  speciesPoints.forEach(point => {
+    const color = getFamilyColor(point.family)
 
-  // Default layer
-  osm.addTo(map)
-
-  const createRedSquareIcon = () =>
-    L.divIcon({
-      className: '',
-      html: `<div style="
-        width: 10px;
-        height: 10px;
-        background-color: rgba(255, 0, 0, 0.85);
-        border-radius: 4px;
-        border: 1.5px solid #b30000;
-        box-shadow: 0 0 5px rgba(255,0,0,0.7);
-        opacity: 0;
-        transition: opacity 0.7s ease-in-out;
-      "></div>`,
-      iconSize: [10, 10],
-      iconAnchor: [10, 10],
-      popupAnchor: [0, -10]
+    const marker = L.marker([jitter(point.lat), jitter(point.lng)], {
+      icon: L.divIcon({
+        className: '',
+        html: `<div style="
+          width: 12px;
+          height: 12px;
+          background-color: ${color};
+          border-radius: 6px;
+          border: 1.5px solid #000;
+        "></div>`,
+        iconSize: [12, 12],
+        iconAnchor: [6, 6]
+      })
     })
-
-  const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
-
-  const fadeInMarker = (marker) => {
-    const el = marker.getElement()
-    if (!el) return
-    const div = el.firstChild
-    if (!div) return
-    div.style.opacity = '1'
-  }
-
-  const baseMaps = {
-    OpenStreetMap: osm,
-    'CartoDB Positron': cartoPositron,
-    'Esri WorldStreetMap': esriWorldStreet
-  }
-
-  L.control.layers(baseMaps).addTo(map)
-
-  for (const [i, point] of speciesPoints.entries()) {
-    const marker = L.marker([point.lat, point.lng], {
-      icon: createRedSquareIcon()
-    }).addTo(map)
 
     const popupContent = `
-      <div style="
-        font-family: 'Segoe UI', sans-serif;
-        font-size: 13px;
-        color: #333;
-        padding: 2px 4px;
-      ">
+      <div style="font-family:'Segoe UI',sans-serif;font-size:13px;text-align:center;">
+        <i style='color:#b22222'>${point.name}</i>
+        <div style="color:#555;font-size:12px;margin:4px 0;">
+          ${point.authors}, ${point.year}
+        </div>
         <a href="${point.url || '#'}" target="_blank" style="
-          color: #b22222;
-          text-decoration: none;
-          font-weight: 600;
-        ">
-          ${point.name}
-        </a>
+          display:inline-block;margin-top:4px;padding:4px 8px;
+          background-color:#0d3b66;color:#fff;text-decoration:none;border-radius:4px;font-size:12px;
+        ">View Publication</a>
       </div>
     `
+    marker.bindPopup(popupContent)
+    markers.addLayer(marker)
+  })
 
-    marker.bindPopup(popupContent, { closeButton: false, autoClose: false })
+  map.addLayer(markers)
 
-    let popupHovered = false
+  // Legend
+  const legend = L.control({ position: 'bottomright' })
+  legend.onAdd = () => {
+    const div = L.DomUtil.create('div', 'info legend')
+    div.style.background = 'rgba(255,255,255,0.9)'
+    div.style.padding = '6px 8px'
+    div.style.borderRadius = '5px'
+    div.style.boxShadow = '0 0 5px rgba(0,0,0,0.3)'
+    div.style.fontSize = '12px'
+    div.innerHTML = `<b style="color:#000;">Families</b><br/>`
 
-    marker.on('mouseover', () => {
-      marker.openPopup()
+    Object.entries(familyColors).forEach(([family, color]) => {
+      const line = document.createElement('div')
+      line.style.display = 'flex'
+      line.style.alignItems = 'center'
+      line.style.marginTop = '3px'
+
+      const colorBox = document.createElement('span')
+      colorBox.style.display = 'inline-block'
+      colorBox.style.width = '12px'
+      colorBox.style.height = '12px'
+      colorBox.style.backgroundColor = color
+      colorBox.style.border = '1px solid #000'
+      colorBox.style.marginRight = '6px'
+      colorBox.style.borderRadius = '6px'
+
+      const label = document.createElement('span')
+      label.textContent = family
+      label.style.color = '#000'
+      label.style.fontWeight = '500'
+
+      line.appendChild(colorBox)
+      line.appendChild(label)
+      div.appendChild(line)
     })
 
-    marker.on('mouseout', () => {
-      setTimeout(() => {
-        if (!popupHovered) {
-          marker.closePopup()
-        }
-      }, 100)
-    })
-
-    marker.on('popupopen', () => {
-      const popupEl = marker.getPopup().getElement()
-      if (!popupEl) return
-
-      popupEl.addEventListener('mouseenter', () => {
-        popupHovered = true
-      })
-
-      popupEl.addEventListener('mouseleave', () => {
-        popupHovered = false
-        marker.closePopup()
-      })
-    })
-
-    await wait(i * 250)
-    fadeInMarker(marker)
+    return div
   }
+  legend.addTo(map)
 })
 </script>
 
 <template>
   <div class="container mx-auto px-6 my-16 max-w-10xl">
     <client-only>
-      <div
-        id="map"
-        style="height: 600px; width: 100%"
-      ></div>
+      <div id="map" style="height:600px;width:100%;"></div>
     </client-only>
   </div>
 </template>
 
 <style scoped>
 @import 'leaflet/dist/leaflet.css';
+@import 'leaflet.markercluster/dist/MarkerCluster.css';
+@import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 
 #map {
   height: 600px;

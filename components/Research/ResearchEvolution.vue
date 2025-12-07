@@ -57,7 +57,7 @@
             </div>
 
             <a
-              href="http://www.hymao.org"
+              href="http://portal.hymao.org/"
               target="_blank"
               class="mt-4 inline-block text-center bg-amber-400 text-gray-900 font-medium py-2 rounded hover:bg-amber-500 transition"
             >

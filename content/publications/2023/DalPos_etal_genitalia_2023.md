@@ -34,6 +34,7 @@ category:
   - Ichneumonoidea
   - Morphology
   - Ontology
+  - Evolution
 
 abstract: 'Applying consistent terminology for morphological traits across different taxa is a highly pertinent task in the study of morphology and evolution. Different terminologies for the same traits can generate bias in phylogeny and prevent correct homology assessments. This situation is exacerbated in the male genitalia of Hymenoptera, and specifically in Ichneumonoidea, in which the terminology is not standardized and has not been fully aligned with the rest of Hymenoptera. In the current contribution, we review the terms used to describe the skeletal features of the male genitalia in Hymenoptera, and provide a list of authors associated with previously used terminology. We propose a unified terminology for the male genitalia that can be utilized across the order and a list of recommended terms. Further, we review and discuss the genital musculature for the superfamily Ichneumonoidea based on previous literature and novel observations and align the terms used for muscles across the literature.'
 

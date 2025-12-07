@@ -29,6 +29,6 @@ category:
   - Ichneumoninae
   - Taxonomy
 
-abstract: 'This study presents a comprehensive revision of the genus <i>Protoleptops</i> Heinrich, 1967. We describe a new species, <i>P.nyeupe,/i> Dal Pos & Di Giovanni, sp. nov., from Burundi, marking the first documented occurrence of an Ichneumoninae species in the country. Additionally, we provide the first diagnostic description of the female <i>P.farquharsoni</i> Heinrich, 1967 and report a new occurrence of this species in KwaZulu-Natal. Furthermore, we document <i>P.magnificus</i> for Mpumalanga (South Africa) and <i>P.angolae</i> Heinrich, 1967 in Uganda, thereby extending the known range of the latter into East Africa. A detailed catalogue of all species within the genus <i>Protoleptops,/i> is also included.'
+abstract: 'This study presents a comprehensive revision of the genus <i>Protoleptops</i> Heinrich, 1967. We describe a new species, <i>P.nyeupe</i> Dal Pos & Di Giovanni, sp. nov., from Burundi, marking the first documented occurrence of an Ichneumoninae species in the country. Additionally, we provide the first diagnostic description of the female <i>P.farquharsoni</i> Heinrich, 1967 and report a new occurrence of this species in KwaZulu-Natal. Furthermore, we document <i>P.magnificus</i> for Mpumalanga (South Africa) and <i>P.angolae</i> Heinrich, 1967 in Uganda, thereby extending the known range of the latter into East Africa. A detailed catalogue of all species within the genus <i>Protoleptops</i> is also included.'
 
 ---
