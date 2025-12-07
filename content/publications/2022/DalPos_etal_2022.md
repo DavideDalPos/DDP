@@ -6,6 +6,7 @@ volume: '5137'
 issue: '1'
 pagination: '1-111'
 doi: 'https://doi.org/10.11646/zootaxa.5137.1'
+researchgate: 'https://www.researchgate.net/publication/360576026_The_Giordani_Soika_collection_of_Eumeninae_at_the_Natural_History_Museum_of_Venice_Giancarlo_Ligabue_catalogue_of_species_and_type_specimens_Insecta_Hymenoptera_Vespidae'
 
 authors:
   - first_name: 'Davide'

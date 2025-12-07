@@ -6,6 +6,7 @@ volume: '20'
 issue: '1'
 pagination: '1-14'
 doi: 'https://doi.org/10.1080/14772000.2022.2063964'
+pdf: '/PDFs/2022/Zamani_etal_2022_1.pdf'
 
 authors:
   - first_name: 'Alireza'
@@ -44,11 +45,9 @@ authors:
     orcid: 'https://orcid.org/0000-0002-0321-3023'
 
 category:
-  - Integrative taxonomy
-  - Taxonomic impediment
-  - Systematics
-  - Museomics
-  - Hyperdiverse taxa
+  - Opinion
+  - Taxonomy
+  - Collection
 
 abstract: 'Roughly 18,000 species are described annually as new to science, while estimated extinction rates are comparable to or even exceeding these new discoveries. Considering the estimates of up to 15 million extant eukaryotic species on Earth, of which only about 2 million have been described so far, there has been a recent boom of new potential approaches to more quickly discover and describe the millions of unknown species. This deficit is particularly noted in hyperdiverse taxa, as the current rate of species discovery is considered too slow. Recently, a minimalist alpha taxonomic approach was proposed, relying solely on DNA barcoding and a habitus photograph, in a claimed effort to expedite the naming of new species to combat the so-called taxonomic impediment. In this paper, we point to limitations of minimalist taxonomy, present arguments in favour of the integrative approach, and finally explore a number of potential solutions to combat the taxonomic impediment in hyperdiverse taxa without sacrificing utility and quality for apparent speed and quantity.'
 ---

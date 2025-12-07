@@ -69,12 +69,12 @@
 
         <!-- Right column -->
         <div
-          class="w-full lg:w-[260px] flex-shrink-0 space-y-4 text-sm text-gray-200 mt-3"
+          class="w-full lg:w-[265px] flex-shrink-0 space-y-4 text-sm text-gray-200 mt-3"
         >
           <!-- Publication Info -->
           <div class="border border-gray-700 rounded-md p-4 bg-gray-800">
-            <p>
-              <strong>DOI:</strong>
+            <p v-if="publication.meta.doi">
+              <strong>DOI: </strong>
               <a
                 :href="publication.meta.doi"
                 class="text-amber-400 hover:underline"

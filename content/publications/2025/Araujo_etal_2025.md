@@ -6,7 +6,7 @@ volume: '5631'
 issue: '1'
 pagination: '1-51'
 doi: '10.11646/zootaxa.5631.1.1'
-pdf: ''
+researchgate: 'https://www.researchgate.net/publication/391365628_Unveiling_the_secrets_of_South_American_Darwin_wasps_part_I_a_comprehensive_checklist_of_the_Chilean_Ichneumonidae_Hymenoptera_Ichneumonoidea'
 altmetric: ''
 
 authors:
@@ -42,7 +42,8 @@ authors:
 
 category:
   - Ichneumonidae
-  - Chile
+  - Checklist
+  - Taxonomy
 
 abstract: 'For the first time, a checklist of the species of Chilean Ichneumonidae (Hymenoptera: Ichneumonoidea) is provided, resulting from 10 years of dedicated efforts to visit collections and gather scientific articles on Chilean species. Geographical data for all species were compiled from all bibliographic references that mention Chilean species up to the present. A total of 306 species belonging to 141 genera and 23 subfamilies are registered in Chile, of which 209 species, 30 genera, and one subfamily are endemic. <i>Tycherus</i> Förster is the richest genus in Chile, with 35 species, followed by <i>Alophophion</i> Cushman (22 species), <i>Mesochorus</i> Gravenhorst (20 species), <i>Lepidura</i> Townes (13 species), and <i>Trachysphyrus</i> Haliday (13 species). These five genera have undergone taxonomic revisions, suggesting that the total number of Chilean species is likely underestimated and is expected to significantly increase through future revisions, particularly focusing on poorly studied genera. This comprehensive checklist not only consolidates existing data but also serves as a crucial resource for future taxonomic research, conservation efforts, and effective management of the diverse Darwin wasps in Chile. A comprehensive understanding of the distribution, abundance, and endemism of Ichneumonidae is essential for accurately assessing the ecological dynamics of the country and implementing targeted conservation strategies.'
 

@@ -6,18 +6,18 @@ volume: '68'
 issue: ''
 pagination: '59-62'
 doi: ''
+pdf: '/PDFs/2017/DalPos_Saotis_2017.pdf'
 
 authors:
   - first_name: 'Davide'
     last_name: 'Dal Pos'
     affiliation: 'c/o Museo di Storia Naturale di Venezia, Santa Croce 1730, 30135 Venice, Italy'
-    orcid: ''
+    orcid: 'https://orcid.org/0000-0002-9122-934X'
 
 category:
   - Ichneumonidae
   - Ctenopelmatinae
-  - Saotis
-  - Italy
+  - Taxonomy
 
 abstract: 'The genus <i>Saotis</i> Förster, 1869, with its species <i>Saotis mirabilis</i> Schmiedeknecht, 1914, is hereby recorded for the first time from Italy.'
 

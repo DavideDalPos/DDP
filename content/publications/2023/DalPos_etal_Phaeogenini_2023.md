@@ -4,7 +4,7 @@ date: '2023-04-28'
 journal: 'European Journal of Taxonomy'
 volume: '868'
 issue: ''
-pdf: ''
+pdf: '/PDFs/2023/DalPos_etal_2023.pdf'
 pagination: '1-71'
 doi: 'https://doi.org/10.5852/ejt.2023.868.2105'
 

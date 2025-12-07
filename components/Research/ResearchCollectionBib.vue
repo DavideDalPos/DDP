@@ -32,6 +32,7 @@
             class="ml-1 text-base font-medium text-white hover:underline hover:text-amber-400 transition"
             itemprop="name"
             title="View publication"
+            target="_blank"
           >
             <span v-html="publication.title"></span>
           </NuxtLink>.
@@ -79,6 +80,7 @@
               :to="publication.path"
               class="inline-flex border border-gray-600 rounded-md px-3 py-1 items-center gap-1 hover:bg-gray-700 hover:text-amber-400 transition shadow-md"
               title="View full publication"
+              target="_blank"
             >
               Details
             </NuxtLink>
@@ -102,15 +104,20 @@ const filteredPublications = computed(() =>
 
 // Helper to format authors
 function formatAuthors(authors) {
-  return authors
-    .map(({ first_name, last_name }) => {
-      const initials = first_name
-        .split(' ')
-        .map(n => n[0] + '.')
-        .join(' ')
-      const fullName = `${last_name}, ${initials}`
-      return fullName === 'Dal Pos, D.' ? `<strong>${fullName}</strong>` : fullName
-    })
-    .join(' & ')
+  const formatted = authors.map(({ first_name, last_name }) => {
+    const initials = first_name.split(' ').map((n) => n[0] + '.').join(' ')
+    const full = `${last_name}, ${initials}`
+
+    return full === 'Dal Pos, D.'
+      ? `<span class="text-amber-400 font-bold">${full}</span>` // highlight you
+      : full
+  })
+
+  if (formatted.length <= 2) {
+    return formatted.join(' & ')
+  }
+
+  return formatted.slice(0, -1).join(', ') + ' & ' + formatted.at(-1)
 }
+
 </script>

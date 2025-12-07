@@ -6,7 +6,7 @@ volume: '19'
 issue: ''
 pagination: '3069–3078'
 doi: 'https://doi.org/10.1007/s11756-025-02022-2'
-pdf: '/PDFs/2025/Santos_DalPos_2025.pdf'
+researchgate: 'https://www.researchgate.net/publication/395717087_Another_needle_in_the_haystack_a_new_species_of_the_rare_genus_Masona_van_Achterberg_1995_Hymenoptera_Braconidae_and_updates_to_the_global_key'
 altmetric: '168806105'
 authors:
   - first_name: 'Alvaro Doria dos'

@@ -1,13 +1,12 @@
 ---
-title: 'A new record of ,i>Coelichneumon rufofemoratus</i> (Cameron, 1903) (Hymenoptera: Ichneumonidae) from Eastern Himalayas, with a checklist of all the species of the genus from the Oriental region'
+title: 'A new record of <i>Coelichneumon rufofemoratus</i> (Cameron, 1903) (Hymenoptera: Ichneumonidae) from Eastern Himalayas, with a checklist of all the species of the genus from the Oriental region'
 date: '2024-05-30' 
 journal: 'Journal of Insect Biodiversity'
 volume: '50'
 issue: '2'
 pagination: '32-50'
-doi: '10.12976/jib/2024.50.2.1'
-pdf: ''
-
+doi: 'https://doi.org/10.12976/jib/2024.50.2.1'
+researchgate: 'https://www.researchgate.net/publication/380973470_A_new_record_of_Coelichneumon_rufofemoratus_Cameron_1903_Hymenoptera_Ichneumonidae_from_Eastern_Himalayas_with_a_checklist_of_all_the_species_of_the_genus_from_the_Oriental_region?_sg%5B0%5D=vAFaGNeL72eERCpLIsDoLO7OFT-2OhIwdTHsOAK5sdf2d6WNe9UiDTEBbIqy4RPMkiID_yLnzlTsL2tfuhGoa9PALYtSmEnd_IRC0TPq._fI_RzBMs0fbuMrACo304GhOjYpj2HK-uQvqhvVr_DQhqy4zvy-owxu2ZRxW5oKGnKRbl9gTzd0PaNruDeuQwg&_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6ImhvbWUiLCJwYWdlIjoicHJvZmlsZSIsInBvc2l0aW9uIjoicGFnZUNvbnRlbnQifX0'
 authors:
   - first_name: 'Xia'
     last_name: 'Yang'
@@ -37,11 +36,9 @@ authors:
 
 
 category:
-  - Darwin wasps
+  - Ichneumonidae
   - Ichneumoninae
-  - Choelichneumon
-  - Oriental Region
-  - Hiymalayas
+  - Taxonomy
 
 abstract: '<i>Coelichneumon rufofemoratus</i> (Cameron, 1903) of the Darwin wasp subfamily Ichneumoninae, previously known from Indian and Burmese Himalayas, is newly recorded from Yunnan, China, and a complete history of the name with nomenclatural notes is provided. A complete checklist of the species of ,i>Coelichneumon</i> for the Oriental region is also presented.'
 

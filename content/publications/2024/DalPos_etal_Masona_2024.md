@@ -6,7 +6,7 @@ volume: '925'
 issue: ''
 pagination: '135-160'
 doi: 'https://doi.org/10.5852/ejt.2024.925.2457'
-pdf: ''
+pdf: '/PDFs/2024/Dal Pos_etal_Masona_2024.pdf'
 
 authors:
 
@@ -28,12 +28,8 @@ authors:
 
 category:
   - Braconidae
-  - Masona
-  - Ichneumonidae
-  - Neorhacodinae
-  - Checklist
-  - Puerto Rico
-  - United States
+  - Masoninae
+  - Taxonomy
 
 abstract: 'A comprehensive review of the enigmatic genus <i>Masona</i> van Achterberg is provided. Two new species are described from the USA: <i>Masona neon</i> Dal Pos & Martens sp. nov. from Puerto Rico, and <i>Masona wow</i> Dal Pos & Martens sp. nov. from California. A key to the world species of <i>Masona is presented, together with a discussion of the morphology of the genus and an annotated catalogue of the species. [<i>Masona</i>] <i>timpaynei,/i> Quicke, 2019, is excluded from Braconidae and placed as incertae sedis in the Ichneumonidae, subfamily Neorhacodinae.'
 

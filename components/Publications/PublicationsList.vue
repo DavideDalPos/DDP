@@ -1,6 +1,6 @@
 <template>
   <section class="bg-gray-900 text-gray-200">
-    <div class="container mx-auto px-6 my-16 max-w-5xl">
+    <div class="container mx-auto px-6 my-16 max-w-6xl">
       <h1 class="text-4xl font-extrabold mb-2 text-white">Publications</h1>
 
       <h3 class="text-lg font-medium mb-6 text-gray-300">
@@ -48,6 +48,7 @@
               class="ml-1 text-base font-medium text-white hover:underline hover:decoration-amber-400 transition"
               itemprop="name"
               title="View publication"
+              target="_blank"
             >
               <span v-html="publication.title"></span>
             </NuxtLink>.
@@ -60,19 +61,21 @@
             </span>
 
             <!-- DOI (inline) -->
-            <span
-              v-if="publication.meta.doi"
-              class="ml-1 inline-flex items-center text-gray-400 text-[0.85rem] align-baseline hover:bg-gray-800 px-1 rounded transition"
-            >
-              <a
-                :href="publication.meta.doi"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hover:underline text-amber-400"
-              >
-                doi: {{ publication.meta.doi.replace('https://doi.org/', '') }}
-              </a>
-            </span>
+<span
+  v-if="publication.meta.doi"
+  class="ml-1 inline-flex items-center text-gray-400 text-[0.85rem] align-baseline hover:bg-gray-800 px-1 rounded transition"
+>
+  <span>doi:</span>
+  <a
+    :href="publication.meta.doi"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="hover:underline text-amber-400 ml-1"
+  >
+    {{ publication.meta.doi.replace('https://doi.org/', '') }}
+  </a>
+</span>
+
 
             <!-- Buttons (PDF / Details) -->
             <div class="mt-2 flex gap-2 text-[0.75rem] text-gray-300">
@@ -94,6 +97,7 @@
                 :to="publication.path"
                 class="inline-flex items-center border border-gray-700 rounded-lg px-3 py-1.5 gap-1 hover:bg-amber-400 hover:text-gray-900 transition shadow-md"
                 title="View full publication"
+                target="_blank"
               >
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M10 2a1 1 0 011 1v6h6a1 1 0 110 2h-6v6a1 1 0 11-2 0v-6H3a1 1 0 110-2h6V3a1 1 0 011-1z" />
@@ -135,19 +139,17 @@ function formatAuthors(authors) {
     const full = `${last_name}, ${initials}`
 
     return full === 'Dal Pos, D.'
-      ? `<strong>${full}</strong>`
+      ? `<span class="text-amber-400 font-bold">${full}</span>` // highlight you
       : full
   })
 
   if (formatted.length <= 2) {
-    // Dal Pos, D. & Mikó, I.
     return formatted.join(' & ')
   }
 
-  // For 3+ authors:
-  // Dal Pos, D., Mikó, I., Talamas, E. J., Vilhelmsen, L. & Sharanowski, B. J.
   return formatted.slice(0, -1).join(', ') + ' & ' + formatted.at(-1)
 }
+
 
 
 const grouped = computed(() => {

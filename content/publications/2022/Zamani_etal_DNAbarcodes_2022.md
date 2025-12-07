@@ -5,7 +5,8 @@ journal: 'Systematic Entomology'
 volume: '20'
 issue: '1'
 pagination: '1-14'
-doi: 'DOI: 10.1111/syen.12538'
+doi: 'https://doi.org/10.1111/syen.12538'
+pdf: '/PDFs/2022/Zamani_etal_2022.pdf'
 
 authors:
   - first_name: 'Alireza'
@@ -49,8 +50,9 @@ authors:
     orcid: 'https://orcid.org/0000-0002-9122-934X'
 
 category:
-  - Integrative taxonomy
-  - Taxonomic impediment
+  - Opinion
+  - Taxonomy
+  - Collection
 
 abstract: 'In this article, we continue this discussion by responding to Sharkey, Brown, et al. (2021). We summarize the main points of concern raised by us (and others) regarding the ‘minimalist’ approach, expand on some points discussed earlier and explain why we think morphology should remain an integral part of species descriptions. To be clear, we oppose the view of Meierotto et al. (2019) and Sharkey, Janzen, et al. (2021) on DNA barcoding as the only source of information for species delimitation and description purposes, and not as a valuable tool in an initial survey of biodiversity.'
 ---

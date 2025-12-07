@@ -6,6 +6,7 @@ volume: '1'
 issue: ' ec010'
 pagination: '1-4'
 doi: 'https://doi.org/10.37486/2675-1305.ec01006'
+pdf: '/PDFs/2019/Klopfnstei_etal_2019.pdf'
 authors:
   - first_name: 'Seraina'
     last_name: 'Klopfstein'
@@ -30,7 +31,7 @@ authors:
   - first_name: 'Andrew M. R.'
     last_name: 'Bennett'
     affiliation: 'Agriculture and Agri-Food Canada, Canadian National Collection of Insects, Arachnids and Nematodes, 960 Carling Avenue, Ottawa, Ontario, K1A 0C6, Canada'
-    orcid: ''
+    orcid: 'https://orcid.org/0000-0002-1686-2452'
 
   - first_name: 'Davide'
     last_name: 'Dal Pos'
@@ -40,7 +41,7 @@ authors:
   - first_name: 'Madalene'
     last_name: 'Giannotta'
     affiliation: 'ACEBB, The University of Adelaide, Australia'
-    orcid: ''
+    orcid: 'https://orcid.org/0000-0002-8846-3813'
 
   - first_name: 'Andres F.'
     last_name: 'Herrera Florez'
@@ -60,7 +61,7 @@ authors:
   - first_name: 'Alessandro R.'
     last_name: 'Lima'
     affiliation: 'Centro de Coleções Taxonômicas, Instituto de Ciências Biológicas, Universidade Federal de Minas Gerais, Brazil'
-    orcid: ''
+    orcid: 'https://orcid.org/0000-0002-5861-5273'
 
   - first_name: 'István'
     last_name: 'Mikó'
@@ -98,8 +99,10 @@ authors:
     orcid: 'https://orcid.org/0000-0001-7223-5333'
 
 category:
-  - Darwin wasps
   - Ichneumonidae
+  - Opinion
+  - Evolution
+  - Taxonomy
 
 abstract: 'The parasitoid wasp family Ichneumonidae is arguably one of the groups for which current knowledge lags most strongly behind their enormous diversity. In a five-day meeting in Basel (Switzerland) in June 2019, 22 researchers from 14 countries met to discuss the most important issues in ichneumonid research, including increasing the speed of species discovery, resolving higher-level relationships, and studying the radiation of these parasitoids onto various host groups through time. All agreed that it is time to advertise ichneumonid research more broadly and thereby attract young talents to this group for which specialists are sorely lacking, as well as increase public awareness about their exciting biology and ecological impact. In order to popularize the group, we here suggest a new vernacular name for the family, “Darwin wasps”, to reflect the pivotal role they played in convincing Charles Darwin that not all of creation could have been created by a benevolent god. We hope that the name catches on, and that Darwin wasps start buzzing more loudly across all disciplines of biology.'
 
