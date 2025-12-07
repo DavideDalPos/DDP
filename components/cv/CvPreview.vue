@@ -13,7 +13,9 @@
         >
           Download CV
         </a>
-        <p class="text-sm text-gray-200 mt-1">Last updated: December 07, 2025</p>
+        <p class="text-sm text-gray-200 mt-1">
+          Last updated: {{ lastUpdated || 'Loading...' }}
+        </p>
       </div>
     </div>
 
@@ -28,5 +30,30 @@
 </template>
 
 <script setup>
-// Fully self-contained, no props needed
+import { onMounted, ref } from 'vue';
+
+// reactive variable for the last updated date
+const lastUpdated = ref('')
+
+// GitHub API URL for the latest commit of your PDF
+const apiUrl =
+  'https://api.github.com/repos/DavideDalPos/DDP/commits?path=public/PDFs/Davide_Dal_Pos_CV.pdf&page=1&per_page=1'
+
+onMounted(async () => {
+  try {
+    const res = await fetch(apiUrl)
+    const data = await res.json()
+    if (data.length > 0) {
+      const date = new Date(data[0].commit.committer.date)
+      lastUpdated.value = date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: '2-digit',
+      })
+    }
+  } catch (err) {
+    console.error('Error fetching PDF commit date', err)
+    lastUpdated.value = 'Unknown'
+  }
+})
 </script>
