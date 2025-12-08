@@ -20,12 +20,12 @@
     </div>
 
     <!-- PDF Preview -->
-    <iframe
-      src="/PDFs/Davide_Dal_Pos_CV.pdf"
-      width="100%"
-      height="600"
-      class="border rounded"
-    ></iframe>
+<iframe
+  :src="`/PDFs/Davide_Dal_Pos_CV.pdf?${lastUpdated}`"
+  width="100%"
+  height="600"
+  class="border rounded"
+></iframe>
   </div>
 </template>
 
