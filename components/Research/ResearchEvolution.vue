@@ -18,14 +18,14 @@
 
         <!-- Left: Main Text (2/3 width) -->
         <div class="col-span-2 flex flex-col space-y-6 text-gray-200 text-justify">
-          <p>
+          <p class="text-base sm:text-lg leading-relaxed">
             <span class="text-amber-400 font-semibold">Phenomics</span> is the large-scale study of organismal form, function, and variation, and how these traits evolve over time.
           </p>
-          <p>
+          <p class="text-base sm:text-lg leading-relaxed">
             My research focuses on understanding why insects look the way they do and how morphological traits evolve in response to ecological pressures and evolutionary history. 
             By integrating detailed skeletomuscular anatomy, advanced imaging technologies, and phylogenetic frameworks, I explore the mechanisms that shape the extraordinary diversity of forms in parasitoid wasps.
           </p>
-          <p>
+          <p class="text-base sm:text-lg leading-relaxed">
             I actively <span class="text-amber-400 font-semibold">generate anatomical ontologies</span> and use them as a core component of my evolutionary studies. Ontologies provide a semantic, interoperable, and machine-readable framework for describing morphology, ensuring that anatomical terms are standardized, logically structured, and comparable across taxa and studies. 
             By building and applying resources such as the <span class="text-amber-400 font-semibold">Hymenoptera Anatomy Ontology (HAO)</span>, I enable large-scale integration of morphological data and lay the groundwork for future AI-assisted analyses.
           </p>
@@ -66,14 +66,6 @@
           </div>
 
           <!-- Optional Image below card -->
-          <div class="flex justify-center">
-            <img
-              src="/public/images/Phenomics.png"
-              alt="Phylomics Era Diagram"
-              class="rounded-xl w-full max-w-xs cursor-pointer"
-              @click="openLightbox('/images/Phenomics.png')"
-            />
-          </div>
         </div>
 
       </div>

@@ -10,4 +10,5 @@ export const awards = [
   },
   { name: "Excellence in Teaching by GTA", year: 2022, org: "UCF", value: 1500 },
   { name: "COS Excellence in Teaching by GTA", year: 2022, org: "UCF", value: 250 },
+  { name: "Dean's Doctoral Fellowship", year: 2023, org: "UCF", value: 5000 },
 ];

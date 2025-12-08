@@ -5,7 +5,7 @@ export const jobs = [
     institution: 'University of Central Florida',
     start: '2025',
     end: 'Present',
-    description: 'Teaching Postdoc'
+    description: 'Research & Teaching'
   },
   {
     id: 2,
@@ -41,7 +41,7 @@ export const jobs = [
     institution: 'University of Central Florida (UCF)',
     start: '2019',
     end: '2025',
-    description: 'Teaching Entomology, Biology I, Biology II & Invertebrate Biodiversity labs'
+    description: 'Entomology, Biology I, Biology II & Invertebrate Biodiversity labs'
   },
       {
     id: 7,
@@ -49,7 +49,7 @@ export const jobs = [
     institution: 'University of Central Florida (UCF)',
     start: '2018',
     end: '2019',
-    description: 'Teaching Entomology & Biology II labs'
+    description: 'Entomology & Biology II labs'
   },
 {
   id: 8,

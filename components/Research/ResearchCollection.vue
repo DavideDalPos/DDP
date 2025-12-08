@@ -16,19 +16,19 @@
 
       <!-- Left: Main Text (2/3 width) -->
       <div class="col-span-2 flex flex-col space-y-6 text-gray-200 text-justify">
-        <p>
+        <p class="text-base sm:text-lg leading-relaxed">
           I am deeply interested in the role of <span class="text-amber-400 font-semibold">entomological collections</span> as engines of modern biodiversity research. Collections are far more than repositories of specimens—they are <span class="text-amber-400 font-semibold">dynamic research infrastructures</span> that generate new scientific questions, enable the discovery of hidden diversity, and preserve irreplaceable biological information across time and space.
         </p>
 
-        <p>
+        <p class="text-base sm:text-lg leading-relaxed">
           In the era of large-scale data integration, the <span class="text-amber-400 font-semibold">digitization of natural history collections</span> has become essential. High-resolution imaging, standardized metadata, and interoperable databases unlock the full research potential of specimens, making them accessible to scientists worldwide and allowing seamless integration with phylogenetic, ecological, and morphological datasets.
         </p>
 
-        <p>
+        <p class="text-base sm:text-lg leading-relaxed">
           I actively support and use modern cyberinfrastructure platforms such as <span class="text-amber-400 font-semibold">TaxonWorks</span>, which provide powerful tools for managing, annotating, and analyzing biodiversity data. These systems enable collaborative taxonomy, ontology-driven annotation, and the construction of comprehensive datasets that accelerate species discovery and global biodiversity assessments.
         </p>
 
-        <p>
+        <p class="text-base sm:text-lg leading-relaxed">
           Through these efforts, I aim to promote a modern vision of entomological collections as <span class="text-amber-400 font-semibold">strategic, data-driven resources</span>—crucial for taxonomy, conservation, evolutionary research, and understanding the rapidly changing biosphere.
         </p>
       </div>

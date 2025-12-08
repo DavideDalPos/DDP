@@ -1,7 +1,13 @@
 <template>
   <div class="bg-gray-800 border border-amber-400 p-4 rounded shadow-sm">
     <!-- Main Heading -->
-    <h3 class="font-bold mb-4 text-amber-400 text-lg">Awards</h3>
+<h3 class="font-bold mb-4 text-amber-400 text-lg">
+  Awards & Funding
+  <span class="text-gray-300 text-xs ml-2">
+    (Total: ${{ totalAwardValue.toLocaleString() }})
+  </span>
+</h3>
+
     
     <!-- Grouped Awards -->
     <div v-for="([year, yearGroup]) in groupedAwards" :key="year" class="mb-3">
@@ -53,4 +59,11 @@ const groupedAwards = computed(() => {
   return Object.entries(groups)
     .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA));
 });
+
+const totalAwardValue = computed(() => {
+  return awards
+    .filter(award => award.value) // only include monetary awards
+    .reduce((sum, award) => sum + award.value, 0);
+});
+
 </script>
