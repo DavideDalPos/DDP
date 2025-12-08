@@ -17,7 +17,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
 
         <!-- Left: Main Text (2/3 width) -->
-        <div class="col-span-2 flex flex-col space-y-6 text-gray-200 text-justify">
+        <div class="bg-gray-900 col-span-2 flex flex-col space-y-6 text-gray-200 text-justify">
           <p class="text-base sm:text-lg leading-relaxed">
             <span class="text-amber-400 font-semibold">Phenomics</span> is the large-scale study of organismal form, function, and variation, and how these traits evolve over time.
           </p>

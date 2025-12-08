@@ -1,6 +1,6 @@
 <template>
-  <section class="bg-gray-900 text-gray-200">
-    <div class="container mx-auto px-6 my-16 max-w-6xl">
+  <section class=" text-gray-200">
+    <div class="bg-gray-900 container mx-auto px-6 my-16 max-w-6xl">
       <h1 class="text-4xl font-extrabold mb-2 text-white">Publications</h1>
 
       <h3 class="text-lg font-medium mb-6 text-gray-300">

@@ -1,9 +1,6 @@
 <template>
   <div class="relative flex flex-col min-h-screen bg-gray-900 text-white">
-    <!-- Particle Background -->
     <canvas ref="networkCanvas" class="absolute inset-0 z-0"></canvas>
-
-    <!-- Page Content -->
     <div class="relative z-10 flex flex-col min-h-screen">
       <LayoutHeader />
       <main class="flex-grow">
@@ -25,47 +22,66 @@ onMounted(() => {
   const canvas = networkCanvas.value
   const ctx = canvas.getContext('2d')
   canvas.width = window.innerWidth
-  canvas.height = window.innerHeight
+canvas.height = document.documentElement.scrollHeight
 
-  const particles = []
-  const particleCount = 60
-  const maxDistance = 150
+  // List of insect images
+  const insectPaths = [
+    '/images/wasp1.png',
+    '/images/beetle.png',
+    '/images/fly.png'
+  ]
+  const insectImages = insectPaths.map(path => {
+    const img = new Image()
+    img.src = path
+    return img
+  })
 
-  for (let i = 0; i < particleCount; i++) {
-    particles.push({
+  const insects = []
+  const insectCount = 40
+  const maxDistance = 200
+
+  for (let i = 0; i < insectCount; i++) {
+    const img = insectImages[Math.floor(Math.random() * insectImages.length)]
+    insects.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
-      radius: Math.random() * 2 + 1
+      vx: (Math.random() - 0.5) * 0.7,
+      vy: (Math.random() - 0.5) * 0.7,
+      size: 20 + Math.random() * 15,
+      img: img,
+      rotation: Math.random() * Math.PI * 2
     })
   }
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    // Draw particles
-    particles.forEach(p => {
-      p.x += p.vx
-      p.y += p.vy
-      if (p.x < 0 || p.x > canvas.width) p.vx *= -1
-      if (p.y < 0 || p.y > canvas.height) p.vy *= -1
-      ctx.beginPath()
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2)
-      ctx.fillStyle = 'rgba(255,255,255,0.8)'
-      ctx.fill()
+    // Draw insects
+    insects.forEach(ins => {
+      ins.x += ins.vx
+      ins.y += ins.vy
+      ins.rotation += 0.01 // slow rotation
+
+      if (ins.x < 0 || ins.x > canvas.width) ins.vx *= -1
+      if (ins.y < 0 || ins.y > canvas.height) ins.vy *= -1
+
+      ctx.save()
+      ctx.translate(ins.x, ins.y)
+      ctx.rotate(ins.rotation)
+      ctx.drawImage(ins.img, -ins.size / 2, -ins.size / 2, ins.size, ins.size)
+      ctx.restore()
     })
 
     // Draw lines
-    for (let i = 0; i < particleCount; i++) {
-      for (let j = i + 1; j < particleCount; j++) {
-        const dx = particles[i].x - particles[j].x
-        const dy = particles[i].y - particles[j].y
+    for (let i = 0; i < insectCount; i++) {
+      for (let j = i + 1; j < insectCount; j++) {
+        const dx = insects[i].x - insects[j].x
+        const dy = insects[i].y - insects[j].y
         const dist = Math.sqrt(dx * dx + dy * dy)
         if (dist < maxDistance) {
           ctx.beginPath()
-          ctx.moveTo(particles[i].x, particles[i].y)
-          ctx.lineTo(particles[j].x, particles[j].y)
+          ctx.moveTo(insects[i].x, insects[i].y)
+          ctx.lineTo(insects[j].x, insects[j].y)
           ctx.strokeStyle = `rgba(255,255,255,${1 - dist / maxDistance})`
           ctx.lineWidth = 0.5
           ctx.stroke()
@@ -76,19 +92,21 @@ onMounted(() => {
     requestAnimationFrame(animate)
   }
 
-  animate()
+  // Wait until all images are loaded
+  Promise.all(insectImages.map(img => new Promise(resolve => img.onload = resolve)))
+    .then(() => animate())
 
   window.addEventListener('resize', () => {
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
-    particles.forEach(p => {
-      p.x = Math.random() * canvas.width
-      p.y = Math.random() * canvas.height
+    insects.forEach(ins => {
+      ins.x = Math.random() * canvas.width
+      ins.y = Math.random() * canvas.height
     })
   })
 })
 </script>
 
 <style scoped>
-/* Ensure main content sits above canvas */
+/* canvas already covers full background */
 </style>
