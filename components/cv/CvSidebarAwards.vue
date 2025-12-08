@@ -27,7 +27,7 @@
               {{ award.name }} - {{ award.org }}
               <span
                 v-if="award.value"
-                class="ml-2 text-xs text-gray-300 font-medium bg-gray-700 px-2 py-0.5 rounded-full"
+                class="ml-2 text-xs text-gray-300 font-medium bg-red-900 px-2 py-0.5 rounded-full"
               >
                 ${{ award.value.toLocaleString() }}
               </span>
