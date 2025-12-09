@@ -30,59 +30,96 @@ const getFamilyColor = (family) => {
 const jitter = (value) => value + (Math.random() - 0.5) * 0.01
 
 onMounted(async () => {
-  const L = await import('leaflet')
+  const L = (await import('leaflet')).default
   await import('leaflet.markercluster') // Make sure plugin is loaded
 
   map = L.map('map').setView([20, 0], 2)
 
   // Base layers
-  const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map)
+// Base layers
+const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
+  attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map)
 
-  // Marker Cluster Group
-  const markers = L.markerClusterGroup({
-    spiderfyOnMaxZoom: true,
-    showCoverageOnHover: false
-  })
+// Additional map styles
+//const stamenTerrain = L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg', {
+//  attribution: 'Map tiles by Stamen'
+//})
 
-  // Create markers
-  speciesPoints.forEach(point => {
-    const color = getFamilyColor(point.family)
+//const stamenToner = L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png', {
+//  attribution: 'Map tiles by Stamen'
+//})
 
-    const marker = L.marker([jitter(point.lat), jitter(point.lng)], {
-      icon: L.divIcon({
-        className: '',
-        html: `<div style="
-          width: 12px;
-          height: 12px;
-          background-color: ${color};
-          border-radius: 6px;
-          border: 1.5px solid #000;
-        "></div>`,
-        iconSize: [12, 12],
-        iconAnchor: [6, 6]
-      })
+//const stamenWatercolor = L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg', {
+//  attribution: 'Map tiles by Stamen'
+//})
+
+// Satellite
+const esriSat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+  attribution: 'Tiles © Esri'
+})
+
+// Light / Dark clean maps
+const light = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+  attribution: '© CartoDB'
+})
+const dark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+  attribution: '© CartoDB'
+})
+
+
+// 🔥 Create a cluster group per family instead of one group
+const familyGroups = {}
+
+speciesPoints.forEach(point => {
+  const family = point.family
+  const color = getFamilyColor(family)
+
+  // Create group if it doesn't exist yet
+  if (!familyGroups[family]) {
+    familyGroups[family] = L.markerClusterGroup({
+      spiderfyOnMaxZoom: true,
+      showCoverageOnHover: false
     })
+  }
 
-    const popupContent = `
-      <div style="font-family:'Segoe UI',sans-serif;font-size:13px;text-align:center;">
-        <i style='color:#b22222'>${point.name}</i>
-        <div style="color:#555;font-size:12px;margin:4px 0;">
-          ${point.authors}, ${point.year}
-        </div>
-        <a href="${point.url || '#'}" target="_blank" style="
-          display:inline-block;margin-top:4px;padding:4px 8px;
-          background-color:#0d3b66;color:#fff;text-decoration:none;border-radius:4px;font-size:12px;
-        ">View Publication</a>
-      </div>
-    `
-    marker.bindPopup(popupContent)
-    markers.addLayer(marker)
+  const marker = L.marker([jitter(point.lat), jitter(point.lng)], {
+    icon: L.divIcon({
+      className: '',
+      html: `<div style="
+        width: 12px;
+        height: 12px;
+        background-color: ${color};
+        border-radius: 6px;
+        border: 1.5px solid #000;
+      "></div>`,
+      iconSize: [12, 12],
+      iconAnchor: [6, 6]
+    })
   })
 
-  map.addLayer(markers)
+  const popupContent = `
+    <div style="font-family:'Segoe UI',sans-serif;font-size:13px;text-align:center;">
+      <i style='color:#b22222'>${point.name}</i>
+      <div style="color:#555;font-size:12px;margin:4px 0;">
+        ${point.authors}, ${point.year}
+      </div>
+      <a href="${point.url || '#'}" target="_blank" style="
+        display:inline-block;margin-top:4px;padding:4px 8px;
+        background-color:#0d3b66;color:#fff;text-decoration:none;border-radius:4px;font-size:12px;
+      ">View Publication</a>
+    </div>
+  `
+  marker.bindPopup(popupContent)
+
+  // Add marker to its family layer
+  familyGroups[family].addLayer(marker)
+})
+
+// Add all family layers to map initially
+Object.values(familyGroups).forEach(group => map.addLayer(group))
+
 
   // Legend
   const legend = L.control({ position: 'bottomright' })
@@ -119,10 +156,28 @@ onMounted(async () => {
       line.appendChild(label)
       div.appendChild(line)
     })
+    
+
 
     return div
   }
   legend.addTo(map)
+  // Layer switcher
+const baseMaps = {
+  "OpenStreetMap": osm,
+  "Satellite": esriSat,
+  "Light": light,
+  "Dark": dark
+}
+
+// 🔥 Build overlay menu based on families
+const overlayMaps = {}
+Object.keys(familyGroups).forEach(family => {
+  overlayMaps[family] = familyGroups[family]
+})
+
+L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map)
+
 })
 </script>
 
@@ -135,9 +190,6 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-@import 'leaflet/dist/leaflet.css';
-@import 'leaflet.markercluster/dist/MarkerCluster.css';
-@import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 
 #map {
   height: 600px;
