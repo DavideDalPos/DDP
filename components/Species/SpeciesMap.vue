@@ -99,18 +99,31 @@ speciesPoints.forEach(point => {
     })
   })
 
-  const popupContent = `
-    <div style="font-family:'Segoe UI',sans-serif;font-size:13px;text-align:center;">
-      <i style='color:#b22222'>${point.name}</i>
-      <div style="color:#555;font-size:12px;margin:4px 0;">
-        ${point.authors}, ${point.year}
-      </div>
-      <a href="${point.url || '#'}" target="_blank" style="
-        display:inline-block;margin-top:4px;padding:4px 8px;
-        background-color:#0d3b66;color:#fff;text-decoration:none;border-radius:4px;font-size:12px;
-      ">View Publication</a>
+const popupContent = `
+  <div style="font-family:'Segoe UI',sans-serif;font-size:13px;text-align:center;">
+    <i style='color:#b22222'>${point.name}</i>
+    <div style="color:#555;font-size:12px;margin:4px 0;">
+      ${point.authors}, ${point.year}
     </div>
-  `
+<a href="${point.url || '#'}" target="_blank" style="
+  display:block; margin-top:4px; padding:2px 6px;  /* smaller padding */
+  background-color:#d97706; 
+  color:#fff; text-decoration:none; border-radius:4px; font-size:11px;  /* smaller font */
+  transition: background-color 0.3s;
+" onmouseover="this.style.backgroundColor='#f59e0b'" onmouseout="this.style.backgroundColor='#d97706'">
+  View Publication
+</a>
+<a href="${point.taxonworks || '#'}" target="_blank" style="
+  display:block; margin-top:4px; padding:2px 6px;  /* smaller padding */
+  background-color:#0d3b66; color:#fff; text-decoration:none; border-radius:4px; font-size:11px;  /* smaller font */
+  transition: background-color 0.3s;
+" onmouseover="this.style.backgroundColor='#15539e'" onmouseout="this.style.backgroundColor='#0d3b66'">
+  View in WID
+</a>
+
+  </div>
+`
+
   marker.bindPopup(popupContent)
 
   // Add marker to its family layer
