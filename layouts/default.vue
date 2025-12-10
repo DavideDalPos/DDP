@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex flex-col min-h-screen bg-gray-900 text-white">
+  <div class="relative flex flex-col min-h-screen bg-gray-700 text-white">
     <canvas ref="networkCanvas" class="absolute inset-0 z-0"></canvas>
     <div class="relative z-10 flex flex-col min-h-screen">
       <LayoutHeader />

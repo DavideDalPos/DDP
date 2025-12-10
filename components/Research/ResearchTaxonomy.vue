@@ -18,7 +18,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
 
       <!-- Left: Text -->
-      <div class="col-span-2 flex flex-col space-y-6 text-gray-200 bg-gray-900">
+      <div class="col-span-2 flex flex-col space-y-6 text-gray-200 bg-gray-700">
         <p class="text-base sm:text-lg leading-relaxed">
           My taxonomic work has mainly focused on the subfamily <span class="text-amber-400 font-semibold">Ichneumoninae</span>, the largest within Ichneumonidae, where I have described several new species. 
           My expertise extends across the entire family and even to related groups, such as Braconidae, allowing me to contribute broadly to parasitoid wasp systematics.

@@ -1,6 +1,6 @@
 <template>
   <section class=" text-gray-200">
-    <div class="bg-gray-900 container mx-auto px-6 my-16 max-w-6xl">
+    <div class="bg-gray-700 container mx-auto px-6 my-16 max-w-6xl">
       <h1 class="text-4xl font-extrabold mb-2 text-white">Publications</h1>
 
       <h3 class="text-lg font-medium mb-6 text-gray-300">
@@ -84,7 +84,7 @@
                 :href="publication.meta.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center border border-gray-700 rounded-lg px-3 py-1.5 gap-1 hover:bg-amber-400 hover:text-gray-900 transition shadow-md"
+                class="inline-flex items-center border border-red-400 rounded-lg px-3 py-1.5 gap-1 hover:bg-amber-400 hover:text-gray-900 transition shadow-md"
                 title="Download PDF"
               >
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -95,7 +95,7 @@
 
               <NuxtLink
                 :to="publication.path"
-                class="inline-flex items-center border border-gray-700 rounded-lg px-3 py-1.5 gap-1 hover:bg-amber-400 hover:text-gray-900 transition shadow-md"
+                class="inline-flex items-center border border-amber-400 rounded-lg px-3 py-1.5 gap-1 hover:bg-amber-400 hover:text-gray-900 transition shadow-md"
                 title="View full publication"
                 target="_blank"
               >

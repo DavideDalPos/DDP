@@ -15,7 +15,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
 
       <!-- Left: Main Text (2/3 width) -->
-      <div class="bg-gray-900 col-span-2 flex flex-col space-y-6 text-gray-200 text-justify">
+      <div class="bg-gray-700 col-span-2 flex flex-col space-y-6 text-gray-200 text-justify">
         <p class=" text-base sm:text-lg leading-relaxed">
           I am deeply interested in the role of <span class="text-amber-400 font-semibold">entomological collections</span> as engines of modern biodiversity research. Collections are far more than repositories of specimens—they are <span class="text-amber-400 font-semibold">dynamic research infrastructures</span> that generate new scientific questions, enable the discovery of hidden diversity, and preserve irreplaceable biological information across time and space.
         </p>
