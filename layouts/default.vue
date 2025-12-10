@@ -34,7 +34,7 @@ canvas.height = document.documentElement.scrollHeight
     '/images/cicada.png',
     '/images/grasshopper.png',
     '/images/earwig.png',
-    'images/flea.png'
+    '/images/flea.png'
   ]
   const insectImages = insectPaths.map(path => {
     const img = new Image()
