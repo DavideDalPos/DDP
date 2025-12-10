@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto p-6 pb-10 max-w-4xl">
+  <div class="bg-gray-900 container mx-auto p-6 pb-10 max-w-4xl">
     <h1 class="text-4xl font-extrabold mb-2 text-amber-400 mb-10">Teaching Philosophy</h1>
 
     <div class="space-y-4 text-justify text-base sm:text-lg text-gray-200 leading-relaxed">

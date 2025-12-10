@@ -79,22 +79,6 @@ canvas.height = document.documentElement.scrollHeight
     })
 
     // Draw lines
-    for (let i = 0; i < insectCount; i++) {
-      for (let j = i + 1; j < insectCount; j++) {
-        const dx = insects[i].x - insects[j].x
-        const dy = insects[i].y - insects[j].y
-        const dist = Math.sqrt(dx * dx + dy * dy)
-        if (dist < maxDistance) {
-          ctx.beginPath()
-          ctx.moveTo(insects[i].x, insects[i].y)
-          ctx.lineTo(insects[j].x, insects[j].y)
-          ctx.strokeStyle = `rgba(17,24,39,1)`
-          ctx.lineWidth = 0.5
-          ctx.stroke()
-        }
-      }
-    }
-
     requestAnimationFrame(animate)
   }
 

@@ -2,7 +2,7 @@
   <div class="container mx-auto px-6 my-16 max-w-6xl">
 
     <!-- Hero Intro -->
-    <div class="bg-gray-900 p-12 rounded-xl ">
+    <div class="bg-gray-800 p-12 rounded-xl ">
       <h1 class="text-5xl text-center font-extrabold mb-6 text-white">
         Research Network Overview
       </h1>

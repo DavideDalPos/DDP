@@ -2,7 +2,7 @@
   <div class="container mx-auto px-6 my-16 max-w-6xl">
 
     <!-- Hero Intro -->
-    <div class="p-12 rounded-xl shadow-lg">
+    <div class="bg-gray-800 p-12 rounded-xl shadow-lg">
       <h1 class="text-5xl text-center font-extrabold mb-6 text-white">
         Species Map & Descriptions
       </h1>
