@@ -72,7 +72,7 @@
           <img
             src="/public/images/logoWID.png"
             alt="World Ichneumonidae Database"
-            class="rounded-xl w-full max-w-xs"
+            class=" max-w-xs"
           />
         </div>
       </div>
