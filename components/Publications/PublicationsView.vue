@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-gray-900 text-gray-200 container mx-auto my-10 px-8 max-w-[70rem]">
+  <section class="bg-gray-700 text-gray-200 container mx-auto my-10 px-8 max-w-[70rem]">
     <article>
       <!-- Title -->
       <h2
