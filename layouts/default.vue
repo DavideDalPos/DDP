@@ -28,7 +28,13 @@ canvas.height = document.documentElement.scrollHeight
   const insectPaths = [
     '/images/wasp1.png',
     '/images/beetle.png',
-    '/images/fly.png'
+    '/images/fly.png',
+    '/images/dragonfly.png',
+    '/images/butterfly.png',
+    '/images/cicada.png',
+    '/images/grasshopper.png',
+    '/images/earwig.png',
+    'images/flea.png'
   ]
   const insectImages = insectPaths.map(path => {
     const img = new Image()
@@ -82,7 +88,7 @@ canvas.height = document.documentElement.scrollHeight
           ctx.beginPath()
           ctx.moveTo(insects[i].x, insects[i].y)
           ctx.lineTo(insects[j].x, insects[j].y)
-          ctx.strokeStyle = `rgba(255,255,255,${1 - dist / maxDistance})`
+          ctx.strokeStyle = `rgba(17,24,39,1)`
           ctx.lineWidth = 0.5
           ctx.stroke()
         }
