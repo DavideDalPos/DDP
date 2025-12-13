@@ -21,6 +21,7 @@
 
     <!-- PDF Preview -->
 <iframe
+  v-if="lastUpdated"
   :src="`/PDFs/Davide_Dal_Pos_CV.pdf?${lastUpdated}`"
   width="100%"
   height="600"
