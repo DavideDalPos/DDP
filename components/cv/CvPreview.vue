@@ -21,12 +21,12 @@
 
     <!-- PDF Preview -->
 <iframe
-  v-if="lastUpdated"
-  :src="`/PDFs/Davide_Dal_Pos_CV.pdf?${lastUpdated}`"
+  :src="`/PDFs/Davide_Dal_Pos_CV.pdf?ts=${Date.now()}`"
   width="100%"
   height="600"
   class="border rounded"
 ></iframe>
+
   </div>
 </template>
 
