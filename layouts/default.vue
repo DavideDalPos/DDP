@@ -21,8 +21,14 @@ const networkCanvas = ref(null)
 onMounted(() => {
   const canvas = networkCanvas.value
   const ctx = canvas.getContext('2d')
-  canvas.width = window.innerWidth
-canvas.height = document.documentElement.scrollHeight
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth
+    canvas.height = document.documentElement.scrollHeight
+  }
+
+  // Initial size
+  resizeCanvas()
 
   // List of insect images
   const insectPaths = [
@@ -36,6 +42,7 @@ canvas.height = document.documentElement.scrollHeight
     '/images/earwig.png',
     '/images/flea.png'
   ]
+
   const insectImages = insectPaths.map(path => {
     const img = new Image()
     img.src = path
@@ -44,7 +51,6 @@ canvas.height = document.documentElement.scrollHeight
 
   const insects = []
   const insectCount = 40
-  const maxDistance = 200
 
   for (let i = 0; i < insectCount; i++) {
     const img = insectImages[Math.floor(Math.random() * insectImages.length)]
@@ -54,7 +60,7 @@ canvas.height = document.documentElement.scrollHeight
       vx: (Math.random() - 0.5) * 0.7,
       vy: (Math.random() - 0.5) * 0.7,
       size: 20 + Math.random() * 15,
-      img: img,
+      img,
       rotation: Math.random() * Math.PI * 2
     })
   }
@@ -62,11 +68,10 @@ canvas.height = document.documentElement.scrollHeight
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    // Draw insects
     insects.forEach(ins => {
       ins.x += ins.vx
       ins.y += ins.vy
-      ins.rotation += 0.01 // slow rotation
+      ins.rotation += 0.01
 
       if (ins.x < 0 || ins.x > canvas.width) ins.vx *= -1
       if (ins.y < 0 || ins.y > canvas.height) ins.vy *= -1
@@ -78,23 +83,22 @@ canvas.height = document.documentElement.scrollHeight
       ctx.restore()
     })
 
-    // Draw lines
     requestAnimationFrame(animate)
   }
 
-  // Wait until all images are loaded
-  Promise.all(insectImages.map(img => new Promise(resolve => img.onload = resolve)))
+  Promise.all(insectImages.map(img => new Promise(resolve => (img.onload = resolve))))
     .then(() => animate())
 
+  // 🔑 KEEP CANVAS SYNCED WITH PAGE HEIGHT
   window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
+    resizeCanvas()
     insects.forEach(ins => {
       ins.x = Math.random() * canvas.width
       ins.y = Math.random() * canvas.height
     })
   })
 })
+
 </script>
 
 <style scoped>

@@ -1,6 +1,5 @@
 <template>
   <header class="shadow-sm relative bg-[#3c2f2f] text-[#e9e6d9] border-b-[3px] border-[#7c8f6a]">
-
     <nav class="container mx-auto p-4 flex items-center justify-between">
 
       <!-- Left: Name + Hamburger -->
@@ -12,7 +11,6 @@
           Davide Dal Pos, Ph.D.
         </NuxtLink>
 
-        <!-- Mobile toggle -->
         <button
           class="md:hidden text-[#e9e6d9] hover:text-[#c9a66b] transition duration-200"
           aria-label="Toggle menu"
@@ -25,17 +23,23 @@
       <!-- Desktop Menu -->
       <div class="hidden md:flex justify-center gap-10 text-[#e9e6d9] text-md flex-1">
         <div v-for="item in links" :key="item.label" class="relative group transition">
+          <div class="flex items-center gap-1 cursor-pointer hover:text-[#c9a66b] transition duration-200 relative">
 
-          <!-- Items -->
-          <div class="flex items-center gap-1 cursor-pointer hover:text-[#c9a66b] transition duration-200">
-            <NuxtLink 
-              v-if="item.link"
-              :to="item.link"
-              class="hover:text-[#c9a66b]"
-            >
+            <!-- Subtle flashing dot for upper-left -->
+            <template v-if="(item.label === 'News' && isNewNews) || (item.label === 'Publications' && isNewPublication)">
+              <span 
+                class="absolute -top-1 -left-2 w-2 h-2 rounded-full animate-ping opacity-50"
+                :class="item.label === 'News' ? 'bg-pink-300' : 'bg-blue-300'">
+              </span>
+              <span 
+                class="absolute -top-1 -left-2 w-1.5 h-1.5 rounded-full"
+                :class="item.label === 'News' ? 'bg-pink-300' : 'bg-blue-300'">
+              </span>
+            </template>
+
+            <NuxtLink v-if="item.link" :to="item.link" class="hover:text-[#c9a66b]">
               {{ item.label }}
             </NuxtLink>
-
             <span v-else>{{ item.label }}</span>
 
             <!-- Dropdown arrow -->
@@ -51,7 +55,7 @@
             </svg>
           </div>
 
-          <!-- Desktop submenu Styled w/ palette -->
+          <!-- Desktop submenu -->
           <div
             v-if="item.submenu"
             class="absolute top-full left-1/2 -translate-x-1/2 hidden group-hover:flex flex-col 
@@ -68,19 +72,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Social Icons -->
-      <div class="hidden md:flex items-center gap-4">
-        <a href="mailto:your.email@example.com" class="text-[#e9e6d9] hover:text-[#c9a66b] transition">
-          <IconEmail class="w-6 h-6" />
-        </a>
-        <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="text-[#e9e6d9] hover:text-[#c9a66b] transition">
-          <IconGithub class="w-6 h-6" />
-        </a>
-        <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener" class="text-[#e9e6d9] hover:text-[#c9a66b] transition">
-          <IconGoogleScholar class="w-6 h-6" />
-        </a>
-      </div>
     </nav>
 
     <!-- Mobile Menu -->
@@ -88,12 +79,23 @@
       v-if="isMenuOpen" 
       class="md:hidden bg-[#4c3e3e] text-[#e9e6d9] shadow-lg p-4 flex flex-col space-y-2 transition-all duration-300 border-t border-[#7c8f6a]"
     >
-      <div v-for="item in links" :key="item.label" class="flex flex-col">
-
+      <div v-for="item in links" :key="item.label" class="flex flex-col relative">
         <div 
-          class="flex items-center justify-between py-2 cursor-pointer hover:text-[#c9a66b] transition duration-200"
+          class="flex items-center justify-between py-2 cursor-pointer hover:text-[#c9a66b] transition duration-200 relative"
           @click="toggleSubmenu(item)"
         >
+          <!-- Subtle flashing dot for mobile -->
+          <template v-if="(item.label === 'News' && isNewNews) || (item.label === 'Publications' && isNewPublication)">
+            <span 
+              class="absolute -top-1 -left-2 w-2 h-2 rounded-full animate-ping opacity-50"
+              :class="item.label === 'News' ? 'bg-pink-300' : 'bg-blue-300'">
+            </span>
+            <span 
+              class="absolute -top-1 -left-2 w-1.5 h-1.5 rounded-full"
+              :class="item.label === 'News' ? 'bg-pink-300' : 'bg-blue-300'">
+            </span>
+          </template>
+
           <NuxtLink v-if="item.link" :to="item.link">{{ item.label }}</NuxtLink>
           <span v-else>{{ item.label }}</span>
 
@@ -125,26 +127,21 @@
   </header>
 </template>
 
-
 <script setup>
-import { reactive, ref } from 'vue'
-import IconEmail from '~/components/Icon/IconEmail.vue'
-import IconGithub from '~/components/Icon/IconGithub.vue'
-import IconGoogleScholar from '~/components/Icon/IconGoogleScholar.vue'
+import { useAsyncData } from '#app'
+import { computed, reactive, ref } from 'vue'
 import IconHamburger from '~/components/Icon/IconHamburger.vue'
 
 const isMenuOpen = ref(false)
+function toggleMenu() { isMenuOpen.value = !isMenuOpen.value }
+function toggleSubmenu(item) { if(item.submenu) item.isOpen = !item.isOpen }
 
 const links = reactive([
-  { 
-    label: 'Research',
-    submenu: [
+  { label: 'Research', submenu: [
       { label: 'Systematics of Ichneumonidae', link:'/research/systematics' },
       { label: 'Phenomics Evolution', link: '/research/evolution' },
       { label: 'Collection-Based Research', link: '/research/collection' }
-    ],
-    isOpen: false
-  },
+    ], isOpen: false },
   { label: 'Publications', link: '/publications', isOpen: false },
   { label: 'Species', link: '/species', isOpen: false },
   { label: 'Teaching', link: '/teaching' },
@@ -154,11 +151,21 @@ const links = reactive([
   { label: 'Contact', link: '/contact', isOpen: false }
 ])
 
-function toggleMenu() {
-  isMenuOpen.value = !isMenuOpen.value
-}
+const THIRTY_DAYS = 1000 * 60 * 60 * 24 * 30
 
-function toggleSubmenu(item) {
-  if (item.submenu) item.isOpen = !item.isOpen
-}
+// News badge
+const { data: newsData } = await useAsyncData('news', () => queryCollection('news').all())
+const latestNewsDate = computed(() => {
+  if(!newsData.value?.length) return null
+  return new Date([...newsData.value].sort((a,b)=> new Date(b.meta.date)-new Date(a.meta.date))[0].meta.date)
+})
+const isNewNews = computed(() => latestNewsDate.value ? (new Date() - latestNewsDate.value) < THIRTY_DAYS : false)
+
+// Publications badge
+const { data: pubData } = await useAsyncData('publications', () => queryCollection('publications').all())
+const latestPubDate = computed(() => {
+  if(!pubData.value?.length) return null
+  return new Date([...pubData.value].sort((a,b)=> new Date(b.meta.date)-new Date(a.meta.date))[0].meta.date)
+})
+const isNewPublication = computed(() => latestPubDate.value ? (new Date() - latestPubDate.value) < THIRTY_DAYS : false)
 </script>
