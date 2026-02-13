@@ -34,7 +34,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { collaborators } from './collaborators'
+import { collaborators } from './Collaborators'
 
 let map
 let cluster
