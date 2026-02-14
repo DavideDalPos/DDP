@@ -1,12 +1,14 @@
 <template>
-  <div class="container mx-auto px-6 my-16 max-w-6xl">
+<section class="container mx-auto px-6 mt-12 mb-8 max-w-6xl">
+
 
     <!-- Hero Intro -->
-    <div class="bg-gray-800 p-12 rounded-xl shadow-lg mb-16">
-      <h1 class="text-5xl text-center font-extrabold mb-6 text-white">
+    <div class="bg-gray-800 p-12 rounded-xl shadow-lg mb-12 text-center">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4">
         Collection-Based Research
       </h1>
-      <p class="text-lg sm:text-xl text-gray-300 leading-relaxed text-center">
+      <div class="mx-auto w-24 h-1 bg-amber-400 rounded mb-6"></div>
+      <p class="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
         I study <span class="text-amber-400 font-semibold">entomological collections</span> as dynamic research infrastructures that enable biodiversity discovery, integrate large-scale datasets, and support modern taxonomy, conservation, and evolutionary research.
       </p>
     </div>
@@ -15,8 +17,8 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
 
       <!-- Left: Main Text (2/3 width) -->
-      <div class="bg-gray-700 col-span-2 flex flex-col space-y-6 text-gray-200 text-justify">
-        <p class=" text-base sm:text-lg leading-relaxed">
+      <div class="col-span-2 flex flex-col space-y-6 bg-gray-50 p-6 rounded-xl shadow-sm text-gray-800 text-justify">
+        <p class="text-base sm:text-lg leading-relaxed">
           I am deeply interested in the role of <span class="text-amber-400 font-semibold">entomological collections</span> as engines of modern biodiversity research. Collections are far more than repositories of specimens—they are <span class="text-amber-400 font-semibold">dynamic research infrastructures</span> that generate new scientific questions, enable the discovery of hidden diversity, and preserve irreplaceable biological information across time and space.
         </p>
 
@@ -35,9 +37,8 @@
 
       <!-- Right: Info Card (1/3 width) -->
       <div class="flex flex-col space-y-6">
-
-        <div class="bg-gray-800 p-6 rounded-xl shadow-lg flex flex-col justify-start space-y-6 text-gray-200 w-full">
-          <h2 class="text-xl font-bold text-white">Collection Highlights</h2>
+        <div class="bg-gray-50 p-6 rounded-xl shadow-sm flex flex-col justify-start space-y-6 text-gray-800 w-full">
+          <h2 class="text-xl font-bold text-gray-900">Collection Highlights</h2>
 
           <div class="flex flex-col space-y-3">
             <div class="flex justify-between items-center">
@@ -72,12 +73,14 @@
           <img
             src="/public/images/logoWID.png"
             alt="World Ichneumonidae Database"
-            class=" max-w-xs"
+            class="max-w-xs"
           />
         </div>
       </div>
 
     </div>
-
-  </div>
+  </section>
 </template>
+
+<script setup>
+</script>

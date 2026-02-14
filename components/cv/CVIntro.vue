@@ -6,31 +6,43 @@
       
       <!-- Title -->
       <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4">
-        Research Network Overview
+        Curriculum Vitae
       </h1>
       
       <!-- Accent Divider -->
       <div class="mx-auto w-24 h-1 bg-amber-400 rounded mb-6"></div>
       
-      <!-- Paragraph -->
+      <!-- Subtitle -->
       <p class="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-        The maps below illustrate my scientific network. The first map shows the global distribution of my 
-        <span class="text-amber-400 font-semibold">collaborators</span>, while the second highlights the 
-        <span class="text-amber-400 font-semibold">institutions</span> where I have contributed my taxonomic expertise in specimen identification and curation. 
-        These visualizations reveal the reach of my research and the key locations that have contributed to my work in biodiversity, taxonomy, and evolutionary studies.
+        Explore my professional experience, education, skills, and awards.
       </p>
-      
+
+      <!-- CTA Button -->
+      <div class="mt-8">
+        <a
+          href="#cv"
+          class="inline-block px-6 py-3 rounded-full bg-amber-400 text-gray-900 font-semibold shadow-lg hover:bg-amber-500 transition transform hover:-translate-y-1"
+        >
+          Scroll Down to View Full CV ↓
+        </a>
+      </div>
+
+      <!-- Optional small note -->
+      <p class="text-gray-400 text-sm mt-2">
+        You can also download the full CV below after scrolling.
+      </p>
+
     </div>
-    
+
   </section>
 </template>
 
 <script setup>
-// Static component: no JS needed
+// Static component, no props needed
 </script>
 
 <style scoped>
-/* Optional subtle animation for consistency with other hero */
+/* Optional subtle floating animation for consistency */
 @keyframes floatPattern {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(10px); }

@@ -197,7 +197,9 @@ L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map)
 <template>
   <div class="container mx-auto px-6 my-16 max-w-10xl">
     <client-only>
-      <div id="map" style="height:600px;width:100%;"></div>
+      <div class="map-container rounded-xl shadow-md overflow-hidden">
+        <div id="map"></div>
+      </div>
     </client-only>
   </div>
 </template>

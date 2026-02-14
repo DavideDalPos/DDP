@@ -1,18 +1,26 @@
 <template>
-  <div class="bg-gray-800 border border-amber-400 p-4 rounded shadow-sm">
+  <div class="bg-gray-100 p-5 ">
     <!-- Heading with amber accent -->
-    <h3 class="font-bold mb-2 text-amber-400">Skills</h3>
+    <h3 class="font-bold mb-4 text-amber-600 text-lg">Skills</h3>
 
-    <!-- Skills list -->
-    <ul class="list-disc list-inside text-gray-200">
-      <li>Morphology</li>
-      <li>Taxonomy</li>
-      <li>Micro-CT scanning</li>
-      <li>Database management</li>
+    <!-- Skills list as smaller pills -->
+    <ul class="flex flex-wrap gap-2">
+      <li 
+        v-for="(skill, index) in skills" 
+        :key="index" 
+        class="bg-amber-200 text-amber-800 px-2 py-0.5 rounded-full text-xs font-medium hover:bg-amber-300 transition"
+      >
+        {{ skill }}
+      </li>
     </ul>
   </div>
 </template>
 
 <script setup>
-// Can later accept props for dynamic skills
+const skills = [
+  'Morphology',
+  'Taxonomy',
+  'Micro-CT scanning',
+  'Database management'
+]
 </script>

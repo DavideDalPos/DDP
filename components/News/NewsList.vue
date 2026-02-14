@@ -1,11 +1,11 @@
 <template>
   <section class="text-gray-200">
     <div class="container mx-auto px-6 my-16 max-w-5xl">
-      <h1 class="text-4xl font-extrabold mb-4 text-white">News</h1>
+      <h1 class="text-4xl font-extrabold mb-4 text-gray-700">News</h1>
 
       <template v-for="[year, items] in grouped" :key="year">
         <!-- Year header -->
-        <h2 class="text-2xl font-bold mb-6 text-amber-400 py-2 border-b border-gray-700">
+        <h2 class="text-2xl font-bold mb-6 text-amber-600 py-2 border-b border-gray-700">
           {{ year }}
         </h2>
 
@@ -52,7 +52,7 @@
   <!-- Read More badge on the right -->
   <span
     v-if="news.meta.clickable"
-    class="text-xs font-bold text-white bg-blue-500 px-2 py-0.5 rounded ml-4 flex-shrink-0"
+    class="text-xs font-bold text-white bg-red-900 px-2 py-0.5 rounded ml-4 flex-shrink-0"
   >
     Read More
   </span>

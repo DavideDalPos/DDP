@@ -1,9 +1,10 @@
 <template>
-  <section class=" text-gray-200">
-    <div class="bg-gray-700 container mx-auto px-6 my-16 max-w-6xl">
-      <h1 class="text-4xl font-extrabold mb-2 text-white">Publications</h1>
+  <section class="text-gray-900">
+    <div class="container mx-auto px-6 my-16 max-w-6xl">
 
-      <h3 class="text-lg font-medium mb-6 text-gray-300">
+      <h1 class="text-4xl font-extrabold mb-2 text-gray-700">Publications</h1>
+
+      <h3 class="text-lg font-medium mb-6 text-gray-600">
         Total publications: {{ filteredData.length }}
       </h3>
 
@@ -12,40 +13,40 @@
         v-model="searchQuery"
         type="text"
         placeholder="Search by title, journal, or author"
-        class="w-full p-2 mb-10 border border-gray-700 rounded-md shadow-sm bg-gray-800 text-gray-200 focus:outline-none focus:ring-2 focus:ring-amber-400"
+        class="w-full p-2 mb-10 border border-gray-300 rounded-md shadow-sm bg-gray-100 text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-400"
       />
 
       <template v-for="[year, pubs] in grouped" :key="year">
         <h2
-          class="text-2xl font-bold mb-4 text-amber-400 py-2 border-b border-gray-700"
+          class="text-2xl font-bold mb-4 text-gray-700 py-2 border-b border-gray-300"
         >
           {{ year }}
         </h2>
 
-        <ol class="list-decimal list-inside marker:text-gray-400 marker:text-xl">
+        <ol class="list-decimal list-inside marker:text-gray-400 marker:text-lg">
           <li
             v-for="(publication, index) in pubs"
             :key="publication._path"
-            class="pt-4 pb-4 pl-6 relative text-sm leading-relaxed hover:bg-gray-800 transition rounded-md"
+            class="pt-4 pb-4 pl-6 relative text-sm leading-relaxed hover:bg-gray-200 transition rounded-md"
             itemscope
             itemtype="https://schema.org/ScholarlyArticle"
           >
             <!-- Authors -->
             <span
               v-html="formatAuthors(publication.meta.authors)"
-              class="text-gray-200"
+              class="text-gray-800"
               itemprop="author"
             ></span>
 
             <!-- Year -->
-            <span class="text-gray-400 ml-1" itemprop="datePublished">
+            <span class="text-gray-500 ml-1" itemprop="datePublished">
               ({{ new Date(publication.meta.date).getFullYear() }}).
             </span>
 
             <!-- Title -->
             <NuxtLink
               :to="publication.path"
-              class="ml-1 text-base font-medium text-white hover:underline hover:decoration-amber-400 transition"
+              class="ml-1 text-base font-medium text-gray-900 hover:underline hover:decoration-amber-400 transition"
               itemprop="name"
               title="View publication"
               target="_blank"
@@ -54,37 +55,36 @@
             </NuxtLink>.
 
             <!-- Journal info -->
-            <span class="text-gray-300 italic ml-1" itemprop="isPartOf">
+            <span class="text-gray-600 italic ml-1" itemprop="isPartOf">
               {{ publication.meta.journal }}, {{ publication.meta.volume }}
               <span v-if="publication.meta.issue">({{ publication.meta.issue }})</span>,
               {{ publication.meta.pagination }}.
             </span>
 
             <!-- DOI (inline) -->
-<span
-  v-if="publication.meta.doi"
-  class="ml-1 inline-flex items-center text-gray-400 text-[0.85rem] align-baseline hover:bg-gray-800 px-1 rounded transition"
->
-  <span>doi:</span>
-  <a
-    :href="publication.meta.doi"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="hover:underline text-amber-400 ml-1"
-  >
-    {{ publication.meta.doi.replace('https://doi.org/', '') }}
-  </a>
-</span>
-
+            <span
+              v-if="publication.meta.doi"
+              class="ml-1 inline-flex items-center text-gray-500 text-[0.85rem] align-baseline hover:bg-gray-200 px-1 rounded transition"
+            >
+              <span>doi:</span>
+              <a
+                :href="publication.meta.doi"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:underline text-amber-500 ml-1"
+              >
+                {{ publication.meta.doi.replace('https://doi.org/', '') }}
+              </a>
+            </span>
 
             <!-- Buttons (PDF / Details) -->
-            <div class="mt-2 flex gap-2 text-[0.75rem] text-gray-300">
+            <div class="mt-2 flex gap-2 text-[0.75rem] text-gray-700">
               <a
                 v-if="publication.meta.pdf"
                 :href="publication.meta.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center border border-red-400 rounded-lg px-3 py-1.5 gap-1 hover:bg-amber-400 hover:text-gray-900 transition shadow-md"
+                class="inline-flex items-center border border-gray-400 rounded-lg px-3 py-1.5 gap-1 hover:bg-amber-100 hover:text-gray-900 transition shadow-sm"
                 title="Download PDF"
               >
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -95,7 +95,7 @@
 
               <NuxtLink
                 :to="publication.path"
-                class="inline-flex items-center border border-amber-400 rounded-lg px-3 py-1.5 gap-1 hover:bg-amber-400 hover:text-gray-900 transition shadow-md"
+                class="inline-flex items-center border border-gray-400 rounded-lg px-3 py-1.5 gap-1 hover:bg-amber-100 hover:text-gray-900 transition shadow-sm"
                 title="View full publication"
                 target="_blank"
               >
@@ -111,6 +111,7 @@
     </div>
   </section>
 </template>
+
 
 
 <script setup>

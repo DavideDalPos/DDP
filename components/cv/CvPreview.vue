@@ -7,7 +7,7 @@
         <a
           href="/PDFs/Davide_Dal_Pos_CV.pdf"
           download
-          class="text-amber-400 bg-gray-800 shadow-md px-2 py-1 rounded hover:bg-gray-600 transition"
+          class="text-amber-600 bg-gray-300 border border-gray-400 shadow-md px-2 py-1 rounded hover:bg-gray-600 transition"
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -6,31 +6,34 @@
       
       <!-- Title -->
       <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4">
-        Research Network Overview
+        Publications
       </h1>
       
       <!-- Accent Divider -->
       <div class="mx-auto w-24 h-1 bg-amber-400 rounded mb-6"></div>
       
-      <!-- Paragraph -->
+      <!-- Subtitle -->
       <p class="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-        The maps below illustrate my scientific network. The first map shows the global distribution of my 
-        <span class="text-amber-400 font-semibold">collaborators</span>, while the second highlights the 
-        <span class="text-amber-400 font-semibold">institutions</span> where I have contributed my taxonomic expertise in specimen identification and curation. 
-        These visualizations reveal the reach of my research and the key locations that have contributed to my work in biodiversity, taxonomy, and evolutionary studies.
+        Browse my body of research, including journal articles, book chapters, and collaborative studies. 
+        Each entry highlights my contributions to <span class="text-amber-400 font-semibold">taxonomy, systematics, and evolutionary biology</span>.
       </p>
-      
+
+      <!-- Optional small note -->
+      <p class="text-gray-400 text-sm mt-2">
+        Use the search bar below to filter by topic, year, or co-author.
+      </p>
+
     </div>
-    
+
   </section>
 </template>
 
 <script setup>
-// Static component: no JS needed
+// Static component, no props needed
 </script>
 
 <style scoped>
-/* Optional subtle animation for consistency with other hero */
+/* Optional subtle floating animation for consistency */
 @keyframes floatPattern {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(10px); }
