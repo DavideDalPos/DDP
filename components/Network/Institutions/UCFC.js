@@ -10,7 +10,7 @@ export default {
     'Collection databasing'
   ],
   researchAssociate: true,
-  yearsActive: '2022–present',
+  yearsActive: '2018–present',
 }
 
 
