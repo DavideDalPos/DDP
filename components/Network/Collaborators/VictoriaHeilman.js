@@ -1,11 +1,11 @@
 export default {
-  name: 'Barbara Sharanowski',
+  name: 'Victoria Heilman',
   lat: 28.6015,
   lng: -81.2009,
-  active: true,
+  active: false,
   institution: 'University of Central Florida',
   past: true,
     projects: [
-    { name: 'Ovipositor Morphology Study'}
+    { name: 'Platylabini of the south-eastern United States'}
   ]
 }

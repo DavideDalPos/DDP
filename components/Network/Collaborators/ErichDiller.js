@@ -1,0 +1,11 @@
+export default {
+  name: 'Erich Diller',
+  lat: 48.1646, 
+  lng: 11.4813,
+  active: false,
+  institution: 'Zoologische Staatssammlung München',
+  past: true,
+    projects: [
+    { name: 'Ichneumonidae of Sicily'}
+  ]
+}

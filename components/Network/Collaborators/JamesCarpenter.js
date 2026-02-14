@@ -1,10 +1,11 @@
 export default {
-  name: 'Dr. James Carpenter',
+  name: 'James Carpenter',
   lat: 40.7812,
   lng: -73.9665,
   active: false,
-  past: true,
   institution: 'American Museum of Natural History (AMNH)',
-  projects: []
+  past: true,
+    projects: [
+    { name: 'Giordani Soika Collection (Vespidae)'}
+  ]
 }
-
