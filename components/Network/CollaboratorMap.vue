@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class="text-xl font-bold mb-4 text-amber-400">Collaborators</h2>
-    <div id="collaborators-map" class="map"></div>
+    <div id="collaborators-map" class="map rounded-xl shadow-md"></div>
   </div>
 </template>
 
@@ -12,30 +12,21 @@ import { collaborators } from './Collaborators'
 let map
 let cluster
 
-// Filters controlled via legend clicks
-const showActive = ref(true)
+// Filters: only Current and Past
+const showCurrent = ref(true)
 const showPast = ref(true)
-const showBoth = ref(true)
 
-// Toggle filter function
 function toggleFilter(type) {
-  if (type === 'active') showActive.value = !showActive.value
+  if (type === 'current') showCurrent.value = !showCurrent.value
   if (type === 'past') showPast.value = !showPast.value
-  if (type === 'both') showBoth.value = !showBoth.value
   renderMarkers()
-  updateLegend()
 }
 
-// ------------------ Marker Functions ------------------
+// ------------------ Marker & Popup ------------------
 function getIcon(collaborator) {
-  let color = '#999999' // fallback
-  if (collaborator.active && collaborator.past) color = '#9b5de5'
-  else if (collaborator.active) color = '#2a9d8f'
-  else if (collaborator.past) color = '#457b9d'
-
   return L.divIcon({
     className: '',
-    html: `<div style="width:12px; height:12px; background-color:${color}; border-radius:6px; border:1px solid #000"></div>`,
+    html: `<div style="width:12px; height:12px; background-color:#2a9d8f; border-radius:50%; border:1px solid #000"></div>`,
     iconSize: [12, 12],
     iconAnchor: [6, 6]
   })
@@ -44,48 +35,20 @@ function getIcon(collaborator) {
 const PUBLICATION_PAGE_URL = '/publications'
 
 function getPopupHtml(collaborator) {
-  let html = `<div style="font-family:'Segoe UI',sans-serif; font-size:13px;">`
-
-html += `<div style="margin-bottom:6px;">`
-
-// Name + badges row
-html += `<div style="display:flex; align-items:center; gap:6px;">`
-html += `<strong style="font-size:14px;">${collaborator.name}</strong>`
-
-if (collaborator.active) {
-  html += `<span style="display:inline-block; padding:2px 6px; background-color:#2a9d8f; color:white; border-radius:12px; font-size:12px;">Active</span>`
-} 
-if (collaborator.past) {
-  html += `<span style="display:inline-block; padding:2px 6px; background-color:#457b9d; color:white; border-radius:12px; font-size:12px;">Past</span>`
-}
-
-html += `</div>`
-
-// Institution (smaller + italic)
-if (collaborator.institution) {
-  html += `<div style="font-size:12px; font-style:italic; color:#555; margin-top:2px;">${collaborator.institution}</div>`
-}
-
-html += `</div>`
-
-
+  let html = `<div style="font-family:'Segoe UI',sans-serif; font-size:13px; background:#f9fafb; padding:0.5rem 1rem; border-radius:0.5rem;">`
+  html += `<strong>${collaborator.name}</strong><br/>`
+  if (collaborator.institution) html += `<em>${collaborator.institution}</em><br/>`
   if (collaborator.active && collaborator.projects?.length) {
-    html += `<div style="margin-bottom:8px;"><strong>Projects:</strong><ul style="padding-left:18px; margin:4px 0;">`
+    html += `<strong>Projects:</strong><ul>`
     collaborator.projects.forEach(p => {
-      if (p.url) html += `<li><a href="${p.url}" target="_blank" style="color:#2a9d8f; text-decoration:underline;">${p.name}</a></li>`
+      if (p.url) html += `<li><a href="${p.url}" target="_blank">${p.name}</a></li>`
       else html += `<li>${p.name}</li>`
     })
-    html += `</ul></div>`
+    html += `</ul>`
   }
-
-  if (collaborator.past && !collaborator.active) {
-    html += `<div><a href="${PUBLICATION_PAGE_URL}?name=${encodeURIComponent(collaborator.name)}" target="_blank" style="color:#9b5de5; text-decoration:underline;">View Publication</a></div>`
+  if ((collaborator.past && !collaborator.active) || (collaborator.active && collaborator.past && !collaborator.projects?.length)) {
+    html += `<a href="${PUBLICATION_PAGE_URL}?name=${encodeURIComponent(collaborator.name)}" target="_blank">View Publication</a>`
   }
-
-  if (collaborator.active && collaborator.past && !collaborator.projects?.length) {
-    html += `<div><a href="${PUBLICATION_PAGE_URL}?name=${encodeURIComponent(collaborator.name)}" target="_blank" style="color:#9b5de5; text-decoration:underline;">View Publication</a></div>`
-  }
-
   html += `</div>`
   return html
 }
@@ -93,8 +56,7 @@ html += `</div>`
 // ------------------ Filtering ------------------
 function filterCollaborators() {
   return collaborators.filter(c => {
-    if (showBoth.value && c.active && c.past) return true
-    if (showActive.value && c.active && !c.past) return true
+    if (showCurrent.value && c.active) return true
     if (showPast.value && c.past && !c.active) return true
     return false
   })
@@ -109,7 +71,7 @@ function renderMarkers() {
   })
 
   const coords = filtered.map(c => [c.lat, c.lng])
-  if (coords.length) map.fitBounds(coords)
+  if (coords.length) map.fitBounds(coords, { padding: [50, 50], maxZoom: 5 })
 }
 
 // ------------------ Initialize Map ------------------
@@ -124,9 +86,11 @@ onMounted(async () => {
 
   map = L.map('collaborators-map').setView([28.6023, -81.2003], 3)
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; OpenStreetMap contributors'
+  // Softer tile layer
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; OpenStreetMap &copy; CARTO',
+    subdomains: 'abcd',
+    maxZoom: 19
   }).addTo(map)
 
   cluster = L.markerClusterGroup()
@@ -134,61 +98,41 @@ onMounted(async () => {
 
   renderMarkers()
 
-  // ------------------ Leaflet Legend ------------------
+  // ------------------ Legend with checkboxes ------------------
   const legend = L.control({ position: 'bottomright' })
   legend.onAdd = () => {
     legendDiv = L.DomUtil.create('div', 'info legend')
-    legendDiv.style.background = 'rgba(255,255,255,0.9)'
-    legendDiv.style.padding = '6px 8px'
-    legendDiv.style.borderRadius = '5px'
-    legendDiv.style.boxShadow = '0 0 5px rgba(0,0,0,0.3)'
-    legendDiv.style.fontSize = '12px'
-    legendDiv.innerHTML = `<b style="color:#000;">Collaborators</b><br/>`
+    legendDiv.style.background = '#ffffffcc'
+    legendDiv.style.padding = '0.75rem 1rem'
+    legendDiv.style.borderRadius = '0.5rem'
+    legendDiv.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)'
+    legendDiv.style.fontSize = '0.85rem'
 
-    const items = [
-      { label: 'Active', filter: 'active', color: '#2a9d8f' },
-      { label: 'Past', filter: 'past', color: '#457b9d' },
-      { label: 'Both', filter: 'both', color: '#9b5de5' }
+    legendDiv.innerHTML = `<b>Filter Collaborators</b><br/>`
+
+    const filters = [
+      { label: 'Current Collaborators', ref: showCurrent, key: 'current' },
+      { label: 'Past Collaborators', ref: showPast, key: 'past' }
     ]
 
-    items.forEach(item => {
-      const line = document.createElement('div')
-      line.style.display = 'flex'
-      line.style.alignItems = 'center'
-      line.style.marginTop = '3px'
-      line.style.cursor = 'pointer'
+    filters.forEach(f => {
+      const container = document.createElement('div')
+      container.style.display = 'flex'
+      container.style.alignItems = 'center'
+      container.style.marginTop = '0.25rem'
 
-      const colorBox = document.createElement('span')
-      colorBox.style.display = 'inline-block'
-      colorBox.style.width = '12px'
-      colorBox.style.height = '12px'
-      colorBox.style.backgroundColor = item.color
-      colorBox.style.border = '1px solid #000'
-      colorBox.style.marginRight = '6px'
-      colorBox.style.borderRadius = '6px'
-      line.appendChild(colorBox)
+      const checkbox = document.createElement('input')
+      checkbox.type = 'checkbox'
+      checkbox.checked = f.ref.value
+      checkbox.onchange = () => toggleFilter(f.key)
+      container.appendChild(checkbox)
 
       const label = document.createElement('span')
-      label.textContent = item.label
-      label.style.color = '#000'
-      label.style.fontWeight = '500'
-      line.appendChild(label)
+      label.textContent = f.label
+      label.style.marginLeft = '0.5rem'
+      container.appendChild(label)
 
-      line.onclick = () => toggleFilter(item.filter)
-
-      // Save for updating visibility later
-      line.updateCheck = () => {
-        if ((item.filter === 'active' && showActive.value) ||
-            (item.filter === 'past' && showPast.value) ||
-            (item.filter === 'both' && showBoth.value)) {
-          colorBox.style.opacity = 1
-        } else {
-          colorBox.style.opacity = 0.3
-        }
-      }
-      line.updateCheck()
-
-      legendDiv.appendChild(line)
+      legendDiv.appendChild(container)
     })
 
     return legendDiv
@@ -196,20 +140,12 @@ onMounted(async () => {
 
   legend.addTo(map)
 })
-
-// Update legend colors on toggle
-function updateLegend() {
-  if (!legendDiv) return
-  Array.from(legendDiv.children).forEach(line => {
-    if (line.updateCheck) line.updateCheck()
-  })
-}
 </script>
 
 <style scoped>
 .map {
   width: 100%;
-  height: 500px;
-  margin-bottom: 50px;
+  min-height: 50vh;
+  margin-bottom: 3rem;
 }
 </style>

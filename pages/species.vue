@@ -6,6 +6,7 @@ import SpeciesMap from '~/components/Species/SpeciesMap.vue';
   <div>
     <SpeciesDescription />
     <SpeciesMap />
-    <SpeciesList />
+    <div id="species-list" class="mt-16">
+   <SpeciesList /></div>
   </div>
 </template>

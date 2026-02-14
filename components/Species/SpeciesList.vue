@@ -11,7 +11,7 @@
       <template v-for="(subfamilies, family) in groupedSpecies" :key="family">
 
         <!-- FAMILY -->
-        <h3 class="text-2xl font-bold mt-12 mb-4 text-gray-200 border-b border-gray-600 pb-2">
+        <h3 class="text-2xl font-bold mt-12 mb-4 text-gray-700 border-b border-gray-600 pb-2">
           {{ family }}
         </h3>
 
@@ -19,7 +19,7 @@
         <template v-for="(speciesArray, subfamily) in subfamilies" :key="subfamily">
 
           <!-- SUBFAMILY -->
-          <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-300 ml-2">
+          <h4 class="text-xl font-semibold mt-8 mb-2 text-gray-600 ml-2">
             Subfamily {{ subfamily }}
           </h4>
 
@@ -31,8 +31,8 @@
               class="flex items-center gap-2"
             >
               <div>
-                <i class="font-medium text-amber-300 tracking-wide">{{ species.name }}</i>
-                <span class="text-sm text-gray-400 ml-1">
+                <i class="font-medium text-amber-600 tracking-wide">{{ species.name }}</i>
+                <span class="text-sm text-gray-500 ml-1">
                   {{ formatAuthorsAndYear(species.authors, species.year) }}
                 </span>
               </div>

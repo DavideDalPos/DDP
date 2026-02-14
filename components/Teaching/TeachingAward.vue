@@ -6,8 +6,8 @@
       <li v-for="(award, index) in awards" :key="index" class="flex items-start space-x-3">
         <span class="text-amber-400 mt-1">★</span>
         <div>
-          <p class="font-medium text-gray-200">{{ award.title }}</p>
-          <p class="text-sm text-gray-400">{{ award.details }}</p>
+          <p class="font-medium text-gray-700">{{ award.title }}</p>
+          <p class="text-sm text-gray-500">{{ award.details }}</p>
         </div>
       </li>
     </ul>

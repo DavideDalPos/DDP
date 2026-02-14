@@ -1,12 +1,14 @@
 <template>
   <div class="container mx-auto my-15 px-8 max-w-[70rem]">
+    <CVIntro />
+    
     <div class="flex flex-col lg:flex-row gap-8">
       <!-- Left column -->
       <div class="flex-1">
         <CvEducation />
 
         <div class="mt-10">
-          <h2 class="text-3xl font-bold text-gray-200 mb-6">Professional Experience</h2>
+          <h2 class="text-3xl font-bold text-gray-700 mb-6">Professional Experience</h2>
 
           <div class="space-y-6">
             <CvJob
@@ -25,15 +27,17 @@
       <!-- Right column -->
       <CvSidebar />
     </div>
-    <CvPreview />
+<div id="cv" class="mt-16">
+  <CvPreview />
+</div>
   </div>
 </template>
 
 <script setup>
 import CvEducation from './CvEducation.vue';
+import CVIntro from './CVIntro.vue';
 import CvJob from './CvJob.vue';
 import { jobs } from './CvJobsData.js';
-import CvPreview from './CvPreview.vue';
 import CvSidebar from './CvSidebar.vue';
 
 const sortedJobs = computed(() => {

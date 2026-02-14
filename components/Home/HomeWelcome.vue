@@ -1,7 +1,6 @@
 <template>
   <section class="relative flex flex-col items-center justify-center overflow-hidden py-20 min-h-screen">
 
-
     <!-- Particle Network Canvas -->
 
     <div class="text-center px-1 relative z-10">
@@ -13,29 +12,42 @@
         </div>
       </transition>
 
-      <!-- Name & Title -->
-      <transition name="fade" appear>
-        <div class="mt-6 space-y-2 opacity-0 animate-fade-in animation-delay-300">
-          <h1 class="text-4xl font-bold text-white">Davide Dal Pos</h1>
-          <p class="text-lg text-gray-300">Postdoctoral Scholar, University of Central Florida</p>
-          <p class="text-md text-gray-400 italic">Morphology and Evolution of Parasitoid Wasps</p>
-        </div>
-      </transition>
+<!-- Name & Title -->
+<transition name="fade" appear>
+  <div class="mt-6 space-y-2 opacity-0 animate-fade-in animation-delay-300">
+    <h1 class="text-gray-700 text-4xl font-bold">Davide Dal Pos</h1>
+    <p class="text-gray-600 text-lg">Postdoctoral Scholar, University of Central Florida</p>
+    <p class="text-gray-700 text-md italic">Morphology and Evolution of Parasitoid Wasps</p>
+  </div>
+</transition>
 
-      <!-- Welcome Message + Typewriter -->
-      <transition name="fade" appear>
-        <p class="text-2xl md:text-3xl text-gray-300 mt-8 opacity-0 animate-fade-in animation-delay-700">
-          Hi! Welcome to my academic website. <br />
-          I work on <span id="typewriter" class="text-amber-400 font-semibold"></span>
-        </p>
-      </transition>
+<!-- Welcome Message + Typewriter -->
+<transition name="fade" appear>
+  <p class="text-gray-700 text-2xl md:text-3xl mt-8 opacity-0 animate-fade-in animation-delay-700">
+    Hi! Welcome to my academic website. <br />
+    I work on <span class="text-amber-400 font-semibold" id="typewriter"></span>
+  </p>
+</transition>
+
 
     </div>
+    <!-- Featured CTA + Publications -->
+    <FeaturedCTA 
+      :featuredPublications="featuredPublications" 
+    />
   </section>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { defineProps, onMounted, ref } from 'vue'
+import FeaturedCTA from '~/components/Home/FeaturedCTA.vue'
+
+const props = defineProps({
+  textColor: { type: String, default: 'text-white' },
+  subtitleColor: { type: String, default: 'text-gray-300' },
+  italicColor: { type: String, default: 'text-gray-400' },
+  highlightColor: { type: String, default: 'text-amber-400' }
+})
 
 const networkCanvas = ref(null)
 

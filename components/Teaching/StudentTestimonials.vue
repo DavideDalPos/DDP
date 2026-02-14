@@ -7,7 +7,7 @@
         <div 
           v-for="(testimonial, index) in testimonials" 
           :key="index" 
-          class="min-w-full p-8 bg-gray-800 rounded shadow-lg"
+          class="min-w-full p-8 bg-gray-800 rounded-lg shadow-lg"
         >
           <p class="italic text-gray-200 mb-2">"{{ testimonial.quote }}"</p>
           <p class="text-right text-sm font-medium text-gray-400">– {{ testimonial.author }}</p>
