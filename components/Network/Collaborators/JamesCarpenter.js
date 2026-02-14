@@ -4,6 +4,7 @@ export default {
   lng: -73.9665,
   active: false,
   past: true,
+  institution: 'American Museum of Natural History (AMNH)',
   projects: []
 }
 

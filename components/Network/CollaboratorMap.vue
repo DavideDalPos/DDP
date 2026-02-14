@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { collaborators } from './Collaborators'
 
 let map
@@ -46,17 +46,28 @@ const PUBLICATION_PAGE_URL = '/publications'
 function getPopupHtml(collaborator) {
   let html = `<div style="font-family:'Segoe UI',sans-serif; font-size:13px;">`
 
-  html += `<div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;">`
-  html += `<strong style="font-size:14px;">${collaborator.name}</strong>`
+html += `<div style="margin-bottom:6px;">`
 
-  if (collaborator.active) {
-    html += `<span style="display:inline-block; padding:2px 6px; background-color:#2a9d8f; color:white; border-radius:12px; font-size:12px;">Active</span>`
-  } 
-  if (collaborator.past) {
-    html += `<span style="display:inline-block; padding:2px 6px; background-color:#457b9d; color:white; border-radius:12px; font-size:12px;">Past</span>`
-  }
+// Name + badges row
+html += `<div style="display:flex; align-items:center; gap:6px;">`
+html += `<strong style="font-size:14px;">${collaborator.name}</strong>`
 
-  html += `</div>`
+if (collaborator.active) {
+  html += `<span style="display:inline-block; padding:2px 6px; background-color:#2a9d8f; color:white; border-radius:12px; font-size:12px;">Active</span>`
+} 
+if (collaborator.past) {
+  html += `<span style="display:inline-block; padding:2px 6px; background-color:#457b9d; color:white; border-radius:12px; font-size:12px;">Past</span>`
+}
+
+html += `</div>`
+
+// Institution (smaller + italic)
+if (collaborator.institution) {
+  html += `<div style="font-size:12px; font-style:italic; color:#555; margin-top:2px;">${collaborator.institution}</div>`
+}
+
+html += `</div>`
+
 
   if (collaborator.active && collaborator.projects?.length) {
     html += `<div style="margin-bottom:8px;"><strong>Projects:</strong><ul style="padding-left:18px; margin:4px 0;">`

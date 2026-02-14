@@ -4,8 +4,8 @@ export default {
   lng: -81.2009,
   active: true,
   past: false,
+  institution: 'University of Central Florida (UCF)',
   projects: [
-    { name: 'WID Database', url: 'https://worldichneumonidae.org' },
-    { name: 'Ovipositor Morphology Study', url: 'https://example.com/ovipositor' }
+    { name: 'WID Database', url: 'https://worldichneumonidae.org' }
   ]
 }
