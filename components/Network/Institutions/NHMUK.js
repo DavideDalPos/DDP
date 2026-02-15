@@ -4,7 +4,7 @@ export default {
   lat: 51.4967,
   lng: -0.17637,
   city: 'London',
-  country: 'UK',
+  country: 'England',
   roles: [
     'Ichneumonidae identification',
   ],
