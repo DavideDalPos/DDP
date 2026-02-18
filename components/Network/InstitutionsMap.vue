@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2 class="text-xl font-bold mb-4 text-amber-400">Institutions</h2>
     <div id="institutions-map" class="map rounded-xl shadow-md"></div>
   </div>
 </template>

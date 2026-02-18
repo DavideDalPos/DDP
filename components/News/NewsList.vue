@@ -1,100 +1,70 @@
 <template>
-  <section class="text-gray-200">
-    <div class="container mx-auto px-6 my-16 max-w-5xl">
-      <h1 class="text-4xl font-extrabold mb-4 text-gray-700">News</h1>
+  <section class="bg-gray-50 text-gray-800 py-16">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <h1 class="text-4xl font-extrabold mb-12 text-gray-900">News</h1>
 
       <template v-for="[year, items] in grouped" :key="year">
-        <!-- Year header -->
-        <h2 class="text-2xl font-bold mb-6 text-amber-600 py-2 border-b border-gray-700">
+        <h2 class="text-3xl font-bold mb-8 text-amber-600 border-b border-amber-300 pb-2 mt-10">
           {{ year }}
         </h2>
 
-        <ul class="space-y-4">
-          <li v-for="news in items" :key="news.path || news.title">
-
-            <!-- Clickable -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div v-for="news in items" :key="news.path || news.title">
             <NuxtLink
               v-if="news.meta.clickable"
               :to="news.path"
-              class="block bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition border-l-4 border-amber-400 cursor-pointer"
+              class="block p-6 bg-white border border-gray-300 rounded-2xl shadow hover:shadow-lg transition-transform transform hover:-translate-y-1 group"
             >
-              <div class="flex flex-col md:flex-row md:justify-between md:items-center">
-                <!-- Left: Title + Category/NEW badges -->
-                <div class="flex items-center gap-2 flex-wrap">
-                  <!-- Title -->
-                  <p class="text-lg font-semibold text-amber-400">{{ news.title }}</p>
-
-                  <!-- Category badge -->
-<!-- Category badge -->
-<span
-  v-if="news.meta.categories && news.meta.categories.length > 0"
-  :class="[
-    'text-[10px] font-semibold px-2 py-0.5 rounded-full', // pill shape
-    getBadgeColor(news.meta.categories[0])
-  ]"
->
-  {{ news.meta.categories[0] }}
-</span>
-
-                </div>
-
-                <!-- Right: Date -->
-                <span class="text-gray-400 mt-2 md:mt-0">
-                  {{ new Date(news.meta.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) }}
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-semibold text-amber-600 group-hover:text-amber-700">
+                  {{ news.title }}
+                </h3>
+                <span
+                  v-if="news.meta.categories?.length"
+                  class="text-xs font-bold px-3 py-1 rounded-full"
+                  :style="getBadgeStyle(news.meta.categories[0])"
+                >
+                  {{ news.meta.categories[0] }}
                 </span>
               </div>
 
-              <!-- Description -->
-<div class="mt-2 flex justify-between items-start">
-  <!-- Description on the left -->
-  <p v-if="news.description" class="text-gray-300" v-html="news.description"></p>
+              <p class="text-gray-500 text-sm mt-2">
+                {{ new Date(news.meta.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) }}
+              </p>
 
-  <!-- Read More badge on the right -->
-  <span
-    v-if="news.meta.clickable"
-    class="text-xs font-bold text-white bg-red-900 px-2 py-0.5 rounded ml-4 flex-shrink-0"
-  >
-    Read More
-  </span>
-</div>
+              <p v-if="news.description" class="mt-3 text-gray-700 text-sm line-clamp-4" v-html="news.description"></p>
 
+              <span
+                v-if="news.meta.clickable"
+                class="mt-4 inline-block text-xs font-bold text-white bg-indigo-300 px-3 py-1 rounded group-hover:bg-amber-600"
+              >
+                Read More
+              </span>
             </NuxtLink>
 
-            <!-- Non-clickable -->
             <div
               v-else
-              class="block bg-gray-800 rounded-lg p-4 border-l-4 border-amber-400"
+              class="p-6 bg-white border border-gray-300 rounded-2xl shadow-sm"
             >
-              <div class="flex flex-col md:flex-row md:justify-between md:items-center">
-                <!-- Left: Title + Category/NEW badges -->
-                <div class="flex items-center gap-2 flex-wrap">
-                  <!-- Title -->
-                  <p class="text-lg font-semibold text-amber-400">{{ news.title }}</p>
-
-                  <!-- Category badge -->
-                  <span
-  v-if="news.meta.categories && news.meta.categories.length > 0"
-  :class="[
-    'text-[10px] font-semibold px-2 py-0.5 rounded-full', // pill shape
-    getBadgeColor(news.meta.categories[0])
-  ]"
->
-  {{ news.meta.categories[0] }}
-</span>
-                </div>
-
-                <!-- Right: Date -->
-                <span class="text-gray-400 mt-2 md:mt-0">
-                  {{ new Date(news.meta.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) }}
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-semibold text-amber-600">{{ news.title }}</h3>
+                <span
+                  v-if="news.meta.categories?.length"
+                  class="text-xs font-bold px-3 py-1 rounded-full"
+                  :style="getBadgeStyle(news.meta.categories[0])"
+                >
+                  {{ news.meta.categories[0] }}
                 </span>
               </div>
 
-              <!-- Description -->
-              <p v-if="news.description" class="mt-2 text-gray-300" v-html="news.description"></p>
-            </div>
+              <p class="text-gray-500 text-sm mt-2">
+                {{ new Date(news.meta.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) }}
+              </p>
 
-          </li>
-        </ul>
+              <p v-if="news.description" class="mt-3 text-gray-700 text-sm line-clamp-4" v-html="news.description"></p>
+            </div>
+          </div>
+        </div>
       </template>
     </div>
   </section>
@@ -103,9 +73,7 @@
 <script setup>
 const route = useRoute()
 
-const { data } = await useAsyncData(route.path, () => {
-  return queryCollection('news').all()
-})
+const { data } = await useAsyncData(route.path, () => queryCollection('news').all())
 
 const searchQuery = ref('')
 
@@ -124,28 +92,33 @@ const grouped = computed(() => {
     if (!groups[year]) groups[year] = []
     groups[year].push(item)
   }
-
   // Sort within each year (newest first)
   for (const year in groups) {
     groups[year].sort((a, b) => new Date(b.meta.date) - new Date(a.meta.date))
   }
-
   return Object.entries(groups).sort((a, b) => b[0] - a[0])
 })
 
-function getBadgeColor(category) {
-  switch(category) {
-    case 'Milestone':
-      return 'bg-green-200 text-green-900'
-    case 'Publication':
-      return 'bg-red-200 text-red-900'
-    case 'New Job':
-    case 'Job':
-      return 'bg-amber-200 text-amber-900'
-    default:
-      return 'bg-gray-200 text-gray-900'
+// Dynamic Earth Tones badge colors
+function getBadgeStyle(category) {
+  let hash = 0
+  for (let i = 0; i < category.length; i++) {
+    hash = category.charCodeAt(i) + ((hash << 5) - hash)
+  }
+  const hue = (hash % 60) + 20  // Earth tones: 20–80
+  return {
+    backgroundColor: `hsl(${hue}, 60%, 85%)`, // soft pastel
+    color: `hsl(${hue}, 60%, 25%)`            // darker text
   }
 }
-
-
 </script>
+
+<style scoped>
+/* Tailwind's line-clamp for truncating descriptions */
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+</style>

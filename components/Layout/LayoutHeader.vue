@@ -88,8 +88,8 @@ const links = reactive([
   { label: 'Home', link: '/', isOpen: false },
   { label: 'Research', submenu: [
       { label: 'Systematics of Ichneumonidae', link:'/research/systematics' },
-      { label: 'Phenomics Evolution', link: '/research/evolution' },
-      { label: 'Collection-Based Research', link: '/research/collection' }
+      { label: 'Phenomics & Ontologies', link: '/research/evolution' },
+      { label: 'Collection-Based Research', link: '/research/collection' },
     ], isOpen: false },
   { label: 'Publications', link: '/publications', isOpen: false },
   { label: 'Species', link: '/species', isOpen: false },

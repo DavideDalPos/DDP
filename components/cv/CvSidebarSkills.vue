@@ -8,7 +8,7 @@
       <li 
         v-for="(skill, index) in skills" 
         :key="index" 
-        class="bg-amber-200 text-amber-800 px-2 py-0.5 rounded-full text-xs font-medium hover:bg-amber-300 transition"
+        class="bg-indigo-200 text-indigo-800 px-2 py-0.5 rounded-full text-xs font-medium hover:bg-amber-300 transition"
       >
         {{ skill }}
       </li>

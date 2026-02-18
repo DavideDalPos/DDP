@@ -1,7 +1,6 @@
 <template>
 <section class="container mx-auto px-6 mt-12 mb-8 max-w-6xl">
 
-
     <!-- Hero Intro -->
     <div class="bg-gray-800 p-12 rounded-xl shadow-lg mb-12 text-center">
       <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 text-white">
@@ -11,7 +10,7 @@
       <p class="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
         One of my primary research interests is the systematics, taxonomy, and classification of parasitoid wasps, 
         with a particular emphasis on <span class="text-amber-400 font-semibold">Ichneumonidae</span> (Hymenoptera, Ichneumonoidea), a hyperdiverse family with approximately 
-        <span class="text-amber-400 font-semibold">25,000 described species</span> and an estimated 
+        <span class="text-indigo-400 font-semibold">25,000 described species</span> and an estimated 
         <span class="text-amber-400 font-semibold">100,000 species</span> yet to be described.
       </p>
     </div>
@@ -22,8 +21,8 @@
       <!-- Left: Text Content -->
       <div class="col-span-2 flex flex-col space-y-6 text-gray-800 bg-gray-50 p-6 rounded-xl shadow-sm">
         <p class="text-base sm:text-lg leading-relaxed">
-          My taxonomic work has mainly focused on the subfamily <span class="text-amber-400 font-semibold">Ichneumoninae</span>, the largest within Ichneumonidae, where I have described several new species. 
-          My expertise extends across the entire family and even to related groups, such as Braconidae, allowing me to contribute broadly to parasitoid wasp systematics.
+          My taxonomic work has mainly focused on the subfamily <span class="text-indigo-400 font-semibold">Ichneumoninae</span>, the largest within <span class="text-amber-400 font-semibold">Ichneumonidae</span>, where I have described several new species. 
+          My expertise extends across the entire family and even to related groups, such as <span class="text-indigo-400 font-semibold">Braconidae</span>, allowing me to contribute broadly to parasitoid wasp systematics.
         </p>
 
         <p class="text-base sm:text-lg leading-relaxed">
@@ -32,7 +31,7 @@
         </p>
 
         <p class="text-base sm:text-lg leading-relaxed">
-          Recently, I have investigated the evolution of key trait syndromes in Ichneumonidae and produced a <span class="text-amber-400 font-semibold">phylogeny combining genomic data and Sanger sequences</span> (Dal Pos & Sharanowski, 2024). 
+          Recently, I have investigated the evolution of key trait syndromes in <span class="text-amber-400 font-semibold">Ichneumonidae</span> and produced a <span class="text-indigo-400 font-semibold">phylogeny</span> (Dal Pos & Sharanowski, 2024). 
           I am currently working on the first calibrated phylogeny of the group, aimed at identifying major shifts in morphological evolution.
         </p>
       </div>
@@ -44,19 +43,19 @@
         <div class="flex flex-col space-y-3">
           <div class="flex justify-between items-center">
             <span class="font-medium">Described species</span>
-            <span class="text-amber-400 font-semibold">~25,000</span>
+            <span class="text-indigo-400 font-semibold">~25,000</span>
           </div>
           <div class="flex justify-between items-center">
             <span class="font-medium">Estimated total species</span>
-            <span class="text-amber-400 font-semibold">~100,000</span>
+            <span class="text-indigo-400 font-semibold">~100,000</span>
           </div>
           <div class="flex justify-between items-center">
             <span class="font-medium">Subfamilies</span>
-            <span class="text-amber-400 font-semibold">42+</span>
+            <span class="text-indigo-400 font-semibold">42+</span>
           </div>
           <div class="flex justify-between items-center">
             <span class="font-medium">Focus of my work</span>
-            <span class="text-amber-400 font-semibold">Ichneumoninae</span>
+            <span class="text-indigo-400 font-semibold">Ichneumoninae</span>
           </div>
         </div>
 

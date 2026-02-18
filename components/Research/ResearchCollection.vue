@@ -1,15 +1,14 @@
 <template>
 <section class="container mx-auto px-6 mt-12 mb-8 max-w-6xl">
 
-
     <!-- Hero Intro -->
     <div class="bg-gray-800 p-12 rounded-xl shadow-lg mb-12 text-center">
       <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4">
-        Collection-Based Research
+        Collections & Biodiversity Informatics
       </h1>
       <div class="mx-auto w-24 h-1 bg-amber-400 rounded mb-6"></div>
       <p class="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-        I study <span class="text-amber-400 font-semibold">entomological collections</span> as dynamic research infrastructures that enable biodiversity discovery, integrate large-scale datasets, and support modern taxonomy, conservation, and evolutionary research.
+        I work with <span class="text-amber-400 font-semibold">entomological collections</span> as dynamic research infrastructures, integrating specimen-based research with <span class="text-indigo-400 font-semibold">biodiversity informatics</span>. Through the management of databases such as <span class="text-amber-400 font-semibold">WID</span> and <span class="text-indigo-400 font-semibold">SoI</span>, I connect specimen data, literature, and morphological information to support taxonomy, evolutionary research, and global biodiversity studies.
       </p>
     </div>
 
@@ -19,62 +18,61 @@
       <!-- Left: Main Text (2/3 width) -->
       <div class="col-span-2 flex flex-col space-y-6 bg-gray-50 p-6 rounded-xl shadow-sm text-gray-800 text-justify">
         <p class="text-base sm:text-lg leading-relaxed">
-          I am deeply interested in the role of <span class="text-amber-400 font-semibold">entomological collections</span> as engines of modern biodiversity research. Collections are far more than repositories of specimens—they are <span class="text-amber-400 font-semibold">dynamic research infrastructures</span> that generate new scientific questions, enable the discovery of hidden diversity, and preserve irreplaceable biological information across time and space.
+          Collections are more than repositories of specimens—they are <span class="text-amber-400 font-semibold">engines of discovery</span> that preserve biodiversity, generate new scientific questions, and inform conservation and evolutionary studies.
         </p>
 
         <p class="text-base sm:text-lg leading-relaxed">
-          In the era of large-scale data integration, the <span class="text-amber-400 font-semibold">digitization of natural history collections</span> has become essential. High-resolution imaging, standardized metadata, and interoperable databases unlock the full research potential of specimens, making them accessible to scientists worldwide and allowing seamless integration with phylogenetic, ecological, and morphological datasets.
+          By combining hands-on work in entomological collections with <span class="text-amber-400 font-semibold">digitization and data integration</span>, I help make specimens and associated information widely accessible. High-resolution imaging, structured metadata, and interoperable databases enable global collaboration and seamless integration with <span class="text-indigo-400 font-semibold">phylogenetic</span>, ecological, and morphological datasets.
         </p>
 
         <p class="text-base sm:text-lg leading-relaxed">
-          I actively support and use modern cyberinfrastructure platforms such as <span class="text-amber-400 font-semibold">TaxonWorks</span>, which provide powerful tools for managing, annotating, and analyzing biodiversity data. These systems enable collaborative taxonomy, ontology-driven annotation, and the construction of comprehensive datasets that accelerate species discovery and global biodiversity assessments.
+          I manage and develop databases such as the <span class="text-amber-400 font-semibold">World Ichneumonidae Database (WID)</span> and <span class="text-indigo-400 font-semibold">Syrphidae of Italy (SoI)</span>, supporting collaborative taxonomy, ontology-based annotation, and comprehensive biodiversity analyses. These platforms accelerate species discovery and advance integrative research.
         </p>
 
         <p class="text-base sm:text-lg leading-relaxed">
-          Through these efforts, I aim to promote a modern vision of entomological collections as <span class="text-amber-400 font-semibold">strategic, data-driven resources</span>—crucial for taxonomy, conservation, evolutionary research, and understanding the rapidly changing biosphere.
+          Through these efforts, I aim to highlight the role of collections as <span class="text-amber-400 font-semibold">strategic, data-driven resources</span>—essential for taxonomy, conservation, evolutionary biology, and understanding global biodiversity patterns.
         </p>
       </div>
 
       <!-- Right: Info Card (1/3 width) -->
-      <div class="flex flex-col space-y-6">
-        <div class="bg-gray-50 p-6 rounded-xl shadow-sm flex flex-col justify-start space-y-6 text-gray-800 w-full">
-          <h2 class="text-xl font-bold text-gray-900">Collection Highlights</h2>
+      <div class="flex flex-col space-y-6 items-center">
+        <div class="bg-gray-50 p-6 rounded-xl shadow-sm flex flex-col justify-center space-y-4 text-gray-800 w-full max-w-xs">
+          <h2 class="text-xl font-bold text-gray-900 text-center">Databases</h2>
+
+          <p class="text-gray-700 text-center text-sm">
+            Explore the biodiversity resources I maintain and develop.
+          </p>
 
           <div class="flex flex-col space-y-3">
-            <div class="flex justify-between items-center">
-              <span class="font-medium">Specimens in WID</span>
-              <span class="text-amber-400 font-semibold">~50,000</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span class="font-medium">Literature entries</span>
-              <span class="text-amber-400 font-semibold">2,500+</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span class="font-medium">Digitization tools</span>
-              <span class="text-amber-400 font-semibold">TaxonWorks</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span class="font-medium">Global reach</span>
-              <span class="text-amber-400 font-semibold">16 collaborators</span>
-            </div>
-          </div>
+            <!-- WID button: pastel amber -->
+            <a
+              href="https://www.worldichneumonidae.com"
+              target="_blank"
+              class="text-center text-sm bg-amber-200 text-gray-900 font-medium py-2 rounded hover:bg-amber-300 transition transform hover:-translate-y-1"
+            >
+              World Ichneumonidae Database (WID)
+            </a>
 
-          <a
-            href="https://www.worldichneumonidae.com"
-            target="_blank"
-            class="mt-4 inline-block text-center bg-amber-400 text-gray-900 font-medium py-2 rounded hover:bg-amber-500 transition"
-          >
-            Explore the World Ichneumonidae Database (WID)
-          </a>
+            <!-- SoI button: pastel indigo -->
+            <a
+              href="https://soi-database-link.com"
+              target="_blank"
+              class="text-center text-sm bg-indigo-200 text-gray-900 font-medium py-2 rounded hover:bg-indigo-300 transition transform hover:-translate-y-1"
+            >
+              Syrphidae of Italy (SoI) Database
+            </a>
+          </div>
         </div>
 
-        <!-- Optional Image below card -->
-        <div class="flex justify-center">
-          <img
-            src="/public/images/logoWID.png"
-            alt="World Ichneumonidae Database"
-            class="max-w-xs"
-          />
+        <!-- Image below the card -->
+        <div class="flex justify-center mt-4">
+          <a href="https://www.worldichneumonidae.com" target="_blank">
+            <img
+              src="/public/images/logoWID.png"
+              alt="World Ichneumonidae Database"
+              class="max-w-xs hover:scale-105 transition transform"
+            />
+          </a>
         </div>
       </div>
 

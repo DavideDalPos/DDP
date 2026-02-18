@@ -1,75 +1,76 @@
 <template>
-  <section class=" text-gray-200">
-    <!-- Hero Image -->
-    <div
-      v-if="news.meta.image"
-      class="w-full h-96 rounded-lg overflow-hidden mb-6 shadow-lg"
-    >
-      <img
-        :src="news.meta.image.startsWith('/') ? news.meta.image : '/' + news.meta.image"
-        :alt="news.meta.imageAlt || 'News image'"
-        class="w-full h-full object-cover"
-      />
-    </div>
-
-    <article class="container mx-auto px-6 max-w-4xl space-y-6">
+  <section class="text-gray-800">
+    <article class="container mx-auto px-6 max-w-4xl space-y-6 mt-10">
 
       <!-- Title -->
-      <h1 class="font-serif text-4xl font-bold text-amber-400 leading-tight text-center">
+      <h1 class="font-serif text-4xl font-bold text-amber-500 leading-tight text-center">
         {{ news.title }}
       </h1>
 
       <!-- Author & Date -->
-      <div class="flex flex-col sm:flex-row sm:justify-center sm:items-center text-gray-400 italic text-sm gap-2">
+      <div class="flex flex-col sm:flex-row sm:justify-center sm:items-center text-gray-500 italic text-sm gap-2">
         <span v-if="news.meta.author">By {{ news.meta.author }}</span>
         <span>{{ formattedDate }}</span>
       </div>
 
-      <!-- Tags (below author/date) -->
+      <!-- Tags -->
       <div v-if="news.meta.tags && news.meta.tags.length" class="flex justify-center flex-wrap gap-2 mt-2">
-        <span
-          v-for="(tag, i) in news.meta.tags"
-          :key="i"
-          :class="getTagColorClass(tag)"
-          class="text-xs font-semibold px-2 py-1 rounded-full transition"
-        >
-          {{ tag }}
-        </span>
+<span
+  v-for="(tag, i) in news.meta.tags"
+  :key="i"
+  class="text-xs font-semibold px-2 py-1 rounded-full transition"
+  :style="generateTagStyle(tag)"
+>
+  {{ tag }}
+</span>
+
+
+      </div>
+
+      <!-- Image Below Title -->
+      <div v-if="news.meta.image" class="w-full rounded-lg overflow-hidden shadow-md mt-4">
+        <img
+          :src="news.meta.image.startsWith('/') ? news.meta.image : '/' + news.meta.image"
+          :alt="news.meta.imageAlt || 'News image'"
+          class="w-full h-auto object-cover"
+        />
       </div>
 
       <!-- Summary Box -->
-       <div class="bg-gray-700">
-      <div v-if="news.meta.summary" class="bg-gray-800 rounded-md p-6 shadow-md border border-gray-600 mt-4">
-        <p class="text-gray-100 text-lg italic" v-html="news.meta.summary"></p>
+      <div v-if="news.meta.summary" class="bg-white rounded-md p-6 shadow-sm border border-gray-200 mt-4">
+        <p class="text-gray-700 text-lg italic" v-html="news.meta.summary"></p>
       </div>
 
       <!-- Main Blog Content -->
-      <div v-if="news.meta.blog" class=" prose text-gray-200 mt-4">
-        <p v-html="news.meta.blog" class="text-justify"></p>
+      <div v-if="news.meta.blog" class="prose prose-gray max-w-none mt-4 text-gray-800">
+        <p v-html="news.meta.blog"></p>
       </div>
 
       <!-- Why this matters -->
-      <div v-if="news.meta.why" class="bg-gray-800 border border-gray-600 rounded-md p-6 shadow-md mt-4">
-        <h3 class="font-semibold text-amber-400 mb-2">Why this matters</h3>
-        <p class="text-gray-200 text-justify" v-html="news.meta.why"></p>
+      <div v-if="news.meta.why" class="bg-white border border-gray-200 rounded-md p-6 shadow-sm mt-4">
+        <h3 class="font-semibold text-amber-500 mb-2">Why this matters</h3>
+        <p class="text-gray-700" v-html="news.meta.why"></p>
       </div>
-      </div>
-      <!-- Link to Paper -->
-      <div v-if="news.meta.link" class="my-6 text-center">
-        <a
-          :href="news.meta.link"
-          target="_blank"
-          class="inline-block bg-amber-400 text-gray-900 font-semibold px-6 py-3 rounded-md hover:bg-amber-300 transition shadow-md"
-        >
-          Read Full Paper
-        </a>
-      </div>
+
+<!-- Links Section -->
+<div v-if="news.meta.links && news.meta.links.length" class="my-6 text-center flex flex-col sm:flex-row justify-center gap-4">
+  <a
+    v-for="(linkObj, index) in news.meta.links"
+    :key="index"
+    :href="linkObj.url"
+    target="_blank"
+    class="inline-block bg-amber-400 text-gray-900 font-semibold px-6 py-3 rounded-md hover:bg-amber-400 transition shadow-md"
+  >
+    {{ linkObj.text }}
+  </a>
+</div>
+
 
       <!-- Back Button -->
       <div class="text-center">
         <button
           type="button"
-          class="uppercase flex justify-center gap-2 mx-auto text-amber-400 hover:text-amber-400 transition font-semibold mb-10"
+          class="uppercase flex justify-center gap-2 mx-auto text-amber-500 hover:underline transition font-semibold mb-10"
           @click="goBack"
         >
           ← Back
@@ -92,16 +93,34 @@ function goBack() {
   }
 }
 
-// Tags pastel colors
+// Dynamic tag colors
 function getTagColorClass(tag) {
-  const colors = {
-    Ichneumonidae: 'bg-green-200 text-green-900',
-    Sicily: 'bg-yellow-200 text-yellow-900',
-    Faunistics: 'bg-purple-200 text-purple-900',
-    Biodiversity: 'bg-red-200 text-red-900'
+  // Simple hash function to generate consistent number per tag
+  let hash = 0
+  for (let i = 0; i < tag.length; i++) {
+    hash = tag.charCodeAt(i) + ((hash << 5) - hash)
   }
-  return colors[tag] || 'bg-gray-200 text-gray-900'
+  // Generate HSL color
+  const hue = hash % 360
+  const pastel = `hsl(${hue}, 60%, 80%)` // light pastel background
+  const textHue = hash % 360
+  const textColor = `hsl(${textHue}, 60%, 30%)` // dark enough text
+
+  return `bg-[${pastel}] text-[${textColor}]`
 }
+
+function generateTagStyle(tag) {
+  let hash = 0
+  for (let i = 0; i < tag.length; i++) {
+    hash = tag.charCodeAt(i) + ((hash << 5) - hash)
+  }
+  const hue = hash % 360
+  return {
+    backgroundColor: `hsl(${hue}, 60%, 85%)`, // pastel background
+    color: `hsl(${hue}, 60%, 25%)`           // darker text
+  }
+}
+
 
 // Format date nicely
 const formattedDate = computed(() => {

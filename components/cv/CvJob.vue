@@ -14,7 +14,7 @@
     <!-- Description block -->
     <div
       v-if="description"
-      class="mt-3 bg-amber-50 border border-amber-200 rounded-lg p-4"
+      class="mt-3 bg-indigo-50 border border-indigo-200 rounded-lg p-4"
     >
       <p class="text-sm text-amber-600 font-semibold mb-2">Responsibilities:</p>
 

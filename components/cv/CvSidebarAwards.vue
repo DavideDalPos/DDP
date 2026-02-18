@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-100 border border-amber-300 p-5 rounded-xl shadow-sm">
+  <div class="bg-gray-100 border border-indigo-300 p-5 rounded-xl shadow-sm">
     <!-- Main Heading -->
     <h3 class="font-bold mb-4 text-amber-600 text-lg">
       Awards & Funding
@@ -15,7 +15,7 @@
         <li
           v-for="award in yearGroup"
           :key="award.name + award.org"
-          class="flex justify-between items-center py-1.5 px-3 hover:bg-amber-100 transition rounded-md"
+          class="flex justify-between items-center py-1.5 px-3 hover:bg-indigo-100 transition rounded-md"
         >
           <div class="flex items-center gap-2">
             <!-- Amber star icon -->

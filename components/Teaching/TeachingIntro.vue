@@ -10,19 +10,22 @@
       </h1>
       
       <!-- Accent Divider -->
-      <div class="mx-auto w-24 h-1 bg-amber-400 rounded mb-6"></div>
+      <div class="mx-auto w-24 h-1 bg-indigo-400 rounded mb-6"></div>
       
       <!-- Subtitle -->
       <p class="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-        Learn about my approach to teaching, mentorship, and the courses I have designed and instructed. 
-        I focus on <span class="text-amber-400 font-semibold">inclusive pedagogy, active learning, and student engagement</span>.
+        My teaching philosophy is rooted in
+        <span class="text-indigo-400 font-semibold">active engagement, curiosity, and accessibility</span>.
+        I design learning experiences that challenge students intellectually while providing the support needed to grow.
+        I emphasize <span class="text-indigo-400 font-semibold">conceptual clarity, careful observation, and evidence-based reasoning</span>,
+        fostering confidence, analytical skills, and independent thinking in scientific inquiry.
       </p>
 
       <!-- Optional CTA Button (scroll to courses or CV) -->
       <div class="mt-8">
         <a
           href="#teaching-courses"
-          class="inline-block px-6 py-3 rounded-full bg-amber-400 text-gray-900 font-semibold shadow-lg hover:bg-amber-500 transition transform hover:-translate-y-1"
+          class="inline-block px-6 py-3 rounded-full bg-amber-400 text-white font-semibold shadow-lg hover:bg-amber-600 hover:text-gray-100 transition transform hover:-translate-y-1"
         >
           View Courses ↓
         </a>
@@ -30,7 +33,7 @@
 
       <!-- Optional small note -->
       <p class="text-gray-400 text-sm mt-2">
-        You can explore my full teaching philosophy, course list, and mentoring experience below.
+        Explore my full teaching philosophy, course list, and mentoring experience below.
       </p>
 
     </div>

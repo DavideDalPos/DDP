@@ -99,16 +99,21 @@ const { data } = await useAsyncData('publications', () =>
   queryCollection('publications').all()
 )
 
-const filteredPublications = computed(() =>
-  data.value?.filter(pub => pub.meta?.category?.includes('Evolution')) || []
-)
+// Filter by category AND sort by date descending (most recent first)
+const filteredPublications = computed(() => {
+  return (
+    data.value
+      ?.filter(pub => pub.meta?.category?.includes('Evolution'))
+      .sort((a, b) => new Date(b.meta.date) - new Date(a.meta.date)) || []
+  )
+})
 
 function formatAuthors(authors) {
   const formatted = authors.map(({ first_name, last_name }) => {
     const initials = first_name.split(' ').map(n => n[0] + '.').join(' ')
     const full = `${last_name}, ${initials}`
     return full === 'Dal Pos, D.'
-      ? `<span class="text-amber-400 font-bold">${full}</span>`
+      ? `<span class="text-amber-700 font-bold">${full}</span>`
       : full
   })
 
@@ -116,3 +121,4 @@ function formatAuthors(authors) {
   return formatted.slice(0, -1).join(', ') + ' & ' + formatted.at(-1)
 }
 </script>
+
