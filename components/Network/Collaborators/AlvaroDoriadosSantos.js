@@ -4,8 +4,9 @@ export default {
   lng: -48.3598,
   active: true,
   institution: 'Federal University of Tocantins',
-  past: true,
+  published: true,
     projects: [
-    { name: 'New species of Braconidae'}
+    { name: 'Brazilian Ichneumonidae'},
+    { name: 'WID Database', url: 'https://worldichneumonidae.com' }
   ]
 }

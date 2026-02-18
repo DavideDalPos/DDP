@@ -4,8 +4,9 @@ export default {
   lng: 11.3523,
   active: true,
   institution: 'University of Bologna',
-  past: true,
+  published: true,
     projects: [
-    { name: 'SoI Database', url: 'https://syrphidaeitaly.com/'}
+    { name: 'SoI Database', url: 'https://syrphidaeitaly.com/'},
+    { name: 'Parasitoid Wasps in Agricultural Landscape'}
   ]
 }

@@ -4,8 +4,5 @@ export default {
   lng: -71.6125,
   active: false,
   institution: 'Pontificia Universidad Católica de Valparaíso',
-  past: true,
-    projects: [
-    { name: 'Checklist Chilean Ichneumonidae'}
-  ]
+  published: true
 }

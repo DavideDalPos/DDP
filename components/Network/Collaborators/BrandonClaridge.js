@@ -4,8 +4,5 @@ export default {
   lng: -111.8097,
   active: false,
   institution: 'Utah State University',
-  past: true,
-    projects: [
-    { name: 'Revision of Nearctic <i>Eparces</i>'}
-  ]
+  published: true,
 }

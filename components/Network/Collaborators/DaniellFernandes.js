@@ -4,8 +4,5 @@ export default {
   lng: -59.9878,
   active: false,
   institution: 'National Institute of Amazonian Research',
-  past: true,
-    projects: [
-    { name: 'Checklist of Chilean Ichneumonidae'}
-  ]
+  published: true,
 }

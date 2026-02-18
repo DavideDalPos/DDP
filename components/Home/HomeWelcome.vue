@@ -35,12 +35,22 @@
     <FeaturedCTA 
       :featuredPublications="featuredPublications" 
     />
+
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="flex flex-col md:flex-row gap-6 justify-center">
+      <LatestNewsCard />
+    </div>
+  </div>
+
+
+
   </section>
 </template>
 
 <script setup>
 import { defineProps, onMounted, ref } from 'vue'
 import FeaturedCTA from '~/components/Home/FeaturedCTA.vue'
+import LatestNewsCard from './LatestNewsCard.vue'
 
 const props = defineProps({
   textColor: { type: String, default: 'text-white' },

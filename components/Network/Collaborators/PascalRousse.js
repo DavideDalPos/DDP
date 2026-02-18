@@ -4,8 +4,5 @@ export default {
   lng: 2.3559,
   active: false,
   institution: 'Muséum national d (’) Histoire naturelle, MNHN',
-  past: true,
-    projects: [
-    { name: '<i>Genaemirum</i> from West Africa'}
-  ]
+  published: true,
 }

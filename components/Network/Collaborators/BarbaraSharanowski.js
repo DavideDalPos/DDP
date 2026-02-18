@@ -4,8 +4,9 @@ export default {
   lng: -81.2009,
   active: true,
   institution: 'University of Central Florida',
-  past: true,
+  published: true,
     projects: [
-    { name: 'Ovipositor Morphology Study'}
+    { name: 'Ovipositor Morphology'},
+    { name: 'Moprhological evolotuion in Ichneumonidae'}
   ]
 }

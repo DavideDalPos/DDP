@@ -4,8 +4,9 @@ export default {
   lng: 114.1418,
   active: true,
   institution: 'University of Hong Kong',
-  past: true,
+  published: true,
     projects: [
-    { name: 'WID Database', url: 'https://worldichneumonidae.com'}
+    { name: 'WID Database', url: 'https://worldichneumonidae.com'},
+    { name: 'Various Taxonomic Projects on Asian Ichneumonidae'}
   ]
 }

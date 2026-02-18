@@ -48,7 +48,7 @@
             <a
               href="https://www.worldichneumonidae.com"
               target="_blank"
-              class="text-center text-sm bg-amber-200 text-gray-900 font-medium py-2 rounded hover:bg-amber-300 transition transform hover:-translate-y-1"
+              class="text-center text-sm bg-indigo-300 shadow-md text-gray-900 font-medium py-2 rounded hover:bg-indigo-500 transition transform hover:-translate-y-1"
             >
               World Ichneumonidae Database (WID)
             </a>
@@ -57,7 +57,7 @@
             <a
               href="https://soi-database-link.com"
               target="_blank"
-              class="text-center text-sm bg-indigo-200 text-gray-900 font-medium py-2 rounded hover:bg-indigo-300 transition transform hover:-translate-y-1"
+              class="text-center text-sm bg-amber-300 shadow-md text-gray-900 font-medium py-2 rounded hover:bg-amber-500 transition transform hover:-translate-y-1"
             >
               Syrphidae of Italy (SoI) Database
             </a>

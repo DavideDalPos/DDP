@@ -4,8 +4,5 @@ export default {
   lng: 7.5903,
   active: false,
   institution: 'Naturhistorisches Museum Basel',
-  past: true,
-    projects: [
-    { name: 'Species richness estimation of Ichneumonidae'}
-  ]
+  published: true,
 }

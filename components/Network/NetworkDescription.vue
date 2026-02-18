@@ -1,23 +1,29 @@
 <template>
-  <section class="relative container mx-auto px-6 py-16 max-w-6xl">
+  <section class="relative container mx-auto px-6 py-20 max-w-6xl">
     
     <!-- Hero Content -->
-    <div class="relative z-10 bg-gray-800 p-12 rounded-xl shadow-lg text-center">
+    <div class="relative z-10 bg-gray-900 p-12 sm:p-16 rounded-2xl shadow-xl text-center overflow-hidden">
       
+      <!-- Accent Pattern (subtle background gradient) -->
+      <div class="absolute inset-0 opacity-10 pointer-events-none bg-gradient-to-br from-amber-400 to-purple-400"></div>
+
       <!-- Title -->
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4 leading-tight">
         Research Network Overview
       </h1>
       
       <!-- Accent Divider -->
-      <div class="mx-auto w-24 h-1 bg-amber-400 rounded mb-6"></div>
+      <div class="mx-auto w-28 h-1 bg-amber-400 rounded-full mb-6"></div>
       
       <!-- Paragraph -->
       <p class="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-        The maps below illustrate my scientific network. The first map shows the global distribution of my 
-        <span class="text-amber-400 font-semibold">collaborators</span>, while the second highlights the 
-        <span class="text-amber-400 font-semibold">institutions</span> where I have contributed my taxonomic expertise in specimen identification and curation. 
-        These visualizations reveal the reach of my research and the key locations that have contributed to my work in biodiversity, taxonomy, and evolutionary studies.
+        The maps below provide an overview of my professional network. Each marker represents a collaborator or an institution, 
+        while clusters indicate multiple entries in the same region.
+      </p>
+      
+      <!-- Optional subtle call-to-action -->
+      <p class="mt-6 text-sm text-gray-400">
+        Explore the maps to see details about each person, collaborator, and institution.
       </p>
       
     </div>
@@ -26,16 +32,24 @@
 </template>
 
 <script setup>
-// Static component: no JS needed
+// Static content only
 </script>
 
 <style scoped>
-/* Optional subtle animation for consistency with other hero */
+/* Subtle floating animation for any decorative icons */
 @keyframes floatPattern {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(10px); }
+  50% { transform: translateY(6px); }
 }
-img {
-  animation: floatPattern 15s ease-in-out infinite;
+
+img.decorative {
+  animation: floatPattern 12s ease-in-out infinite;
+}
+
+@media (max-width: 640px) {
+  .max-w-6xl {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 </style>

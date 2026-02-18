@@ -4,8 +4,5 @@ export default {
   lng: 9.7059,
   active: false,
   institution: 'Klinik Fallingbostel',
-  past: true,
-    projects: [
-    { name: 'Afrotropical Ichneumoninae'}
-  ]
+  published: true,
 }

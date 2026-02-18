@@ -4,8 +4,5 @@ export default {
   lng: 51.3171,
   active: false,
   institution: 'Islamic Azad University',
-  past: true,
-    projects: [
-    { name: 'Darwin Wasps of the Middle East'}
-  ]
+  published: true,
 }

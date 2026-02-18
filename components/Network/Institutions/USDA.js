@@ -8,7 +8,7 @@ export default {
   roles: [
     'Ichneumonidae identification',
   ],
-  researchAssociate: true,
+  researchAssociate: false,
   yearsActive: '2019–present',
 }
 

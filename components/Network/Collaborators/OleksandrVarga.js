@@ -4,8 +4,5 @@ export default {
   lng: 11.4813,
   active: false,
   institution: 'Zoologische Staatssammlung München',
-  past: true,
-    projects: [
-    { name: 'Ichneumonidae of Sicily'}
-  ]
+  published: true,
 }

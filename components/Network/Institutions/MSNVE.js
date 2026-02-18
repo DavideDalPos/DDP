@@ -6,9 +6,9 @@ export default {
   city: 'Venice',
   country: 'Italy',
   roles: [
-    'IAssistant Curator',
+    'Assistant Curator',
   ],
-  researchAssociate: false,
+  researchAssociate: true,
   yearsActive: '2015–2018',
 }
 

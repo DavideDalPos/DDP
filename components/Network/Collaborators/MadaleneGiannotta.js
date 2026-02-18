@@ -4,8 +4,5 @@ export default {
   lng: 149.1206,
   active: false,
   institution: 'Australian National University, CSIRO',
-  past: true,
-    projects: [
-    { name: 'Darwin wasps'}
-  ]
+  published: true,
 }

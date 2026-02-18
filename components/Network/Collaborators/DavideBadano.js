@@ -4,8 +4,5 @@ export default {
   lng: 13.3691,
   active: false,
   institution: ' National Biodiversity Future Center, Palermo, Italy',
-  past: true,
-    projects: [
-    { name: 'Ichneumonidae of Sicily'}
-  ]
+  published: true,
 }

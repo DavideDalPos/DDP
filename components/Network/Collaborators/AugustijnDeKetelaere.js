@@ -2,10 +2,10 @@ export default {
   name: 'Augustijn De Ketelaere',
   lat: 51.1424,
   lng: 3.3377,
-  active: false,
+  active: true,
   institution: 'Beernem, Belgium',
-  past: true,
+  published: true,
     projects: [
-    { name: 'Revision Afrotropical <i>Protoleptops</i>'}
+    { name: 'WID Database', url: 'https://worldichneumonidae.com' }
   ]
 }

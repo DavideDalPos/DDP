@@ -4,8 +4,5 @@ export default {
   lng: -81.2009,
   active: false,
   institution: 'University of Central Florida',
-  past: true,
-    projects: [
-    { name: 'Platylabini of the south-eastern United States'}
-  ]
+  published: true,
 }

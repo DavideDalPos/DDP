@@ -1,8 +1,9 @@
 <template>
   <div>
-    <div id="collaborators-map" class="map rounded-xl shadow-md"></div>
+    <div id="collaborators-map" class="map" style="border-radius:12px; overflow:hidden;"></div>
   </div>
 </template>
+
 
 <script setup>
 import { onMounted, ref } from 'vue'
@@ -10,82 +11,22 @@ import { collaborators } from './Collaborators'
 
 let map
 let cluster
+let L
 
-// Filters: only Current and Past
-const showCurrent = ref(true)
-const showPast = ref(true)
-
-function toggleFilter(type) {
-  if (type === 'current') showCurrent.value = !showCurrent.value
-  if (type === 'past') showPast.value = !showPast.value
-  renderMarkers()
-}
-
-// ------------------ Marker & Popup ------------------
-function getIcon(collaborator) {
-  return L.divIcon({
-    className: '',
-    html: `<div style="width:12px; height:12px; background-color:#2a9d8f; border-radius:50%; border:1px solid #000"></div>`,
-    iconSize: [12, 12],
-    iconAnchor: [6, 6]
-  })
-}
-
-const PUBLICATION_PAGE_URL = '/publications'
-
-function getPopupHtml(collaborator) {
-  let html = `<div style="font-family:'Segoe UI',sans-serif; font-size:13px; background:#f9fafb; padding:0.5rem 1rem; border-radius:0.5rem;">`
-  html += `<strong>${collaborator.name}</strong><br/>`
-  if (collaborator.institution) html += `<em>${collaborator.institution}</em><br/>`
-  if (collaborator.active && collaborator.projects?.length) {
-    html += `<strong>Projects:</strong><ul>`
-    collaborator.projects.forEach(p => {
-      if (p.url) html += `<li><a href="${p.url}" target="_blank">${p.name}</a></li>`
-      else html += `<li>${p.name}</li>`
-    })
-    html += `</ul>`
-  }
-  if ((collaborator.past && !collaborator.active) || (collaborator.active && collaborator.past && !collaborator.projects?.length)) {
-    html += `<a href="${PUBLICATION_PAGE_URL}?name=${encodeURIComponent(collaborator.name)}" target="_blank">View Publication</a>`
-  }
-  html += `</div>`
-  return html
-}
-
-// ------------------ Filtering ------------------
-function filterCollaborators() {
-  return collaborators.filter(c => {
-    if (showCurrent.value && c.active) return true
-    if (showPast.value && c.past && !c.active) return true
-    return false
-  })
-}
-
-function renderMarkers() {
-  cluster.clearLayers()
-  const filtered = filterCollaborators()
-  filtered.forEach(c => {
-    const marker = L.marker([c.lat, c.lng], { icon: getIcon(c) }).bindPopup(getPopupHtml(c))
-    cluster.addLayer(marker)
-  })
-
-  const coords = filtered.map(c => [c.lat, c.lng])
-  if (coords.length) map.fitBounds(coords, { padding: [50, 50], maxZoom: 5 })
-}
-
-// ------------------ Initialize Map ------------------
-let legendDiv
+// Filters
+const showActive = ref(true)
+const showPublished = ref(true)
 
 onMounted(async () => {
-  const L = (await import('leaflet')).default
+  L = (await import('leaflet')).default
   await import('leaflet.markercluster')
   await import('leaflet/dist/leaflet.css')
   await import('leaflet.markercluster/dist/MarkerCluster.css')
   await import('leaflet.markercluster/dist/MarkerCluster.Default.css')
 
+  // Initialize map
   map = L.map('collaborators-map').setView([28.6023, -81.2003], 3)
 
-  // Softer tile layer
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; OpenStreetMap &copy; CARTO',
     subdomains: 'abcd',
@@ -97,54 +38,136 @@ onMounted(async () => {
 
   renderMarkers()
 
-  // ------------------ Legend with checkboxes ------------------
+  // ------------------ Legend as Leaflet Control with inline styles ------------------
   const legend = L.control({ position: 'bottomright' })
   legend.onAdd = () => {
-    legendDiv = L.DomUtil.create('div', 'info legend')
-    legendDiv.style.background = '#ffffffcc'
-    legendDiv.style.padding = '0.75rem 1rem'
-    legendDiv.style.borderRadius = '0.5rem'
-    legendDiv.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)'
-    legendDiv.style.fontSize = '0.85rem'
+    const div = L.DomUtil.create('div', '')
+    div.innerHTML = `
+      <div style="background: rgba(255,255,255,0.8); padding: 8px 12px; border-radius: 8px; font-size: 13px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+        <b>Filter Collaborators</b>
+        <div style="margin-top: 4px;"><label><input type="checkbox" ${showActive.value ? 'checked' : ''} id="activeFilter"/> Active Collaborations</label></div>
+        <div style="margin-top: 4px;"><label><input type="checkbox" ${showPublished.value ? 'checked' : ''} id="publishedFilter"/> Published Collaborations</label></div>
+      </div>
+    `
+    return div
+  }
+  legend.addTo(map)
 
-    legendDiv.innerHTML = `<b>Filter Collaborators</b><br/>`
+  // Make checkboxes reactive
+  const activeCheckbox = document.getElementById('activeFilter')
+  const publishedCheckbox = document.getElementById('publishedFilter')
 
-    const filters = [
-      { label: 'Current Collaborators', ref: showCurrent, key: 'current' },
-      { label: 'Past Collaborators', ref: showPast, key: 'past' }
-    ]
+  activeCheckbox.addEventListener('change', () => {
+    showActive.value = activeCheckbox.checked
+    renderMarkers()
+  })
+  publishedCheckbox.addEventListener('change', () => {
+    showPublished.value = publishedCheckbox.checked
+    renderMarkers()
+  })
+})
 
-    filters.forEach(f => {
-      const container = document.createElement('div')
-      container.style.display = 'flex'
-      container.style.alignItems = 'center'
-      container.style.marginTop = '0.25rem'
-
-      const checkbox = document.createElement('input')
-      checkbox.type = 'checkbox'
-      checkbox.checked = f.ref.value
-      checkbox.onchange = () => toggleFilter(f.key)
-      container.appendChild(checkbox)
-
-      const label = document.createElement('span')
-      label.textContent = f.label
-      label.style.marginLeft = '0.5rem'
-      container.appendChild(label)
-
-      legendDiv.appendChild(container)
-    })
-
-    return legendDiv
+// ------------------ Marker & Filtering ------------------
+function getIcon(collaborator) {
+  let color = '#2a9d8f' // default greenish
+  if (collaborator.active && collaborator.published) {
+    color = '#8cd3a3' // pastel green for both
+  } else if (collaborator.active) {
+    color = '#ffb86c' // pastel orange
+  } else if (collaborator.published) {
+    color = '#c7a0f7' // pastel purple
   }
 
-  legend.addTo(map)
-})
+  return L.divIcon({
+    className: '',
+    html: `<div style="width:14px; height:14px; background-color:${color}; border-radius:50%; border:1px solid #666"></div>`,
+    iconSize: [14, 14],
+    iconAnchor: [7, 7]
+  })
+}
+
+
+const PUBLICATION_PAGE_URL = '/publications'
+
+// ------------------ Popups with inline pills ------------------
+// ------------------ Popups with inline pills ------------------
+function getPopupHtml(collaborator) {
+  // Pills inline with the name
+  let pills = ''
+  if (collaborator.active) {
+    pills += `<span style="display:inline-block; background-color:#ffb86c; color:white; padding:2px 6px; border-radius:12px; font-size:9px; margin-left:6px;">Active</span>`
+  }
+  if (collaborator.published) {
+    pills += `<span style="display:inline-block; background-color:#c7a0f7; color:white; padding:2px 6px; border-radius:12px; font-size:9px; margin-left:4px;">Published</span>`
+  }
+
+  // Estimate width based on longer of name+pills or institution
+  const baseFontWidth = 7.5
+  const nameLength = collaborator.name.length + (collaborator.active ? 6 : 0) + (collaborator.published ? 9 : 0)
+  const institutionLength = collaborator.institution?.length || 0
+  const width = Math.max(nameLength, institutionLength) * baseFontWidth
+
+  let html = `<div style="font-family:'Segoe UI',sans-serif; font-size:13px; background:#f9fafb; padding:8px 12px; border-radius:8px; min-width:${width}px; max-width:300px; line-height:1.4;">`
+
+  // Name + Pills
+  html += `<div style="display:flex; align-items:center; flex-wrap:wrap; font-weight:bold;">${collaborator.name}${pills}</div>`
+
+  // Institution
+  if (collaborator.institution) {
+    html += `<div style="font-style:italic; font-size:12px; color:#555; margin-top:2px;">${collaborator.institution}</div>`
+  }
+
+  // Projects
+  if (collaborator.active && collaborator.projects?.length) {
+    html += `<div style="margin-top:6px;"><strong>Projects:</strong><ul style="margin:4px 0 0 18px; padding:0;">`
+    collaborator.projects.forEach(p => {
+      if (p.url) {
+        // clickable and clear link style
+        html += `<li><a href="${p.url}" target="_blank" style="color:#1d3557; text-decoration:underline; cursor:pointer;">${p.name}</a></li>`
+      } else {
+        html += `<li>${p.name}</li>`
+      }
+    })
+    html += `</ul></div>`
+  }
+
+  // View Publication link
+  if ((collaborator.published && !collaborator.active) || (collaborator.active && collaborator.published && !collaborator.projects?.length)) {
+    html += `<div style="margin-top:6px;"><a href="${PUBLICATION_PAGE_URL}?name=${encodeURIComponent(collaborator.name)}" target="_blank" style="font-size:12px; color:#e76f51; text-decoration:underline; cursor:pointer;">View Publication</a></div>`
+  }
+
+  html += `</div>`
+  return html
+}
+
+
+
+
+// ------------------ Filtering ------------------
+function filterCollaborators() {
+  return collaborators.filter(c => {
+    if (showActive.value && c.active) return true
+    if (showPublished.value && c.published) return true
+    return false
+  })
+}
+
+// ------------------ Render ------------------
+function renderMarkers() {
+  cluster.clearLayers()
+  const filtered = filterCollaborators()
+  filtered.forEach(c => {
+    const marker = L.marker([c.lat, c.lng], { icon: getIcon(c) }).bindPopup(getPopupHtml(c))
+    cluster.addLayer(marker)
+  })
+  const coords = filtered.map(c => [c.lat, c.lng])
+  if (coords.length) map.fitBounds(coords, { padding: [50, 50], maxZoom: 5 })
+}
 </script>
 
 <style scoped>
 .map {
   width: 100%;
-  min-height: 50vh;
-  margin-bottom: 3rem;
+  height: 60vh;
 }
 </style>

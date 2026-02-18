@@ -4,8 +4,5 @@ export default {
   lng: 135.2360,
   active: false,
   institution: 'Kobe University',
-  past: true,
-    projects: [
-    { name: 'Darwin wasps'}
-  ]
+  published: true,
 }

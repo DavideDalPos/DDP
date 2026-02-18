@@ -45,7 +45,7 @@
                  bg-[#3a6462] text-[#e9e6d9] shadow-lg rounded-md z-40 min-w-[170px] 
                  transition-all duration-300 border border-[#3a6462]/50">
           <NuxtLink v-for="child in item.submenu" :key="child.link" :to="child.link"
-            class="block px-4 py-2 text-sm hover:bg-[#5a8a88]/30 hover:text-[#f0c674] transition duration-200">
+            class="block px-4 py-2 text-xs hover:bg-[#5a8a88]/30 hover:text-[#f0c674] transition duration-200">
             {{ child.label }}
           </NuxtLink>
         </div>
@@ -89,7 +89,7 @@ const links = reactive([
   { label: 'Research', submenu: [
       { label: 'Systematics of Ichneumonidae', link:'/research/systematics' },
       { label: 'Phenomics & Ontologies', link: '/research/evolution' },
-      { label: 'Collection-Based Research', link: '/research/collection' },
+      { label: 'Collections & Biodiversity Informatics', link: '/research/collection' },
     ], isOpen: false },
   { label: 'Publications', link: '/publications', isOpen: false },
   { label: 'Species', link: '/species', isOpen: false },

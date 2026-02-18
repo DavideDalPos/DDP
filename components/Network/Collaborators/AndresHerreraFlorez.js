@@ -4,8 +4,5 @@ export default {
   lng: 11.5798,
   active: false,
   institution: 'Ludwig-Maximilians-University of Munich',
-  past: true,
-    projects: [
-    { name: 'Darwin wasps'}
-  ]
+  published: true
 }

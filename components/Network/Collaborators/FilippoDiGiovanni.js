@@ -4,7 +4,7 @@ export default {
   lng: 11.3328,
   active: true,
   institution: 'University of Siena',
-  past: true,
+  published: true,
     projects: [
     { name: 'WID Database', url: 'https://worldichneumonidae.com'}
   ]

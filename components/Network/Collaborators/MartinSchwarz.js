@@ -4,8 +4,5 @@ export default {
   lng: 14.3122,
   active: false,
   institution: 'Biodiversitätszentrum',
-  past: true,
-    projects: [
-    { name: 'Darwin Wasps of the Middle East'}
-  ]
+  published: true,
 }

@@ -4,7 +4,7 @@ export default {
   lng: -0.17637,
   active: true,
   institution: 'The Natural History Museum',
-  past: true,
+  published: true,
     projects: [
     { name: 'WID Database', url: 'https://worldichneumonidae.com'}
   ]

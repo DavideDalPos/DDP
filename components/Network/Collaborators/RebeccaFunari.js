@@ -4,8 +4,5 @@ export default {
   lng: 11.3328,
   active: false,
   institution: 'University of Siena',
-  past: true,
-    projects: [
-    { name: 'Ichneumonidae of Sicily'}
-  ]
+  published: true,
 }

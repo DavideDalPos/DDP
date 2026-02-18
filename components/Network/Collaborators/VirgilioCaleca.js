@@ -4,8 +4,5 @@ export default {
   lng: 13.3493,
   active: false,
   institution: 'University of Palermo',
-  past: true,
-    projects: [
-    { name: 'Book chapter on Hymenoptera'}
-  ]
+  published: true,
 }

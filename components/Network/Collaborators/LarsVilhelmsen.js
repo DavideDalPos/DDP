@@ -4,8 +4,8 @@ export default {
   lng: 12.5767,
   active: true,
   institution: 'Natural History Museum of Denmark - University of Copenhagen',
-  past: true,
+  published: true,
     projects: [
-    { name: 'Revised terminology male genitalia Hymenoptera'}
+    { name: 'Ovipositor system in Ichneumonidae'}
   ]
 }

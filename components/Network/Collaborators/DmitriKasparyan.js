@@ -4,8 +4,5 @@ export default {
   lng: 37.5777,
   active: false,
   institution: 'Russian Academy of Sciences',
-  past: true,
-    projects: [
-    { name: 'Darwin Wasps of the Middle East'}
-  ]
+  published: true,
 }

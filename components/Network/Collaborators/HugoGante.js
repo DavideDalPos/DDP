@@ -4,8 +4,5 @@ export default {
   lng: 54.51823,
   active: false,
   institution: 'Royal Museum for Central Africa',
-  past: true,
-    projects: [
-    { name: 'The future of taxonomy is integrative'}
-  ]
+  published: true,
 }

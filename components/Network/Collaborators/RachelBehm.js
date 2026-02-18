@@ -3,7 +3,7 @@ export default {
   lat: 28.6015,
   lng: -81.2009,
   active: true,
-  past: false,
+  published: false,
   institution: 'University of Central Florida',
   projects: [
     { name: 'WID Database', url: 'https://worldichneumonidae.com' }

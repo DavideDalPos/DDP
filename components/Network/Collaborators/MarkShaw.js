@@ -4,8 +4,5 @@ export default {
   lng: -3.1905,
   active: false,
   institution: 'National Museums of Scotland',
-  past: true,
-    projects: [
-    { name: 'Darwin wasps'}
-  ]
+  published: true,
 }

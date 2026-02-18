@@ -4,8 +4,5 @@ export default {
   lng: 104.0490,
   active: false,
   institution: 'Southwest Minzu University',
-  past: true,
-    projects: [
-    { name: 'New gall wasp and its parasitoid in China'}
-  ]
+  published: true,
 }

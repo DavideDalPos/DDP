@@ -4,8 +4,5 @@ export default {
   lng: -43.9619,
   active: false,
   institution: 'Universidade Federal de Minas Gerais',
-  past: true,
-    projects: [
-    { name: 'Darwin wasps'}
-  ]
+  published: true,
 }

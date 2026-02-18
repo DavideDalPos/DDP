@@ -4,8 +4,5 @@ export default {
   lng: 14.4476,
   active: false,
   institution: 'Biology Centre of the Czech Academy of Sciences',
-  past: true,
-    projects: [
-    { name: 'The future of taxonomy is integrative'}
-  ]
+  published: true
 }

@@ -4,8 +4,5 @@ export default {
   lng: 11.2468,
   active: false,
   institution: 'Natural History Museum La Specola',
-  past: true,
-    projects: [
-    { name: 'New distributial data of Hymenoptera, Stephanidae'}
-  ]
+  published: true,
 }

@@ -4,8 +4,5 @@ export default {
   lng: -91.5550,
   active: false,
   institution: 'University of Iowa',
-  past: true,
-    projects: [
-    { name: 'Wasp ID Course'}
-  ]
+  published: true,
 }

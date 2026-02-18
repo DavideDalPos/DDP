@@ -4,8 +4,5 @@ export default {
   lng: 56.6192,
   active: false,
   institution: 'Station Linné, Ölands Skogsby',
-  past: true,
-    projects: [
-    { name: 'Darwin wasps'}
-  ]
+  published: true,
 }
