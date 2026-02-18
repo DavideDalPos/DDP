@@ -1,5 +1,5 @@
 export default {
-  name: 'University of Central Florida Collections',
+  name: 'University of Central Florida Collection of Arthropods',
   acronym: 'UCFC',
   lat: 28.6015,
   lng: -81.2009,
