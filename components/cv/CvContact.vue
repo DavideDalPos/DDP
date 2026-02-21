@@ -13,36 +13,59 @@
       <!-- Contact Info Cards -->
       <div class="grid md:grid-cols-2 gap-8">
 
-        <!-- Contact Information Card -->
-<div class="bg-gray-100 border border-gray-400 rounded-xl p-8 shadow-md hover:shadow-lg transition duration-300 text-gray-700">
-  <h2 class="text-2xl font-semibold text-amber-400 mb-6">Contact Information</h2>
-  <ul class="space-y-4">
-    <li class="flex items-center gap-3">
-      <span class="text-amber-400">
-        <i class="fas fa-envelope"></i>
-      </span>
-      <a :href="'mailto:' + email" class="hover:underline">{{ email }}</a>
+<!-- Contact Information Card -->
+<div class="bg-gray-100 border border-gray-400 rounded-xl p-8 shadow-md hover:shadow-lg transition duration-300 text-gray-800">
+
+  <h2 class="text-2xl font-semibold text-amber-400 mb-8">
+    Contact Information
+  </h2>
+
+  <ul class="space-y-6">
+
+    <!-- Emails -->
+    <li class="flex items-start gap-4">
+      <i class="fas fa-envelope text-amber-400 mt-1"></i>
+      <div class="leading-relaxed">
+        <p class="text-sm font-semibold uppercase tracking-wide text-gray-600 mb-1">
+          Email
+        </p>
+        <a href="mailto:daveliga@gmail.com"
+           class="block hover:text-amber-500 transition">
+          daveliga@gmail.com
+        </a>
+        <a href="mailto:davide.dalpos@ucf.edu"
+           class="block hover:text-amber-500 transition">
+          davide.dalpos@ucf.edu
+        </a>
+      </div>
     </li>
-    <li class="flex items-center gap-3">
-      <span class="text-amber-400">
-        <i class="fas fa-university"></i>
-      </span>
-      {{ institution }}, {{ college }}, {{ department }}
+
+    <!-- Address -->
+    <li class="flex items-start gap-4">
+      <i class="fas fa-university text-amber-400 mt-1"></i>
+      <div class="leading-relaxed">
+        <p class="text-sm font-semibold uppercase tracking-wide text-gray-600 mb-1">
+          Address
+        </p>
+        <span class="font-medium">
+          University of Central Florida
+        </span><br>
+        Department of Biology<br>
+        4110 Libra Dr., Room 442<br>
+        Orlando, FL 32816, USA
+      </div>
     </li>
-    <li class="flex items-center gap-3">
-      <span class="text-amber-400">
-        <i class="fas fa-map-marker-alt"></i>
-      </span>
-      {{ address }}<br>{{ location }}
-    </li>
+
   </ul>
-  <div class="mt-6 flex justify-center">
-  <img 
-    src="/images/logoWid_wasp.png" 
-    alt="University of Central Florida Campus" 
-    class=" w-full max-w-[250px]"
-  />
-</div>
+
+  <!-- Logo -->
+  <div class="mt-10 flex justify-center">
+    <img 
+      src="/images/logoWid_wasp.png" 
+      alt="WID Logo"
+      class="w-full max-w-[220px] opacity-90"
+    />
+  </div>
 
 </div>
 
@@ -152,10 +175,8 @@
 const props = defineProps({
   email: { type: String, default: 'daveliga@gmail.com' },
   institution: { type: String, default: 'University of Central Florida' },
-  college: { type: String, default: 'College of Sciences' },
   department: { type: String, default: 'Department of Biology' },
-  address: { type: String, default: '4000 Central Florida Blvd, Orlando, FL 32816, USA' },
-  location: { type: String, default: 'Orlando, FL, USA' },
+  address: { type: String, default: '4110 Libra Dr., Room 442, Orlando, FL 32816, USA' },
   orcid: { type: String, default: 'https://orcid.org/0000-0002-9122-934X' },
   researchgate: { type: String, default: 'https://www.researchgate.net/profile/Davide-Dal-Pos-2' },
   linkedin: { type: String, default: 'https://www.linkedin.com/' },
@@ -164,7 +185,7 @@ const props = defineProps({
   googleScholar: { type: String, default: 'https://scholar.google.com/citations?user=wYj3d_oAAAAJ' }
 })
 
-const mapUrl = "https://maps.google.com/maps?q=4000+Central+Florida+Blvd,+Orlando,+FL+32816&output=embed"
+const mapUrl = "https://maps.google.com/maps?q=4110+Libra+Dr,+Orlando,+FL+32816&output=embed"
 </script>
 
 <style scoped>
