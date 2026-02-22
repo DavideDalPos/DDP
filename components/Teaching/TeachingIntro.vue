@@ -2,22 +2,22 @@
   <section class="relative container mx-auto px-6 py-16 max-w-6xl">
     
     <!-- Hero Content -->
-    <div class="relative z-10 bg-gray-800 p-12 rounded-xl shadow-lg text-center">
+    <div class="bg-white p-12 rounded-lg shadow-lg mb-12 text-center border-t-8 border-red-300"">
       
       <!-- Title -->
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-700 mb-4">
         Teaching Philosophy & Courses
       </h1>
       
       <!-- Accent Divider -->
-      <div class="mx-auto w-24 h-1 bg-indigo-400 rounded mb-6"></div>
+      <div class="mx-auto w-24 h-1 bg-amber-400 rounded mb-6"></div>
       
       <!-- Subtitle -->
-      <p class="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+      <p class="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
         My teaching philosophy is rooted in
         <span class="text-indigo-400 font-semibold">active engagement, curiosity, and accessibility</span>.
         I design learning experiences that challenge students intellectually while providing the support needed to grow.
-        I emphasize <span class="text-indigo-400 font-semibold">conceptual clarity, careful observation, and evidence-based reasoning</span>,
+        I emphasize <span class="text-amber-400 font-semibold">conceptual clarity, careful observation, and evidence-based reasoning</span>,
         fostering confidence, analytical skills, and independent thinking in scientific inquiry.
       </p>
 

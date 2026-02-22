@@ -9,11 +9,13 @@
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div v-for="news in items" :key="news.path || news.title">
+          <div v-for="(news, idx) in items" :key="news.path || news.title">
+            <!-- Clickable card -->
             <NuxtLink
               v-if="news.meta.clickable"
               :to="news.path"
-              class="block p-6 bg-white border border-gray-300 rounded-2xl shadow hover:shadow-lg transition-transform transform hover:-translate-y-1 group"
+              class="block p-6 bg-white border border-gray-300 rounded-r-lg shadow hover:shadow-lg transition-transform transform hover:-translate-y-1 group"
+              :style="getBorderStyle(idx)"
             >
               <div class="flex justify-between items-start">
                 <h3 class="text-lg font-semibold text-amber-600 group-hover:text-amber-700">
@@ -42,9 +44,11 @@
               </span>
             </NuxtLink>
 
+            <!-- Non-clickable card -->
             <div
               v-else
-              class="p-6 bg-white border border-gray-300 rounded-2xl shadow-sm"
+              class="p-6 bg-white border border-gray-300 rounded-r-lg shadow-sm"
+              :style="getBorderStyle(idx)"
             >
               <div class="flex justify-between items-start">
                 <h3 class="text-lg font-semibold text-amber-600">{{ news.title }}</h3>
@@ -109,6 +113,15 @@ function getBadgeStyle(category) {
   return {
     backgroundColor: `hsl(${hue}, 60%, 85%)`, // soft pastel
     color: `hsl(${hue}, 60%, 25%)`            // darker text
+  }
+}
+
+// Dynamic pastel top border per card
+function getBorderStyle(index) {
+   const colors = [0, 40, 200] // 0 = red, 200 = blue
+  const hue = colors[index % colors.length]
+  return {
+    borderLeft: `20px solid hsl(${hue}, 70%, 85%)`
   }
 }
 </script>

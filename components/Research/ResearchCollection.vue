@@ -2,12 +2,12 @@
 <section class="container mx-auto px-6 mt-12 mb-8 max-w-6xl">
 
     <!-- Hero Intro -->
-    <div class="bg-gray-800 p-12 rounded-xl shadow-lg mb-12 text-center">
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4">
+    <div class="bg-white p-12 rounded-lg shadow-lg mb-12 text-center border-t-8 border-red-300"">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-700 mb-4">
         Collections & Biodiversity Informatics
       </h1>
       <div class="mx-auto w-24 h-1 bg-amber-400 rounded mb-6"></div>
-      <p class="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+      <p class="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
         I work with <span class="text-amber-400 font-semibold">entomological collections</span> as dynamic research infrastructures, integrating specimen-based research with <span class="text-indigo-400 font-semibold">biodiversity informatics</span>. Through the management of databases such as <span class="text-amber-400 font-semibold">WID</span> and <span class="text-indigo-400 font-semibold">SoI</span>, I connect specimen data, literature, and morphological information to support taxonomy, evolutionary research, and global biodiversity studies.
       </p>
     </div>

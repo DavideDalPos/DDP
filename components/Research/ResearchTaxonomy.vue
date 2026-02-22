@@ -2,12 +2,12 @@
 <section class="container mx-auto px-6 mt-12 mb-8 max-w-6xl">
 
     <!-- Hero Intro -->
-    <div class="bg-gray-800 p-12 rounded-xl shadow-lg mb-12 text-center">
-      <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 text-white">
+    <div class="bg-white p-12 rounded-lg shadow-lg mb-12 text-center border-t-8 border-red-300">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 text-gray-700">
         Systematics of Parasitoid Wasps
       </h1>
       <div class="mx-auto w-24 h-1 bg-amber-400 rounded mb-6"></div>
-      <p class="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+      <p class="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
         One of my primary research interests is the systematics, taxonomy, and classification of parasitoid wasps, 
         with a particular emphasis on <span class="text-amber-400 font-semibold">Ichneumonidae</span> (Hymenoptera, Ichneumonoidea), a hyperdiverse family with approximately 
         <span class="text-indigo-400 font-semibold">25,000 described species</span> and an estimated 

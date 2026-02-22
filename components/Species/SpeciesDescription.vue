@@ -3,10 +3,10 @@
     
 
     <!-- Hero Content -->
-    <div class="relative z-10 bg-gray-800 p-12 rounded-xl shadow-lg text-center">
+    <div class="bg-white p-12 rounded-lg shadow-lg mb-12 text-center border-t-8 border-red-300"">
       
       <!-- Title -->
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-700 mb-4">
         Species Map & Descriptions
       </h1>
       
@@ -14,7 +14,7 @@
       <div class="mx-auto w-24 h-1 bg-amber-400 rounded mb-6"></div>
       
       <!-- Paragraph -->
-      <p class="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+      <p class="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
         Explore all the species I have described, with each 
         <span class="text-amber-400 font-semibold">dot representing the Holotype location</span>. 
         Below the map, you can browse the full species list. 
@@ -25,7 +25,7 @@
       <div class="mt-8">
         <a 
           href="#species-list"
-          class="inline-block bg-amber-400 text-gray-900 font-semibold px-6 py-3 rounded-lg shadow hover:bg-amber-500 transition"
+          class="inline-block bg-amber-400 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-amber-500 transition"
         >
           Explore Species List
         </a>

@@ -2,10 +2,10 @@
   <section class="relative container mx-auto px-6 py-16 max-w-6xl">
     
     <!-- Hero Content -->
-    <div class="relative z-10 bg-gray-800 p-12 rounded-xl shadow-lg text-center">
+    <div class="bg-white p-12 rounded-lg shadow-lg mb-12 text-center border-t-8 border-red-300"">
       
       <!-- Title -->
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-700 mb-4">
         Publications
       </h1>
       
@@ -13,7 +13,7 @@
       <div class="mx-auto w-24 h-1 bg-amber-400 rounded mb-6"></div>
       
       <!-- Subtitle -->
-      <p class="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+      <p class="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
         Browse my body of research, including journal articles, book chapters, and collaborative studies. 
         Each entry highlights my contributions to <span class="text-amber-400 font-semibold">taxonomy, systematics, and evolutionary biology</span>.
       </p>
