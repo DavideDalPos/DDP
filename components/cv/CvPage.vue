@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto my-15 px-8 max-w-[70rem]">
+  <div class="container mx-auto my-15 px-8 max-w-[75rem]">
     <CVIntro />
     
     <div class="flex flex-col lg:flex-row gap-8">

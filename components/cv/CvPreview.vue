@@ -13,9 +13,10 @@
         >
           Download CV
         </a>
-        <p class="text-sm text-gray-200 mt-1">
-          Last updated: {{ lastUpdated || 'Loading...' }}
-        </p>
+<p class="text-sm mt-1 text-right">
+  <span class="font-semibold text-gray-700">Last updated:</span>
+  <span class="text-gray-500 ml-1 italic">{{ lastUpdated || 'Loading...' }}</span>
+</p>
       </div>
     </div>
 

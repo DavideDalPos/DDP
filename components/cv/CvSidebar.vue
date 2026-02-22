@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full lg:w-80 flex-shrink-0 space-y-6">
+  <div class="w-full lg:w-90 flex-shrink-0 space-y-6">
     <CvSidebarSkills />
     <CvSidebarAwards />
   </div>
