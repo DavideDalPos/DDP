@@ -51,7 +51,7 @@
           University of Central Florida
         </span><br>
         Department of Biology<br>
-        4110 Libra Dr., Room 442<br>
+        4110 Libra Dr., Room 301<br>
         Orlando, FL 32816, USA
       </div>
     </li>
