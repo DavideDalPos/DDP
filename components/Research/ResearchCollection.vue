@@ -2,13 +2,20 @@
 <section class="container mx-auto px-6 mt-12 mb-8 max-w-6xl">
 
     <!-- Hero Intro -->
-    <div class="bg-white p-12 rounded-lg shadow-lg mb-12 text-center border-t-8 border-red-300"">
+    <div class="bg-white p-12 rounded-lg shadow-lg mb-12 text-center border-t-15 border-[#ffb86c]">
       <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-700 mb-4">
         Collections & Biodiversity Informatics
       </h1>
       <div class="mx-auto w-24 h-1 bg-amber-400 rounded mb-6"></div>
       <p class="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-        I work with <span class="text-amber-400 font-semibold">entomological collections</span> as dynamic research infrastructures, integrating specimen-based research with <span class="text-indigo-400 font-semibold">biodiversity informatics</span>. Through the management of databases such as <span class="text-amber-400 font-semibold">WID</span> and <span class="text-indigo-400 font-semibold">SoI</span>, I connect specimen data, literature, and morphological information to support taxonomy, evolutionary research, and global biodiversity studies.
+        I work with <span class="font-semibold">entomological collections</span> as dynamic research infrastructures, integrating specimen-based research with <span class="font-semibold">biodiversity informatics</span>. 
+        Through the management of databases such as <a href="https://worldichneumonidae.com" 
+        target="_blank" class="font-semibold text-sky-300 hover:underline hover:text-sky-400">
+  World Ichneumonidae Database (WID)
+</a> and <a href="https://syrphidaeitaly.com" target="_blank" 
+class="font-semibold text-amber-400 hover:underline hover:text-amber-500">
+  Syrphidae of Italy (SoI)
+</a>, I connect specimen data, literature, and morphological information to support taxonomy, evolutionary research, and global biodiversity studies.
       </p>
     </div>
 
@@ -16,21 +23,21 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
 
       <!-- Left: Main Text (2/3 width) -->
-      <div class="col-span-2 flex flex-col space-y-6 bg-gray-50 p-6 rounded-xl shadow-sm text-gray-800 text-justify">
+      <div class="col-span-2 flex flex-col space-y-6 bg-gray-50 p-6 rounded-xl shadow-sm text-gray-700 text-justify">
         <p class="text-base sm:text-lg leading-relaxed">
-          Collections are more than repositories of specimens—they are <span class="text-amber-400 font-semibold">engines of discovery</span> that preserve biodiversity, generate new scientific questions, and inform conservation and evolutionary studies.
+          Collections are more than repositories of specimens—they are <span class=" font-semibold">engines of discovery</span> that preserve biodiversity, generate new scientific questions, and inform conservation and evolutionary studies.
         </p>
 
         <p class="text-base sm:text-lg leading-relaxed">
-          By combining hands-on work in entomological collections with <span class="text-amber-400 font-semibold">digitization and data integration</span>, I help make specimens and associated information widely accessible. High-resolution imaging, structured metadata, and interoperable databases enable global collaboration and seamless integration with <span class="text-indigo-400 font-semibold">phylogenetic</span>, ecological, and morphological datasets.
+          By combining hands-on work in entomological collections with <span class=" font-semibold">digitization and data integration</span>, I help make specimens and associated information widely accessible. High-resolution imaging, structured metadata, and interoperable databases enable global collaboration and seamless integration with <span class="font-semibold">phylogenetic</span>, ecological, and morphological datasets.
         </p>
 
         <p class="text-base sm:text-lg leading-relaxed">
-          I manage and develop databases such as the <span class="text-amber-400 font-semibold">World Ichneumonidae Database (WID)</span> and <span class="text-indigo-400 font-semibold">Syrphidae of Italy (SoI)</span>, supporting collaborative taxonomy, ontology-based annotation, and comprehensive biodiversity analyses. These platforms accelerate species discovery and advance integrative research.
+          I manage and develop databases such as the <span class="font-semibold">World Ichneumonidae Database (WID)</span> and <span class=" font-semibold">Syrphidae of Italy (SoI)</span>, supporting collaborative taxonomy, ontology-based annotation, and comprehensive biodiversity analyses. These platforms accelerate species discovery and advance integrative research.
         </p>
 
         <p class="text-base sm:text-lg leading-relaxed">
-          Through these efforts, I aim to highlight the role of collections as <span class="text-amber-400 font-semibold">strategic, data-driven resources</span>—essential for taxonomy, conservation, evolutionary biology, and understanding global biodiversity patterns.
+          Through these efforts, I aim to highlight the role of collections as <span class=" font-semibold">strategic, data-driven resources</span>—essential for taxonomy, conservation, evolutionary biology, and understanding global biodiversity patterns.
         </p>
       </div>
 
@@ -48,18 +55,25 @@
             <a
               href="https://www.worldichneumonidae.com"
               target="_blank"
-              class="text-center text-sm bg-indigo-300 shadow-md text-gray-900 font-medium py-2 rounded hover:bg-indigo-500 transition transform hover:-translate-y-1"
+              class="text-center bg-sky-300 shadow-md text-white/90 font-medium py-2 rounded hover:bg-sky-500 transition transform hover:-translate-y-1"
             >
               World Ichneumonidae Database (WID)
             </a>
 
             <!-- SoI button: pastel indigo -->
             <a
-              href="https://soi-database-link.com"
+              href="https://syrphidaeitaly.com"
               target="_blank"
-              class="text-center text-sm bg-amber-300 shadow-md text-gray-900 font-medium py-2 rounded hover:bg-amber-500 transition transform hover:-translate-y-1"
+              class="text-center bg-amber-500 shadow-md text-white font-medium py-2 rounded hover:bg-amber-400 transition transform hover:-translate-y-1"
             >
-              Syrphidae of Italy (SoI) Database
+              Syrphidae of Italy (SoI) 
+            </a>
+                        <a
+              href="https://slkelly1.github.io/UCFC_Database/#/"
+              target="_blank"
+              class="text-center bg-indigo-300 shadow-md text-white font-medium py-2 rounded hover:bg-indigo-400 transition transform hover:-translate-y-1"
+            >
+              University of Central Florida Collection (UCFC) 
             </a>
           </div>
         </div>

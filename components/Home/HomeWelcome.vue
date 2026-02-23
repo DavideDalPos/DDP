@@ -1,5 +1,5 @@
 <template>
-  <section class="relative flex flex-col items-center justify-center overflow-hidden py-20 min-h-screen">
+  <section class="relative flex flex-col items-center justify-center overflow-hidden pt-30 pb-30">
 
     <!-- Particle Network Canvas -->
 
@@ -25,7 +25,7 @@
 <transition name="fade" appear>
   <p class="text-gray-700 text-2xl md:text-3xl mt-8 opacity-0 animate-fade-in animation-delay-700">
     Hi! Welcome to my academic website. <br />
-    I work on <span class="text-indigo-400 font-semibold" id="typewriter"></span>
+    I work on <span class="text-amber-500 font-semibold" id="typewriter"></span>
   </p>
 </transition>
 
@@ -36,11 +36,6 @@
       :featuredPublications="featuredPublications" 
     />
 
-  <div class="max-w-5xl mx-auto px-4">
-    <div class="flex flex-col md:flex-row gap-6 justify-center">
-      <LatestNewsCard />
-    </div>
-  </div>
 
 
 

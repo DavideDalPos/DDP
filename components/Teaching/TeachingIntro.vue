@@ -2,7 +2,7 @@
   <section class="relative container mx-auto px-6 py-16 max-w-6xl">
     
     <!-- Hero Content -->
-    <div class="bg-white p-12 rounded-lg shadow-lg mb-12 text-center border-t-8 border-red-300"">
+    <div class="bg-white p-12 rounded-lg shadow-lg mb-12 text-center border-t-15 border-[#ffb86c]">
       
       <!-- Title -->
       <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-700 mb-4">
@@ -10,31 +10,17 @@
       </h1>
       
       <!-- Accent Divider -->
-      <div class="mx-auto w-24 h-1 bg-amber-400 rounded mb-6"></div>
+      <div class="mx-auto w-24 h-1 bg-[#ffb86c] rounded mb-6"></div>
       
       <!-- Subtitle -->
       <p class="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
         My teaching philosophy is rooted in
-        <span class="text-indigo-400 font-semibold">active engagement, curiosity, and accessibility</span>.
+        <span class="font-semibold">active engagement, curiosity, and accessibility</span>.
         I design learning experiences that challenge students intellectually while providing the support needed to grow.
-        I emphasize <span class="text-amber-400 font-semibold">conceptual clarity, careful observation, and evidence-based reasoning</span>,
+        I emphasize <span class="font-semibold">conceptual clarity, careful observation, and evidence-based reasoning</span>,
         fostering confidence, analytical skills, and independent thinking in scientific inquiry.
       </p>
 
-      <!-- Optional CTA Button (scroll to courses or CV) -->
-      <div class="mt-8">
-        <a
-          href="#teaching-courses"
-          class="inline-block px-6 py-3 rounded-full bg-amber-400 text-white font-semibold shadow-lg hover:bg-amber-600 hover:text-gray-100 transition transform hover:-translate-y-1"
-        >
-          View Courses ↓
-        </a>
-      </div>
-
-      <!-- Optional small note -->
-      <p class="text-gray-400 text-sm mt-2">
-        Explore my full teaching philosophy, course list, and mentoring experience below.
-      </p>
 
     </div>
 

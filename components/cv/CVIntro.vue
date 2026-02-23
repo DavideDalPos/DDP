@@ -1,8 +1,8 @@
 <template>
-  <section class="relative container mx-auto px-6 py-16 max-w-6xl">
+  <section class="relative container mx-auto px-6 max-w-6xl">
     
     <!-- Hero Content -->
-    <div class="bg-white p-12 rounded-lg shadow-lg mb-12 text-center border-t-8 border-red-300">
+    <div class="bg-white p-12 rounded-lg shadow-lg mb-12 text-center border-t-15 border-[#ffb86c]">
       
       <!-- Title -->
       <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-700 mb-4">
@@ -21,7 +21,7 @@
       <div class="mt-8">
         <a
           href="#cv"
-          class="inline-block px-6 py-3 rounded-full bg-amber-400 text-white font-semibold shadow-lg hover:bg-amber-500 transition transform hover:-translate-y-1"
+          class="inline-block px-6 py-3 rounded-full bg-[#ffb86c] text-white font-semibold shadow-lg hover:bg-amber-500 transition transform hover:-translate-y-1"
         >
           Scroll Down to View Full CV ↓
         </a>

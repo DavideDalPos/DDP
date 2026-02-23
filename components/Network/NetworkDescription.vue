@@ -2,7 +2,7 @@
   <section class='container mx-auto px-6 mt-12 mb-8 max-w-6xl'>
     
     <!-- Hero Content -->
-    <div class="bg-white p-12 rounded-lg shadow-lg mb-12 text-center border-t-8 border-red-300">
+    <div class="bg-white p-12 rounded-lg shadow-lg mb-12 text-center border-t-15 border-[#ffb86c]">
 
 
       <!-- Title -->
@@ -11,7 +11,7 @@
       </h1>
       
       <!-- Accent Divider -->
-      <div class="mx-auto w-28 h-1 bg-amber-400 rounded-full mb-6"></div>
+      <div class="mx-auto w-28 h-1 bg-[#ffb86c] rounded-full mb-6"></div>
       
       <!-- Paragraph -->
       <p class="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">

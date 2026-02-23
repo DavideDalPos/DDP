@@ -2,7 +2,7 @@
   <section class="relative container mx-auto px-6 py-16 max-w-6xl">
     
     <!-- Hero Content -->
-    <div class="bg-white p-12 rounded-lg shadow-lg mb-12 text-center border-t-8 border-red-300"">
+    <div class="bg-white p-12 rounded-lg shadow-lg mb-12 text-center border-t-15 border-[#ffb86c]">
       
       <!-- Title -->
       <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-700 mb-4">
@@ -10,12 +10,12 @@
       </h1>
       
       <!-- Accent Divider -->
-      <div class="mx-auto w-24 h-1 bg-amber-400 rounded mb-6"></div>
+      <div class="mx-auto w-24 h-1 bg-[#ffb86c] rounded mb-6"></div>
       
       <!-- Subtitle -->
       <p class="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
         Browse my body of research, including journal articles, book chapters, and collaborative studies. 
-        Each entry highlights my contributions to <span class="text-amber-400 font-semibold">taxonomy, systematics, and evolutionary biology</span>.
+        Each entry highlights my contributions to <span class="font-semibold">taxonomy, systematics, and evolutionary biology</span>.
       </p>
 
       <!-- Optional small note -->

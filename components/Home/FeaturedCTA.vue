@@ -17,7 +17,7 @@
 
     <!-- Arrow -->
     <svg
-      class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180"
+      class="w-3 h-3 transition-transform duration-300 group-hover:rotate-180"
       fill="none"
       stroke="currentColor"
       stroke-width="2"

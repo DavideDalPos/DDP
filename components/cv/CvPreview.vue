@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-4 max-w-[70rem] mx-auto">
+  <div class="max-w-[70rem] mx-auto">
     <!-- Header: Title + Download -->
     <div class="flex justify-between items-center mb-3">
       <h2 class="text-xl italic text-amber-400">Curriculum Vitae</h2>
@@ -7,14 +7,14 @@
         <a
           href="/PDFs/Davide_Dal_Pos_CV.pdf"
           download
-          class="text-amber-600 bg-gray-300 border border-gray-400 shadow-md px-2 py-1 rounded hover:bg-gray-600 transition"
+          class="text-white bg-[#ffb86c]  shadow-md px-2 py-1 rounded hover:bg-amber-600 transition"
           target="_blank"
           rel="noopener noreferrer"
         >
           Download CV
         </a>
 <p class="text-sm mt-1 text-right">
-  <span class="font-semibold text-gray-700">Last updated:</span>
+  <span class="font-semibold text-gray-600">Last updated:</span>
   <span class="text-gray-500 ml-1 italic">{{ lastUpdated || 'Loading...' }}</span>
 </p>
       </div>
