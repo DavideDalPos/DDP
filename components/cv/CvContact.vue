@@ -6,7 +6,7 @@
       <div class="text-center mb-12">
         <h1 class="text-4xl md:text-5xl font-bold text-amber-400 mb-2">Contact Me</h1>
         <p class="text-gray-700 text-lg md:text-xl">
-          I’d love to hear from you — feel free to reach out via email, visit my office, or connect online.
+          Feel free to reach out via email, visit my office, or connect online.
         </p>
       </div>
 

@@ -8,7 +8,7 @@
           {{ year }}
         </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols- gap-8">
           <div v-for="(news, idx) in items" :key="news.path || news.title">
             <!-- Clickable card -->
             <NuxtLink
@@ -23,7 +23,7 @@
                 </h3>
                 <span
                   v-if="news.meta.categories?.length"
-                  class="text-xs font-bold px-3 py-1 rounded-full"
+                  class="text-xs px-3 py-1 rounded-full"
                   :style="getBadgeStyle(news.meta.categories[0])"
                 >
                   {{ news.meta.categories[0] }}
@@ -54,7 +54,7 @@
                 <h3 class="text-lg font-semibold text-amber-600">{{ news.title }}</h3>
                 <span
                   v-if="news.meta.categories?.length"
-                  class="text-xs font-bold px-3 py-1 rounded-full"
+                  class="text-xs px-3 py-1 rounded-full"
                   :style="getBadgeStyle(news.meta.categories[0])"
                 >
                   {{ news.meta.categories[0] }}
@@ -105,15 +105,18 @@ const grouped = computed(() => {
 
 // Dynamic Earth Tones badge colors
 function getBadgeStyle(category) {
-  let hash = 0
+  let hash = 0;
   for (let i = 0; i < category.length; i++) {
-    hash = category.charCodeAt(i) + ((hash << 5) - hash)
+    hash = category.charCodeAt(i) + ((hash << 5) - hash);
   }
-  const hue = (hash % 60) + 20  // Earth tones: 20–80
+
+  // Pastel hues: pick full 360° range for variety
+  const hue = hash % 360;
+
   return {
-    backgroundColor: `hsl(${hue}, 60%, 85%)`, // soft pastel
-    color: `hsl(${hue}, 60%, 25%)`            // darker text
-  }
+    backgroundColor: `hsl(${hue}, 50%, 80%)`, // pastel background
+    color: `hsl(${hue}, 50%, 100%)`           // darker text for contrast
+  };
 }
 
 // Dynamic pastel top border per card

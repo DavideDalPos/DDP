@@ -18,7 +18,7 @@
 <span
   v-for="(tag, i) in news.meta.tags"
   :key="i"
-  class="text-xs font-semibold px-2 py-1 rounded-full transition"
+  class="text-xs px-2 py-1 rounded-full transition"
   :style="generateTagStyle(tag)"
 >
   {{ tag }}
@@ -38,17 +38,17 @@
 
       <!-- Summary Box -->
       <div v-if="news.meta.summary" class="bg-white rounded-md p-6 shadow-sm border border-gray-200 mt-4">
-        <p class="text-gray-700 text-lg italic" v-html="news.meta.summary"></p>
+        <p class="text-gray-700 text-center text-lg italic" v-html="news.meta.summary"></p>
       </div>
 
       <!-- Main Blog Content -->
-      <div v-if="news.meta.blog" class="prose prose-gray max-w-none mt-4 text-gray-800">
+      <div v-if="news.meta.blog" class="prose prose-gray max-w-none mt-4 text-gray-700">
         <p v-html="news.meta.blog"></p>
       </div>
 
       <!-- Why this matters -->
       <div v-if="news.meta.why" class="bg-white border border-gray-200 rounded-md p-6 shadow-sm mt-4">
-        <h3 class="font-semibold text-amber-500 mb-2">Why this matters</h3>
+        <h3 class="font-semibold text-amber-400 mb-2">Why this matters</h3>
         <p class="text-gray-700" v-html="news.meta.why"></p>
       </div>
 
@@ -59,7 +59,7 @@
     :key="index"
     :href="linkObj.url"
     target="_blank"
-    class="inline-block bg-amber-400 text-gray-900 font-semibold px-6 py-3 rounded-md hover:bg-amber-400 transition shadow-md"
+    class="inline-block bg-[#a7c7e7] text-white font-semibold px-3 py-2 rounded-md hover:bg-amber-300 transition text-sm shadow-md"
   >
     {{ linkObj.text }}
   </a>
@@ -70,7 +70,7 @@
       <div class="text-center">
         <button
           type="button"
-          class="uppercase flex justify-center gap-2 mx-auto text-amber-500 hover:underline transition font-semibold mb-10"
+          class="uppercase flex justify-center gap-2 mx-auto text-gray-700 hover:underline transition font-semibold mb-10"
           @click="goBack"
         >
           ← Back
@@ -114,10 +114,15 @@ function generateTagStyle(tag) {
   for (let i = 0; i < tag.length; i++) {
     hash = tag.charCodeAt(i) + ((hash << 5) - hash)
   }
-  const hue = hash % 360
+
+  hash = Math.abs(hash)
+
+  // Golden angle ensures maximum separation
+  const hue = (hash * 137.508) % 360
+
   return {
-    backgroundColor: `hsl(${hue}, 60%, 85%)`, // pastel background
-    color: `hsl(${hue}, 60%, 25%)`           // darker text
+    backgroundColor: `hsl(${hue}, 60%, 78%)`,
+    color: `hsl(${hue}, 65%, 100%)`
   }
 }
 

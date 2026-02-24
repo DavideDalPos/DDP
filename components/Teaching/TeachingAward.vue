@@ -1,10 +1,10 @@
 <template>
   <div class="container mx-auto p-6 pb-10 max-w-4xl">
-    <h2 class="text-2xl font-semibold mb-6 text-center text-amber-400">Teaching Awards</h2>
+    <h2 class="text-2xl font-semibold mb-6 text-center text-[#ffb86c]">Teaching Awards</h2>
 
     <ul class="space-y-4">
       <li v-for="(award, index) in awards" :key="index" class="flex items-start space-x-3">
-        <span class="text-amber-400 mt-1">★</span>
+        <span class="text-[#ffb86c] mt-1">★</span>
         <div>
           <p class="font-medium text-gray-700">{{ award.title }}</p>
           <p class="text-sm text-gray-500">{{ award.details }}</p>

@@ -16,8 +16,7 @@
 <transition name="fade" appear>
   <div class="mt-6 space-y-2 opacity-0 animate-fade-in animation-delay-300">
     <h1 class="text-gray-700 text-4xl font-bold">Davide Dal Pos</h1>
-    <p class="text-gray-600 text-lg">Postdoctoral Scholar, University of Central Florida</p>
-    <p class="text-gray-700 text-md italic">Morphology and Evolution of Parasitoid Wasps</p>
+    <p class="text-gray-600 text-lg italic">Postdoctoral Scholar, University of Central Florida</p>
   </div>
 </transition>
 
@@ -45,7 +44,6 @@
 <script setup>
 import { defineProps, onMounted, ref } from 'vue'
 import FeaturedCTA from '~/components/Home/FeaturedCTA.vue'
-import LatestNewsCard from './LatestNewsCard.vue'
 
 const props = defineProps({
   textColor: { type: String, default: 'text-white' },
