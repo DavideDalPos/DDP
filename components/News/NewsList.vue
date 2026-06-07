@@ -1,140 +1,122 @@
 <template>
   <section class="bg-gray-50 text-gray-800 py-16">
-    <div class="container mx-auto px-6 max-w-6xl">
+    <div class="container mx-auto px-6 max-w-4xl">
       <h1 class="text-4xl font-extrabold mb-12 text-gray-900">News</h1>
 
-      <template v-for="[year, items] in grouped" :key="year">
-        <h2 class="text-3xl font-bold mb-8 text-amber-600 border-b border-amber-300 pb-2 mt-10">
-          {{ year }}
-        </h2>
+      <div class="relative pl-8">
+        <!-- Vertical line -->
+        <div class="absolute left-3 top-0 bottom-0 w-0.5 bg-gray-200"></div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols- gap-8">
-          <div v-for="(news, idx) in items" :key="news.path || news.title">
-            <!-- Clickable card -->
-            <NuxtLink
-              v-if="news.meta.clickable"
-              :to="news.path"
-              class="block p-6 bg-white border border-gray-300 rounded-r-lg shadow hover:shadow-lg transition-transform transform hover:-translate-y-1 group"
-              :style="getBorderStyle(idx)"
+        <template v-for="[year, items] in grouped" :key="year">
+          <!-- Year marker -->
+          <div class="relative flex items-center gap-4 mb-6 mt-10 first:mt-0">
+            <div class="absolute -left-8 w-4 h-4 rounded-full bg-white border-2 border-amber-500 z-10"></div>
+            <h2 class="text-2xl font-bold text-gray-700">{{ year }}</h2>
+          </div>
+
+          <div class="flex flex-col gap-4 mb-6">
+            <component
+              :is="news.meta.clickable ? NuxtLink : 'div'"
+              v-for="news in items"
+              :key="news.path || news.title"
+              :to="news.meta.clickable ? news.path : undefined"
+              class="bg-white border border-gray-200 rounded-r-lg p-5 transition hover:shadow-md"
+              :style="getCardStyle(news.meta.categories?.[0])"
             >
-              <div class="flex justify-between items-start">
-                <h3 class="text-lg font-semibold text-amber-600 group-hover:text-amber-700">
-                  {{ news.title }}
-                </h3>
+              <div class="flex justify-between items-start gap-3">
+                <h3 class="text-base font-semibold text-gray-900">{{ news.title }}</h3>
                 <span
                   v-if="news.meta.categories?.length"
-                  class="text-xs px-3 py-1 rounded-full"
+                  class="text-xs px-3 py-1 rounded-full whitespace-nowrap shrink-0"
                   :style="getBadgeStyle(news.meta.categories[0])"
                 >
                   {{ news.meta.categories[0] }}
                 </span>
               </div>
 
-              <p class="text-gray-500 text-sm mt-2">
-                {{ new Date(news.meta.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) }}
+              <p class="text-sm text-gray-400 mt-1">
+                {{ new Date(news.meta.date + 'T00:00:00').toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) }}
               </p>
 
-              <p v-if="news.description" class="mt-3 text-gray-700 text-sm line-clamp-4" v-html="news.description"></p>
+              <p
+                v-if="news.description"
+                class="mt-2 text-sm text-gray-600 line-clamp-3"
+                v-html="news.description"
+              ></p>
 
               <span
                 v-if="news.meta.clickable"
-                class="mt-4 inline-block text-xs font-bold text-white bg-indigo-300 px-3 py-1 rounded group-hover:bg-amber-600"
+                class="mt-3 inline-block text-xs font-semibold text-amber-700 hover:underline"
               >
-                Read More
+                Read more →
               </span>
-            </NuxtLink>
-
-            <!-- Non-clickable card -->
-            <div
-              v-else
-              class="p-6 bg-white border border-gray-300 rounded-r-lg shadow-sm"
-              :style="getBorderStyle(idx)"
-            >
-              <div class="flex justify-between items-start">
-                <h3 class="text-lg font-semibold text-amber-600">{{ news.title }}</h3>
-                <span
-                  v-if="news.meta.categories?.length"
-                  class="text-xs px-3 py-1 rounded-full"
-                  :style="getBadgeStyle(news.meta.categories[0])"
-                >
-                  {{ news.meta.categories[0] }}
-                </span>
-              </div>
-
-              <p class="text-gray-500 text-sm mt-2">
-                {{ new Date(news.meta.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) }}
-              </p>
-
-              <p v-if="news.description" class="mt-3 text-gray-700 text-sm line-clamp-4" v-html="news.description"></p>
-            </div>
+            </component>
           </div>
-        </div>
-      </template>
+        </template>
+      </div>
     </div>
   </section>
 </template>
 
 <script setup>
-const route = useRoute()
+import { NuxtLink } from '#components'
 
+const route = useRoute()
 const { data } = await useAsyncData(route.path, () => queryCollection('news').all())
 
 const searchQuery = ref('')
 
-// Filter by search query
 const filteredData = computed(() => {
   if (!searchQuery.value) return data.value
   const q = searchQuery.value.toLowerCase()
   return data.value.filter(item => item.title.toLowerCase().includes(q))
 })
 
-// Group by year
 const grouped = computed(() => {
   const groups = {}
   for (const item of filteredData.value) {
-    const year = new Date(item.meta.date).getFullYear()
+    const year = item.meta.date.split('-')[0]
     if (!groups[year]) groups[year] = []
     groups[year].push(item)
   }
-  // Sort within each year (newest first)
   for (const year in groups) {
-    groups[year].sort((a, b) => new Date(b.meta.date) - new Date(a.meta.date))
+    groups[year].sort((a, b) => b.meta.date.localeCompare(a.meta.date))
   }
-  return Object.entries(groups).sort((a, b) => b[0] - a[0])
+  return Object.entries(groups).sort((a, b) => b[0].localeCompare(a[0]))
 })
 
-// Dynamic Earth Tones badge colors
-function getBadgeStyle(category) {
-  let hash = 0;
+
+function getColors(category) {
+  if (!category) category = 'default'
+  let hash = 0
   for (let i = 0; i < category.length; i++) {
-    hash = category.charCodeAt(i) + ((hash << 5) - hash);
+    hash = category.charCodeAt(i) + ((hash << 5) - hash)
   }
-
-  // Pastel hues: pick full 360° range for variety
-  const hue = hash % 360;
-
+  hash = Math.abs(hash)
+  const hue = (hash * 137.508) % 360
   return {
-    backgroundColor: `hsl(${hue}, 50%, 80%)`, // pastel background
-    color: `hsl(${hue}, 50%, 100%)`           // darker text for contrast
-  };
+    border: `hsl(${hue}, 60%, 65%)`,
+    bg: `hsl(${hue}, 60%, 92%)`,
+    text: `hsl(${hue}, 60%, 30%)`
+  }
 }
 
-// Dynamic pastel top border per card
-function getBorderStyle(index) {
-   const colors = [0, 40, 200] // 0 = red, 200 = blue
-  const hue = colors[index % colors.length]
-  return {
-    borderLeft: `20px solid hsl(${hue}, 70%, 85%)`
-  }
+function getCardStyle(category) {
+  const { border } = getColors(category)
+  return { borderLeft: `4px solid ${border}`, borderRadius: '0 0.5rem 0.5rem 0' }
+}
+
+function getBadgeStyle(category) {
+  const { bg, text } = getColors(category)
+  return { backgroundColor: bg, color: text }
 }
 </script>
 
 <style scoped>
-/* Tailwind's line-clamp for truncating descriptions */
-.line-clamp-4 {
+.line-clamp-3 {
   display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;  
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 </style>

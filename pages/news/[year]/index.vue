@@ -4,7 +4,7 @@
       <h1 class="text-4xl font-extrabold mb-2 text-gray-700">newss</h1>
 
       <h3 class="text-lg font-medium mb-6 text-gray-600">
-        Total newss: {{ filteredData.length }}
+        Total news: {{ filteredData.length }}
       </h3>
 
       <!-- Search -->
@@ -154,15 +154,15 @@ function formatAuthors(authors) {
 const grouped = computed(() => {
   const groups = {}
   for (const pub of filteredData.value) {
-    const year = new Date(pub.meta.date).getFullYear()
+    const year = pub.meta.date.split('-')[0]
     if (!groups[year]) groups[year] = []
     groups[year].push(pub)
   }
 
   for (const year in groups) {
-    groups[year].sort((a, b) => new Date(b.meta.date) - new Date(a.meta.date))
+    groups[year].sort((a, b) => b.meta.date.localeCompare(a.meta.date))
   }
 
-  return Object.entries(groups).sort((a, b) => b[0] - a[0])
+  return Object.entries(groups).sort((a, b) => b[0].localeCompare(a[0]))
 })
 </script>

@@ -130,11 +130,11 @@ function generateTagStyle(tag) {
 // Format date nicely
 const formattedDate = computed(() => {
   if (!props.news.meta.date) return ''
-  return new Date(props.news.meta.date).toLocaleDateString(undefined, {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
+return new Date(props.news.meta.date + 'T00:00:00').toLocaleDateString(undefined, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+})
 })
 </script>
 
