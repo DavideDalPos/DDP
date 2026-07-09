@@ -1,42 +1,31 @@
 <template>
-  <section class="relative flex flex-col items-center justify-center overflow-hidden pt-30 pb-30">
+  <section class="relative flex flex-col items-center justify-center overflow-hidden py-16 sm:py-24 md:py-32">
 
     <!-- Particle Network Canvas -->
 
-    <div class="text-center px-1 relative z-10">
+    <div class="text-center px-4 relative z-10 max-w-2xl mx-auto">
 
       <!-- Profile Image -->
-      <transition name="fade" appear>
-        <div class="mx-auto w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden shadow-md opacity-0 animate-fade-in animation-delay-100 transform transition-all duration-700">
-          <img src="/images/profile3.jpg" alt="Davide Dal Pos" class="w-full h-full object-cover" />
-        </div>
-      </transition>
+      <div class="mx-auto w-36 h-36 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden shadow-md ring-4 ring-[#e7e4da] opacity-0 animate-fade-in animation-delay-100">
+        <img src="/images/profile3.jpg" alt="Davide Dal Pos" class="w-full h-full object-cover" />
+      </div>
 
-<!-- Name & Title -->
-<transition name="fade" appear>
-  <div class="mt-6 space-y-2 opacity-0 animate-fade-in animation-delay-300">
-    <h1 class="text-gray-700 text-4xl font-bold">Davide Dal Pos</h1>
-    <p class="text-gray-600 text-lg italic">Postdoctoral Scholar, University of Central Florida</p>
-  </div>
-</transition>
+      <!-- Name & Title -->
+      <div class="mt-6 space-y-2 opacity-0 animate-fade-in animation-delay-300">
+        <h1 class="text-[#26333b] text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">Davide Dal Pos</h1>
+        <p class="text-gray-600 text-base sm:text-lg italic">Postdoctoral Scholar, University of Central Florida</p>
+      </div>
 
-<!-- Welcome Message + Typewriter -->
-<transition name="fade" appear>
-  <p class="text-gray-700 text-2xl md:text-3xl mt-8 opacity-0 animate-fade-in animation-delay-700">
-    Hi! Welcome to my academic website. <br />
-    I work on <span class="text-amber-500 font-semibold" id="typewriter"></span>
-  </p>
-</transition>
-
+      <!-- Welcome Message + Typewriter -->
+      <p class="text-gray-700 text-xl sm:text-2xl md:text-3xl mt-8 max-w-xl mx-auto leading-relaxed opacity-0 animate-fade-in animation-delay-700">
+        Hi! Welcome to my academic website. <br />
+        I work on <span class="text-[#a85a2e] font-semibold" id="typewriter"></span>
+      </p>
 
     </div>
+
     <!-- Featured CTA + Publications -->
-    <FeaturedCTA 
-      :featuredPublications="featuredPublications" 
-    />
-
-
-
+    <FeaturedCTA />
 
   </section>
 </template>

@@ -1,69 +1,73 @@
 <template>
-  <section class="py-5 border-gray-200">
-    <div class="max-w-sm mx-auto px-4 text-center"> <!-- Narrow card -->
+  <section class="w-full bg-white py-12 sm:py-16 md:py-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="text-center text-[#a85a2e] text-sm font-semibold uppercase tracking-wider mb-2">
+        Keeping up
+      </p>
+      <h2 class="text-center text-[#26333b] text-2xl md:text-3xl font-bold mb-8 sm:mb-10">
+        Latest News
+      </h2>
 
-      <div 
-        class="relative bg-gray-100 rounded-2xl p-4 shadow-lg
-               hover:shadow-md transition-shadow duration-500 border border-gray-400 animate-fade-in"
-      >
-
-              <!-- Badge -->
-        <span class="absolute top-3 left-3 bg-amber-100 text-amber-700 text-[9px] font-semibold 
-                     uppercase px-2 py-0.5 rounded-full tracking-wide">
-          News
-        </span>
-
-        <!-- Content -->
-        <h2 class="text-xl font-bold text-gray-800 mb-2 mt-1 flex items-center justify-center gap-2">
-          Latest News
-          <!-- Flashing NEW button if recent -->
-          <span
-            v-if="isRecent"
-            class="px-2 py-0.5 bg-amber-500 text-white text-[9px] font-bold rounded-full animate-pulse"
+      <ul v-if="recentNews.length" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <li v-for="item in recentNews" :key="item.link">
+          <NuxtLink
+            :to="item.link"
+            class="group flex h-full flex-col rounded-xl border border-[#3a4b56] bg-[#2b3841] p-5 shadow-sm transition
+                   hover:-translate-y-1 hover:border-[#c07a4b] hover:bg-[#26333b] hover:shadow-md
+                   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c07a4b]"
           >
-            NEW
-          </span>
-        </h2>
+            <time class="text-xs font-medium uppercase tracking-wide text-[#c07a4b]">
+              {{ formatDate(item.date) }}
+            </time>
+<h3
+  class="mt-2 font-semibold text-[#eae7dd] leading-snug"
+  v-html="item.title"
+/>
+<p
+  v-if="item.excerpt"
+  class="mt-2 text-sm text-[#eae7dd]/70 leading-relaxed flex-1"
+  v-html="item.excerpt"
+/>
+          </NuxtLink>
+        </li>
+      </ul>
 
-        <p class="text-gray-600 mb-3 text-xs leading-relaxed">
-          Stay updated with recent research updates, publications, datasets, and academic activities.
-        </p>
+      <p v-else class="text-center text-gray-500">
+        No news just yet — check back soon.
+      </p>
 
-        <NuxtLink
-          to="/news"
-          class="inline-block px-3 py-1.5 bg-indigo-500 text-white text-xs font-semibold rounded-lg
-                 hover:bg-indigo-600 transition duration-300 shadow-sm hover:shadow-md"
-        >
-          Visit News Page →
+      <div class="mt-8 text-center">
+        <NuxtLink to="/news" class="text-sm font-semibold text-[#a85a2e] hover:text-[#86461f]">
+          All news →
         </NuxtLink>
-
       </div>
-
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { useAsyncData } from '#app'
+import { computed } from 'vue'
 
-// Latest news date
-const latestNewsDate = ref('2026-02-11')
+// Uses the same collection + meta.date shape your header already relies on.
+const { data: newsData } = await useAsyncData('home-news', () => queryCollection('news').all())
 
-// Check if news is within last 14 days
-const isRecent = computed(() => {
-  const today = new Date()
-  const newsDate = new Date(latestNewsDate.value)
-  const diffTime = today - newsDate
-  const diffDays = diffTime / (1000 * 60 * 60 * 24)
-  return diffDays <= 14
+const recentNews = computed(() => {
+  if (!newsData.value?.length) return []
+  return [...newsData.value]
+    .sort((a, b) => new Date(b.meta?.date) - new Date(a.meta?.date))
+    .slice(0, 3)
+    .map(item => ({
+      // TODO: map these to your actual news frontmatter fields if they differ.
+      title: item.title || item.meta?.title || 'Untitled',
+      link: item.path || item.meta?.link || '/news',
+      date: item.meta?.date,
+      excerpt: item.description || item.meta?.description || item.meta?.summary || ''
+    }))
 })
-</script>
 
-<style scoped>
-/* Fade-in animation */
-@keyframes fade-in {
-  0% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
+function formatDate(d) {
+  if (!d) return ''
+  return new Date(d).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
 }
-.animate-fade-in { animation: fade-in 1s ease forwards; }
-</style>
+</script>
