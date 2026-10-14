@@ -2,6 +2,13 @@
 
 export const awards = [
   {
+    name: "Outstanding Ph.D. Dissertation Award",
+    year: 2026,
+    term: "Spring",
+    org: "Department of Biology, University of Central Florida",
+    type: "Honor"
+  },
+  {
     name: "UCF Biology Excellence in Research Award",
     year: 2024,
     term: "Spring",

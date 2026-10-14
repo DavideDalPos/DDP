@@ -1,18 +1,15 @@
 <template>
-  <main>
-    <PublicationsView :publication="publication" />
-  </main>
+  <div>
+    <PublicationsView v-if="publication" :publication="publication" />
+  </div>
 </template>
 
 <script setup>
-import PublicationsView from '~/components/Publications/PublicationsView.vue';
+import PublicationsView from '~/components/Publications/PublicationsView.vue'
 
 const route = useRoute()
 
-const publication = await queryCollection('publications', route.params.year, route.params.slug)
-  .path(route.path)
-  .first()
+const { data: publication } = await useAsyncData(`pub-${route.path}`, () =>
+  queryCollection('publications').path(route.path).first()
+)
 </script>
-
-
-

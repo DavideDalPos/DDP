@@ -1,138 +1,193 @@
 <template>
-  <section class="text-gray-700">
-    <div class="container mx-auto px-8 my-10 max-w-[70rem]">
-      <article>
-        <!-- Title -->
-        <h2
-          class="font-serif font-semibold text-[35px] leading-tight text-amber-400 mb-6"
-          v-html="publication.title"
-        ></h2>
+  <div v-if="publication">
+    <!-- Header -->
+    <section class="border-b border-line bg-paper-2">
+      <div class="mx-auto max-w-7xl px-5 pb-12 pt-10 lg:px-8">
+        <NuxtLink to="/publications" class="inline-block text-sm font-semibold text-muted hover:text-ink">← All publications</NuxtLink>
+        <p class="kicker !flex mt-8">
+          {{ m.journal }} · {{ year }}
+        </p>
+        <h1 class="title mt-4 max-w-5xl text-3xl font-semibold leading-tight sm:text-[2.6rem]" v-html="publication.title" />
 
-        <!-- Authors block -->
-        <div v-if="publication.meta.authors" class="mb-2 pb-4">
-          <p class="text-[18px] leading-snug flex flex-wrap gap-x-2">
-            <template v-for="(author, index) in publication.meta.authors" :key="'auth-' + index">
-              <span class="inline-flex items-center">
-                {{ author.first_name }} {{ author.last_name }}
-                <sup>{{ getAffiliationNumber(author.affiliation) }}</sup>
-                <a
-                  v-if="author.orcid"
-                  :href="author.orcid"
-                  class="ml-1 text-amber-600 hover:text-amber-500 hover:underline inline-flex items-center gap-1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src="/images/orcid.svg" alt="ORCID icon" class="w-4 h-4" />
-                </a>
-                <span v-if="index < publication.meta.authors.length - 1">;</span>
-              </span>
-            </template>
-          </p>
+        <!-- Authors -->
+        <p class="mt-6 max-w-5xl text-[1.02rem] leading-relaxed">
+          <template v-for="(a, i) in m.authors" :key="i">
+            <span :class="isMe(a) ? 'font-semibold' : ''">{{ a.first_name }} {{ a.last_name }}</span><sup v-if="affNo(a)" class="ml-0.5 text-muted">{{ affNo(a) }}</sup><a
+              v-if="a.orcid"
+              :href="a.orcid"
+              target="_blank"
+              rel="noopener"
+              class="ml-1 inline-block align-[-2px]"
+              :aria-label="`ORCID of ${a.first_name} ${a.last_name}`"
+              ><img src="/images/orcid.svg" alt="" class="inline h-3.5 w-3.5"
+            /></a><span v-if="i < m.authors.length - 1">, </span>
+          </template>
+        </p>
+        <ol v-if="affiliations.list.length" class="mt-3 max-w-5xl space-y-0.5 text-sm text-muted">
+          <li v-for="(aff, i) in affiliations.list" :key="i"><sup>{{ i + 1 }}</sup> {{ aff }}</li>
+        </ol>
+      </div>
+    </section>
 
-          <ol class="mt-2 text-sm text-gray-700 list-decimal list-inside mb-2">
-            <li v-for="(affil, idx) in uniqueAffiliations.list" :key="'aff-' + idx">
-              {{ affil }}
-            </li>
-          </ol>
+    <section class="mx-auto grid max-w-7xl gap-12 px-5 py-12 lg:grid-cols-12 lg:px-8">
+      <!-- Abstract + PDF -->
+      <article class="lg:col-span-8">
+        <div v-if="m.abstract">
+          <h2 class="text-2xl font-semibold">Abstract</h2>
+          <div class="abstract prose-epic mt-4" v-html="m.abstract" />
         </div>
 
-        <!-- Two-column layout -->
-        <div class="flex flex-col lg:flex-row gap-8">
-          <!-- Left column -->
-          <div class="flex-1">
-            <!-- Abstract -->
-            <div v-if="publication.meta.abstract" class="prose pt-3">
-              <h3 class="text-3xl font-bold text-gray-700 text-center">Abstract</h3>
-              <p v-html="publication.meta.abstract" class="text-gray-700 text-justify mt-2" />
-            </div>
-
-            <!-- PDF / ResearchGate -->
-            <PDFPreview
-              :pdf="publication.meta.pdf"
-              :researchgate="publication.meta.researchgate"
-            />
-          </div>
-
-          <!-- Vertical Divider -->
-          <div class="hidden lg:block w-px bg-gray-300"></div>
-
-          <!-- Right column -->
-          <div class="w-full lg:w-[265px] flex-shrink-0 space-y-4 text-sm mt-3">
-            <!-- Publication Info -->
-            <div class="bg-blue-50 border border-gray-300 rounded-md p-4">
-              <p v-if="publication.meta.doi">
-                <strong>DOI: </strong>
-                <a :href="publication.meta.doi" class="text-amber-500 hover:text-amber-500 hover:underline">
-                  {{ cleanedDoi }}
-                </a>
-              </p>
-              <p><strong>Journal:</strong> {{ publication.meta.journal }}</p>
-              <p v-if="publication.meta.volume"><strong>Volume:</strong> {{ publication.meta.volume }}</p>
-              <p v-if="publication.meta.issue"><strong>Issue:</strong> {{ publication.meta.issue }}</p>
-              <p><strong>Pages:</strong> {{ publication.meta.pagination }}</p>
-            </div>
-
-            <!-- Altmetric Badge -->
-            <div class="scale-[1.4] origin-left ml-22 mt-6">
-              <AltmetricBadge :rawDoi="publication.meta.doi" />
-            </div>
-          </div>
+        <div v-if="topicLabels.length || taxa.length" class="mt-8 flex flex-wrap gap-2">
+          <span v-for="t in topicLabels" :key="t" class="rounded border border-ink/20 px-2 py-1 text-xs font-semibold">{{ t }}</span>
+          <span v-for="t in taxa" :key="t" class="rounded border border-line px-2 py-1 text-xs text-muted">{{ t }}</span>
         </div>
 
-        <!-- Back Button -->
-        <button
-          type="button"
-          class="uppercase flex items-center my-10 gap-1.5 cursor-pointer mx-auto text-amber-600 hover:text-amber-500 transition"
-          @click="goBack"
-        >
-          <IconArrowLeft class="h-4 inline-block" />
-          <span>Back</span>
-        </button>
+        <div class="mt-10">
+          <PDFPreview :pdf="m.pdf" :researchgate="m.researchgate" :doi="doiLink" />
+        </div>
       </article>
-    </div>
-  </section>
+
+      <!-- Sidebar -->
+      <aside class="lg:col-span-4">
+        <div class="space-y-6 lg:sticky lg:top-24">
+          <div class="card relative overflow-hidden p-6">
+            <span class="absolute inset-x-0 top-0 h-[3px] bg-accent" />
+            <dl class="space-y-3 text-sm">
+              <div><dt class="label">Journal</dt><dd class="mt-0.5 italic">{{ m.journal }}</dd></div>
+              <div class="grid grid-cols-3 gap-3">
+                <div v-if="m.volume"><dt class="label">Volume</dt><dd class="mt-0.5">{{ m.volume }}</dd></div>
+                <div v-if="m.issue"><dt class="label">Issue</dt><dd class="mt-0.5">{{ m.issue }}</dd></div>
+                <div v-if="m.pagination"><dt class="label">Pages</dt><dd class="mt-0.5">{{ m.pagination }}</dd></div>
+              </div>
+              <div><dt class="label">Published</dt><dd class="mt-0.5">{{ published }}</dd></div>
+              <div v-if="doi">
+                <dt class="label">DOI</dt>
+                <dd class="mt-0.5 break-all"><a :href="doiLink" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-accent-deep">{{ doi }}</a></dd>
+              </div>
+            </dl>
+
+            <div class="mt-6 flex flex-col gap-2">
+              <a v-if="doiLink" :href="doiLink" target="_blank" rel="noopener" class="btn btn-primary justify-center">Read at the journal <span class="arrow">↗</span></a>
+              <a v-if="m.pdf" :href="m.pdf" target="_blank" rel="noopener" class="btn btn-ghost justify-center text-ink hover:bg-ink hover:text-white">Download PDF</a>
+              <a v-else-if="m.researchgate" :href="m.researchgate" target="_blank" rel="noopener" class="btn btn-ghost justify-center text-ink hover:bg-ink hover:text-white">Request on ResearchGate ↗</a>
+            </div>
+          </div>
+
+          <div class="card p-6">
+            <p class="label">How to cite</p>
+            <p class="mt-3 text-sm leading-relaxed text-ink/85">{{ cite }}</p>
+            <div class="mt-4 flex gap-4 text-sm font-semibold">
+              <button type="button" class="underline underline-offset-4 hover:text-accent-deep" @click="copy">{{ copied ? 'Copied ✓' : 'Copy citation' }}</button>
+              <button type="button" class="underline underline-offset-4 hover:text-accent-deep" @click="downloadText(`${slug}.bib`, bibtex(publication))">BibTeX</button>
+            </div>
+          </div>
+
+          <div v-if="doi" class="flex items-center">
+            <AltmetricBadge :raw-doi="m.doi" />
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Previous / next -->
+    <nav v-if="prev || next" class="border-t border-line">
+      <div class="mx-auto grid max-w-7xl gap-6 px-5 py-10 sm:grid-cols-2 lg:px-8">
+        <NuxtLink v-if="next" :to="next.path" class="group">
+          <span class="label">← Newer</span>
+          <span class="mt-1 block font-display text-lg font-semibold leading-snug group-hover:text-accent-deep" v-html="next.title" />
+        </NuxtLink>
+        <span v-else />
+        <NuxtLink v-if="prev" :to="prev.path" class="group sm:text-right">
+          <span class="label">Older →</span>
+          <span class="mt-1 block font-display text-lg font-semibold leading-snug group-hover:text-accent-deep" v-html="prev.title" />
+        </NuxtLink>
+      </div>
+    </nav>
+  </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useRouter } from 'vue-router'
-import IconArrowLeft from '../Icon/IconArrowLeft.vue'
+import { computed, ref } from 'vue'
 import AltmetricBadge from './AltmetricBadge.vue'
 import PDFPreview from './PDFPreview.vue'
+import { TOPICS, bibtex, citation, cleanDoi, doiUrl, downloadText, isMe, stripHtml, taxaOf, topicsOf, yearOf } from './pubUtils.js'
 
 const props = defineProps({ publication: Object })
-const router = useRouter()
 
-function goBack() {
-  if (import.meta.client) {
-    if (window.history.length > 1) router.back()
-    else router.push('/publications')
-  }
-}
+const m = computed(() => props.publication?.meta || {})
+const year = computed(() => yearOf(props.publication))
+const doi = computed(() => cleanDoi(m.value.doi))
+const doiLink = computed(() => doiUrl(m.value.doi))
+const slug = computed(() => props.publication?.path?.split('/').pop() || 'citation')
+const published = computed(() =>
+  new Date(m.value.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
+)
+const cite = computed(() => citation(props.publication))
+const topicLabels = computed(() => topicsOf(props.publication).map((k) => TOPICS.find((t) => t.key === k).label))
+const taxa = computed(() => taxaOf(props.publication))
 
-const uniqueAffiliations = computed(() => {
-  const seen = new Map()
+useHead({
+  title: computed(() => stripHtml(props.publication?.title || 'Publication')),
+  meta: [
+    { name: 'description', content: computed(() => stripHtml(m.value.abstract || '').slice(0, 300)) },
+    { name: 'citation_title', content: computed(() => stripHtml(props.publication?.title || '')) },
+    { name: 'citation_journal_title', content: computed(() => m.value.journal) },
+    { name: 'citation_publication_date', content: computed(() => String(m.value.date || '').slice(0, 10)) },
+    { name: 'citation_doi', content: computed(() => doi.value) }
+  ]
+})
+
+// Numbered affiliations
+const affiliations = computed(() => {
+  const map = new Map()
   const list = []
-
-  if (props.publication?.meta?.authors) {
-    props.publication.meta.authors.forEach((author) => {
-      const affil = author.affiliation?.trim()
-      if (affil && !seen.has(affil)) {
-        seen.set(affil, list.length + 1)
-        list.push(affil)
-      }
-    })
+  for (const a of m.value.authors || []) {
+    const aff = a.affiliation?.trim()
+    if (aff && !map.has(aff)) {
+      map.set(aff, list.length + 1)
+      list.push(aff)
+    }
   }
-
-  return { map: seen, list }
+  return { map, list }
 })
+const affNo = (a) => affiliations.value.map.get(a.affiliation?.trim())
 
-function getAffiliationNumber(affil) {
-  return uniqueAffiliations.value.map.get(affil?.trim())
+// Previous / next by date
+const { data: all } = await useAsyncData('publications-nav', () => queryCollection('publications').all())
+const ordered = computed(() => [...(all.value || [])].sort((a, b) => new Date(b.meta.date) - new Date(a.meta.date)))
+const idx = computed(() => ordered.value.findIndex((p) => p.path === props.publication?.path))
+const next = computed(() => (idx.value > 0 ? ordered.value[idx.value - 1] : null))
+const prev = computed(() => (idx.value >= 0 && idx.value < ordered.value.length - 1 ? ordered.value[idx.value + 1] : null))
+
+const copied = ref(false)
+async function copy() {
+  try {
+    await navigator.clipboard.writeText(cite.value)
+    copied.value = true
+    setTimeout(() => (copied.value = false), 1800)
+  } catch {
+    window.prompt('Copy the citation:', cite.value)
+  }
 }
-
-const cleanedDoi = computed(() => {
-  if (!props.publication?.meta?.doi) return null
-  return props.publication.meta.doi.replace(/^https?:\/\/(dx\.)?doi\.org\//i, '')
-})
 </script>
+
+<style scoped>
+.label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.title :deep(i) {
+  font-style: italic;
+}
+.abstract {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #33363c;
+  text-align: justify;
+  hyphens: auto;
+}
+</style>

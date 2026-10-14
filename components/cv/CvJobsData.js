@@ -1,10 +1,26 @@
 export const jobs = [
   {
+    id: 10,
+    title: 'Assistant Professor',
+    institution: 'Division of Plant Science & Technology, University of Missouri',
+    start: '2026',
+    end: 'Present',
+    description: 'Principal investigator of the EPIC Lab (Species Exploration, Phenomics, Informatics & Conservation)'
+  },
+  {
+    id: 11,
+    title: 'Director',
+    institution: 'Enns Entomology Museum, University of Missouri',
+    start: '2026',
+    end: 'Present',
+    description: 'Direction, curation and digitization of Missouri’s insect collection'
+  },
+  {
     id: 1,
-    title: 'PostDoctoral Scholar',
+    title: 'Postdoctoral Scholar',
     institution: 'University of Central Florida',
     start: '2025',
-    end: 'Present',
+    end: '2026',
     description: 'Research & Teaching'
   },
   {
@@ -12,7 +28,7 @@ export const jobs = [
     title: 'Collection Assistant & Database Specialist',
     institution: 'University of Central Florida Collection (UCFC)',
     start: '2025',
-    end: 'Present',
+    end: '2026',
     description: [
       'Specimen databasing and digitization',
       'Website content management and updates',
@@ -37,7 +53,7 @@ export const jobs = [
   },
     {
     id: 6,
-    title: 'Gradaute Teaching Associate',
+    title: 'Graduate Teaching Associate',
     institution: 'University of Central Florida (UCF)',
     start: '2019',
     end: '2025',

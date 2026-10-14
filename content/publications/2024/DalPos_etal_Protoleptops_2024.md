@@ -1,7 +1,7 @@
 ---
 title: 'Revision of the Afrotropical genus <i>Protoleptops</i> Heinrich, 1967 (Hymenoptera, Ichneumonidae, Ichneumoninae), with description of a new species from Burundi'
 date: '2024-10-07' 
-journal: 'Zookeys'
+journal: 'ZooKeys'
 volume: '1214'
 issue: ''
 pagination: '197-216'

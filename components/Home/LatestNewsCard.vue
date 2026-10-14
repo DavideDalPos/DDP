@@ -1,55 +1,39 @@
 <template>
-  <section class="w-full bg-white py-12 sm:py-16 md:py-20">
-    <div class="max-w-5xl mx-auto px-4">
-      <p class="text-center text-[#a85a2e] text-sm font-semibold uppercase tracking-wider mb-2">
-        Keeping up
-      </p>
-      <h2 class="text-center text-[#26333b] text-2xl md:text-3xl font-bold mb-8 sm:mb-10">
-        Latest News
-      </h2>
-
-      <ul v-if="recentNews.length" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <li v-for="item in recentNews" :key="item.link">
-          <NuxtLink
-            :to="item.link"
-            class="group flex h-full flex-col rounded-xl border border-[#3a4b56] bg-[#2b3841] p-5 shadow-sm transition
-                   hover:-translate-y-1 hover:border-[#c07a4b] hover:bg-[#26333b] hover:shadow-md
-                   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c07a4b]"
-          >
-            <time class="text-xs font-medium uppercase tracking-wide text-[#c07a4b]">
-              {{ formatDate(item.date) }}
-            </time>
-<h3
-  class="mt-2 font-semibold text-[#eae7dd] leading-snug"
-  v-html="item.title"
-/>
-<p
-  v-if="item.excerpt"
-  class="mt-2 text-sm text-[#eae7dd]/70 leading-relaxed flex-1"
-  v-html="item.excerpt"
-/>
-          </NuxtLink>
-        </li>
-      </ul>
-
-      <p v-else class="text-center text-gray-500">
-        No news just yet — check back soon.
-      </p>
-
-      <div class="mt-8 text-center">
-        <NuxtLink to="/news" class="text-sm font-semibold text-[#a85a2e] hover:text-[#86461f]">
-          All news →
-        </NuxtLink>
+  <section class="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-28">
+    <div class="flex flex-wrap items-end justify-between gap-6 border-b border-line pb-6">
+      <div>
+        <p v-reveal class="kicker">News</p>
+        <h2 v-reveal="60" class="mt-5 text-4xl font-semibold">Latest news</h2>
       </div>
+      <NuxtLink v-reveal="100" to="/news" class="text-sm font-semibold text-ink underline underline-offset-4 hover:text-accent-deep">All news</NuxtLink>
     </div>
+
+    <ul v-if="recentNews.length" class="mt-10 grid gap-8 md:grid-cols-3">
+      <li v-for="(item, i) in recentNews" :key="item.link" v-reveal="i * 80">
+        <NuxtLink :to="item.link" class="group flex h-full flex-col">
+          <div class="relative mb-5 aspect-[16/9] overflow-hidden rounded-md border border-line bg-paper-2">
+            <img
+              v-if="item.image"
+              :src="item.image"
+              :alt="item.imageAlt"
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+              loading="lazy"
+            />
+            <LabMark v-else class="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 opacity-60" body="#15171c" />
+          </div>
+          <time class="text-xs font-semibold uppercase tracking-[0.14em] text-muted">{{ formatDate(item.date) }}</time>
+          <h3 class="mt-2 text-xl font-semibold leading-snug group-hover:text-accent-deep" v-html="item.title" />
+          <p v-if="item.excerpt" class="mt-2 flex-1 text-sm leading-relaxed text-muted" v-html="item.excerpt" />
+        </NuxtLink>
+      </li>
+    </ul>
+    <p v-else class="mt-10 text-muted">No news yet.</p>
   </section>
 </template>
 
 <script setup>
-import { useAsyncData } from '#app'
 import { computed } from 'vue'
 
-// Uses the same collection + meta.date shape your header already relies on.
 const { data: newsData } = await useAsyncData('home-news', () => queryCollection('news').all())
 
 const recentNews = computed(() => {
@@ -57,17 +41,18 @@ const recentNews = computed(() => {
   return [...newsData.value]
     .sort((a, b) => new Date(b.meta?.date) - new Date(a.meta?.date))
     .slice(0, 3)
-    .map(item => ({
-      // TODO: map these to your actual news frontmatter fields if they differ.
+    .map((item) => ({
       title: item.title || item.meta?.title || 'Untitled',
-      link: item.path || item.meta?.link || '/news',
+      link: item.path || '/news',
       date: item.meta?.date,
-      excerpt: item.description || item.meta?.description || item.meta?.summary || ''
+      image: item.meta?.image || '',
+      imageAlt: item.meta?.imageAlt || '',
+      excerpt: item.description || item.meta?.summary || ''
     }))
 })
 
 function formatDate(d) {
   if (!d) return ''
-  return new Date(d).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
+  return new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
 }
 </script>

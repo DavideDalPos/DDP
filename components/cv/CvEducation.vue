@@ -9,7 +9,7 @@
     >
       <!-- Left: Degree + Institution -->
       <div class="flex-1">
-        <h3 class="text-amber-400 font-bold text-lg">{{ edu.degree }}</h3>
+        <h3 class="text-lav-deep font-bold text-lg">{{ edu.degree }}</h3>
         <p class="text-gray-700 font-medium">{{ edu.institution }}</p>
         <p v-if="edu.title" class="text-gray-600 italic mt-1">“{{ edu.title }}”</p>
         <p v-if="edu.advisor" class="text-gray-500 mt-1">Advisor: {{ edu.advisor }}</p>
@@ -18,7 +18,7 @@
       <!-- Right: Year -->
       <div class="flex-shrink-0 mt-1 md:mt-0">
         <span
-          class="text-amber-800 font-semibold bg-amber-200 px-3 py-1 rounded-full shadow-sm text-xs"
+          class="text-lav-deep font-semibold bg-lav-soft px-3 py-1 rounded-full shadow-sm text-xs"
         >
           {{ edu.year }}
         </span>

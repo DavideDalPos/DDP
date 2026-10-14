@@ -2,12 +2,12 @@
   <div class="max-w-[70rem] mx-auto">
     <!-- Header: Title + Download -->
     <div class="flex justify-between items-center mb-3">
-      <h2 class="text-xl italic text-amber-400">Curriculum Vitae</h2>
+      <h2 class="text-xl italic text-lav-deep">Curriculum Vitae</h2>
       <div class="text-right">
         <a
           href="/PDFs/Davide_Dal_Pos_CV.pdf"
           download
-          class="text-white bg-[#ffb86c]  shadow-md px-2 py-1 rounded hover:bg-amber-600 transition"
+          class="text-white bg-lav  shadow-md px-2 py-1 rounded hover:bg-lav-deep transition"
           target="_blank"
           rel="noopener noreferrer"
         >

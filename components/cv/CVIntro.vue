@@ -1,53 +1,14 @@
 <template>
-  <section class="relative container mx-auto px-6 max-w-6xl">
-    
-    <!-- Hero Content -->
-    <div class="bg-white p-12 rounded-lg shadow-lg mb-12 text-center border-t-15 border-[#ffb86c]">
-      
-      <!-- Title -->
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-700 mb-4">
-        Curriculum Vitae
-      </h1>
-      
-      <!-- Accent Divider -->
-      <div class="mx-auto w-24 h-1 bg-amber-400 rounded mb-6"></div>
-      
-      <!-- Subtitle -->
-      <p class="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-        Explore my professional experience, education, skills, and awards.
-      </p>
-
-      <!-- CTA Button -->
-      <div class="mt-8">
-        <a
-          href="#cv"
-          class="inline-block px-6 py-3 rounded-full bg-[#ffb86c] text-white font-semibold shadow-lg hover:bg-amber-500 transition transform hover:-translate-y-1"
-        >
-          Scroll Down to View Full CV ↓
-        </a>
-      </div>
-
-      <!-- Optional small note -->
-      <p class="text-gray-400 text-sm mt-2">
-        You can also download the full CV below after scrolling.
-      </p>
-
-    </div>
-
-  </section>
+  <LabPageHero
+    kicker="About Davide"
+    title="Curriculum vitae"
+    lede="Appointments, education, awards and funding of Davide Dal Pos, Assistant Professor at the University of Missouri and Director of the Enns Entomology Museum."
+  >
+    <a href="/PDFs/Davide_Dal_Pos_CV.pdf" target="_blank" rel="noopener" class="btn btn-primary">Download PDF</a>
+    <a href="#cv" class="btn btn-ghost text-ink hover:bg-ink hover:text-white">View below <span class="arrow">↓</span></a>
+  </LabPageHero>
 </template>
 
 <script setup>
-// Static component, no props needed
+useHead({ title: 'CV' })
 </script>
-
-<style scoped>
-/* Optional subtle floating animation for consistency */
-@keyframes floatPattern {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(10px); }
-}
-img {
-  animation: floatPattern 15s ease-in-out infinite;
-}
-</style>

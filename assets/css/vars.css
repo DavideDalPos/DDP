@@ -1,24 +1,41 @@
-:root {
-  --color-avocado-100: oklch(0.95 0.20 340);  /* deep plum */
-  --color-avocado-200: oklch(0.90 0.18 280);  /* steel blue (secondary) */
-  --color-avocado-300: oklch(0.85 0.16 130);  /* elegant forest green */
-}
+/* ─────────────────────────────────────────────────────────────
+   EPIC Lab design tokens
+   A restrained palette: charcoal ink, warm paper and one
+   accent (bronze, like old brass labels and drawer pulls).
+   The pillar colour names (amber, lav, teal, sage) are kept so
+   existing class names keep working; they all map to the accent.
+   ───────────────────────────────────────────────────────────── */
 
 @theme {
-  --font-sans: 'Georgia', serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Source Serif 4', Georgia, 'Times New Roman', serif;
 
-  --color-background: #1e1b1a;         /* new dark base */
-  --color-foreground: #f8f7f6;         /* previous bg becomes text color */
+  --color-ink: #15171c;
+  --color-ink-2: #22252c;
+  --color-ink-3: #353944;
+  --color-paper: #f8f7f4;
+  --color-paper-2: #efede8;
+  --color-line: #dedad2;
+  --color-muted: #5f636b;
 
-  --color-primary: #e0b8cc;            /* light dusty rose */
-  --color-primary-content: #1e1b1a;    /* dark text on primary buttons */
+  --color-accent: #8c5e2a;
+  --color-accent-deep: #6e4a22;
+  --color-accent-light: #c9a06a;
+  --color-accent-soft: #f1ebe1;
 
-  --color-secondary: #93a1c3;
-  --color-tertiary: #90b28f;
-  --color-quaternary: #d6aa8c;
-  --color-quinary: #c6a0a9;
-  --color-senary: #a08d8b;
-  --color-setenary: #ccc6c1;
-  --color-otenary: #e7ddd6;
-  --color-novenary: #d5a6a0;
+  --color-lav: #8c5e2a;
+  --color-lav-deep: #6e4a22;
+  --color-lav-soft: #f1ebe1;
+
+  --color-amber: #8c5e2a;
+  --color-amber-deep: #6e4a22;
+  --color-amber-soft: #f1ebe1;
+
+  --color-teal: #8c5e2a;
+  --color-teal-deep: #6e4a22;
+  --color-teal-soft: #f1ebe1;
+
+  --color-sage: #8c5e2a;
+  --color-sage-deep: #6e4a22;
+  --color-sage-soft: #f1ebe1;
 }

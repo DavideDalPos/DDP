@@ -1,11 +1,8 @@
-<script setup lang="ts">
-import ResearchCollection from '~/components/Research/ResearchCollection.vue';
-import ResearchCollectionBib from '~/components/Research/ResearchCollectionBib.vue';
-
+<script setup>
+// This page moved: the research is now organised by the four EPIC pillars.
+definePageMeta({ redirect: '/research/informatics' })
 </script>
 
 <template>
-    <ResearchCollection />
-    <ResearchCollectionBib />
-
+  <div />
 </template>

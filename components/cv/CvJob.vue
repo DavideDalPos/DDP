@@ -5,7 +5,7 @@
     <!-- Header: title + institution + dates -->
     <div class="flex flex-col md:flex-row md:justify-between md:items-center">
       <div>
-        <h3 class="font-bold text-lg text-amber-400">{{ title }}</h3>
+        <h3 class="font-bold text-lg text-lav-deep">{{ title }}</h3>
         <p class="text-gray-700">{{ institution }}</p>
       </div>
       <p class="text-sm text-gray-600 mt-2 md:mt-0">{{ start }} – {{ end || 'Present' }}</p>
@@ -16,7 +16,7 @@
       v-if="description"
       class="mt-3 bg-indigo-50 border border-indigo-200 rounded-lg p-4"
     >
-      <p class="text-sm text-amber-600 font-semibold mb-2">Responsibilities:</p>
+      <p class="text-sm text-lav-deep font-semibold mb-2">Responsibilities:</p>
 
       <ul v-if="Array.isArray(description)" class="list-disc list-inside space-y-1 text-gray-700 text-sm">
         <li v-for="(item, index) in description" :key="index">{{ item }}</li>

@@ -73,7 +73,7 @@ function getIcon(collaborator) {
   if (collaborator.active && collaborator.published) {
     color = '#8cd3a3' // pastel green for both
   } else if (collaborator.active) {
-    color = '#ffb86c' // pastel orange
+    color = '#b07a3c' // pastel orange
   } else if (collaborator.published) {
     color = '#c7a0f7' // pastel purple
   }
@@ -95,7 +95,7 @@ function getPopupHtml(collaborator) {
   // Pills inline with the name
   let pills = ''
   if (collaborator.active) {
-    pills += `<span style="display:inline-block; background-color:#ffb86c; color:white; padding:2px 6px; border-radius:12px; font-size:9px; margin-left:6px;">Active</span>`
+    pills += `<span style="display:inline-block; background-color:#b07a3c; color:white; padding:2px 6px; border-radius:12px; font-size:9px; margin-left:6px;">Active</span>`
   }
   if (collaborator.published) {
     pills += `<span style="display:inline-block; background-color:#c7a0f7; color:white; padding:2px 6px; border-radius:12px; font-size:9px; margin-left:4px;">Published</span>`

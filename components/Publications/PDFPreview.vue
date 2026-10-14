@@ -1,38 +1,27 @@
 <template>
-  <div class="mt-4">
-    <iframe
-      v-if="pdf"
-      :src="pdf"
-      width="100%"
-      height="600"
-      class="border rounded"
-    ></iframe>
+  <div>
+    <div v-if="pdf" class="overflow-hidden rounded-md border border-line bg-white">
+      <div class="flex items-center justify-between border-b border-line px-4 py-2.5 text-sm">
+        <span class="font-semibold">Full text (PDF)</span>
+        <a :href="pdf" target="_blank" rel="noopener" class="font-semibold underline underline-offset-4 hover:text-accent-deep">Open in a new tab ↗</a>
+      </div>
+      <iframe :src="pdf" title="PDF of the article" class="h-[720px] w-full" loading="lazy" />
+    </div>
 
-    <div v-else class="text-center mt-6">
-      <p class="mb-3 text-gray-600">
-        PDF not available. You can check it on ResearchGate:
-      </p>
-
-      <a
-        v-if="researchgate"
-        :href="researchgate"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition shadow-lg"
-      >
-        Requested on ResearchGate
-      </a>
-
-      <p v-else class="text-gray-500">
-        No ResearchGate link available.
-      </p>
+    <div v-else class="rounded-md border border-dashed border-line px-6 py-8 text-center text-sm text-muted">
+      <p>The PDF is not hosted on this site.</p>
+      <div class="mt-4 flex flex-wrap justify-center gap-3">
+        <a v-if="doi" :href="doi" target="_blank" rel="noopener" class="btn btn-ghost !py-2 text-ink hover:bg-ink hover:text-white">Journal page ↗</a>
+        <a v-if="researchgate" :href="researchgate" target="_blank" rel="noopener" class="btn btn-ghost !py-2 text-ink hover:bg-ink hover:text-white">Request on ResearchGate ↗</a>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   pdf: String,
-  researchgate: String
+  researchgate: String,
+  doi: String
 })
 </script>

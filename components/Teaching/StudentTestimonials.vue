@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto p-6 pb-10 max-w-4xl">
-    <h2 class="text-2xl font-semibold mb-6 text-center text-[#ffb86c]">Student Testimonials</h2>
+    <h2 class="text-2xl font-semibold mb-6 text-center text-ink">Student Testimonials</h2>
 
     <div class="overflow-hidden relative">
       <div class="flex transition-transform duration-500" :style="`transform: translateX(-${currentIndex * 100}%);`">
@@ -20,7 +20,7 @@
           v-for="(testimonial, index) in testimonials" 
           :key="index"
           @click="currentIndex = index"
-          :class="index === currentIndex ? 'bg-[#ffb86c]' : 'bg-gray-400'"
+          :class="index === currentIndex ? 'bg-lav' : 'bg-gray-400'"
           class="w-3 h-3 rounded-full cursor-pointer transition"
         ></span>
       </div>

@@ -1,8 +1,6 @@
-<script setup>
-import NetworkMap from '@/components/Network/NetworkMap.vue';
-</script>
-
 <template>
-  <NetworkDescription />
-  <NetworkMap />
+  <div>
+    <NetworkDescription />
+    <NetworkExplorer />
+  </div>
 </template>

@@ -1,42 +1,11 @@
 <template>
-  <section class="relative container mx-auto px-6 py-16 max-w-6xl">
-    
-
-    <!-- Hero Content -->
-    <div class="bg-white p-12 rounded-lg shadow-lg mb-12 text-center border-t-15 border-[#ffb86c]">
-      
-      <!-- Title -->
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-700 mb-4">
-        Species Map & Descriptions
-      </h1>
-      
-      <!-- Accent Divider -->
-      <div class="mx-auto w-24 h-1 bg-[#ffb86c] rounded mb-6"></div>
-      
-      <!-- Paragraph -->
-      <p class="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-        Explore all the species I have described, with each 
-        <span class="font-semibold">dot representing the Holotype location</span>. 
-        Below the map, you can browse the full species list. 
-        Clicking on a species will redirect you to the original publication.
-      </p>
-      
-    </div>
-    
-  </section>
+  <LabPageHero
+    kicker="Research · Species Exploration"
+    title="Species described"
+    lede="New species and subspecies of parasitoid wasps described by Davide Dal Pos and co-authors. The map shows type localities; each taxon links to its original description and to the World Ichneumonidae Database."
+  />
 </template>
 
 <script setup>
-// Static component: no JS needed
+useHead({ title: 'Species described' })
 </script>
-
-<style scoped>
-/* Optional: subtle floating effect for background pattern */
-@keyframes floatPattern {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(10px); }
-}
-img {
-  animation: floatPattern 15s ease-in-out infinite;
-}
-</style>

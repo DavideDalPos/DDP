@@ -87,7 +87,7 @@ function getInstitutionPopup(i) {
 
 // ------------------ Marker with pastel color ------------------
 function getInstitutionIcon(i) {
-  const color = i.researchAssociate ? '#C598F6' : '#FFB85C' // violet if Research Associate, amber otherwise
+  const color = i.researchAssociate ? '#C598F6' : '#b07a3c' // violet if Research Associate, amber otherwise
   return L.divIcon({
     className: '',
     html: `<div style="width:12px; height:12px; background-color:${color}; border-radius:50%; border:1px solid #666;"></div>`,

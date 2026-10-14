@@ -1,7 +1,7 @@
 ---
 title: 'A host driven parasitoid syndrome: convergent evolution of multiple traits associated with woodboring hosts in Ichneumonidae (Hymenoptera, Ichneumonoidea)'
 date: '2024-09-30' 
-journal: 'PLoS ONE'
+journal: 'PLOS ONE'
 volume: '19'
 issue: '9'
 pagination: 'e0311365'

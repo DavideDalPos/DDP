@@ -1,7 +1,7 @@
 ---
 title: 'Species richness estimation of the Afrotropical Darwin wasps (Hymenoptera, Ichneumonidae)'
 date: '2024-07-29' 
-journal: 'Plos One'
+journal: 'PLOS ONE'
 volume: '19'
 issue: '7'
 pagination: 'e0307404'

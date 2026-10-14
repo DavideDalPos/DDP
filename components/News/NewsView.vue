@@ -3,7 +3,7 @@
     <article class="container mx-auto px-6 max-w-4xl space-y-6 mt-10">
 
       <!-- Title -->
-      <h1 class="font-serif text-4xl font-bold text-amber-500 leading-tight text-center">
+      <h1 class="text-4xl sm:text-5xl font-semibold text-ink leading-tight text-center">
         {{ news.title }}
       </h1>
 
@@ -48,7 +48,7 @@
 
       <!-- Why this matters -->
       <div v-if="news.meta.why" class="bg-white border border-gray-200 rounded-md p-6 shadow-sm mt-4">
-        <h3 class="font-semibold text-amber-400 mb-2">Why this matters</h3>
+        <h3 class="font-semibold text-lav-deep mb-2">Why this matters</h3>
         <p class="text-gray-700" v-html="news.meta.why"></p>
       </div>
 
@@ -59,7 +59,7 @@
     :key="index"
     :href="linkObj.url"
     target="_blank"
-    class="inline-block bg-[#a7c7e7] text-white font-semibold px-3 py-2 rounded-md hover:bg-amber-300 transition text-sm shadow-md"
+    class="inline-block bg-[#a7c7e7] text-white font-semibold px-3 py-2 rounded-md hover:bg-lav-deep transition text-sm shadow-md"
   >
     {{ linkObj.text }}
   </a>

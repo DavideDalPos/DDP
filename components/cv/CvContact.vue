@@ -1,198 +1,99 @@
 <template>
-  <section class="py-16 text-gray-200 min-h-screen">
-    <div class="max-w-4xl mx-auto px-6">
+  <div>
+    <LabPageHero
+      kicker="Contact"
+      title="Get in touch"
+      lede="Questions about our research, a collaboration, a visit to the museum, or joining the lab — email is the best way to reach us."
+    >
+      <a :href="`mailto:${lab.email}`" class="btn btn-primary">{{ lab.email }} <span class="arrow">→</span></a>
+    </LabPageHero>
 
-      <!-- Header Section -->
-      <div class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-bold text-amber-400 mb-2">Contact Me</h1>
-        <p class="text-gray-700 text-lg md:text-xl">
-          Feel free to reach out via email, visit my office, or connect online.
-        </p>
-      </div>
+    <section class="mx-auto grid max-w-7xl gap-6 px-5 py-16 lg:grid-cols-12 lg:px-8">
+      <div class="space-y-6 lg:col-span-5">
+        <div v-reveal class="card p-8">
+          <p class="label">Email</p>
+          <a :href="`mailto:${lab.email}`" class="mt-2 block text-lg font-semibold hover:text-lav-deep">{{ lab.email }}</a>
+          <a :href="`mailto:${personal}`" class="mt-1 block text-muted hover:text-lav-deep">{{ personal }}</a>
 
-      <!-- Contact Info Cards -->
-      <div class="grid md:grid-cols-2 gap-8">
-
-<!-- Contact Information Card -->
-<div class="bg-gray-100 border border-gray-400 rounded-xl p-8 shadow-md hover:shadow-lg transition duration-300 text-gray-800">
-
-  <h2 class="text-2xl font-semibold text-amber-400 mb-8">
-    Contact Information
-  </h2>
-
-  <ul class="space-y-6">
-
-    <!-- Emails -->
-    <li class="flex items-start gap-4">
-      <i class="fas fa-envelope text-amber-400 mt-1"></i>
-      <div class="leading-relaxed">
-        <p class="text-sm font-semibold uppercase tracking-wide text-gray-600 mb-1">
-          Email
-        </p>
-        <a href="mailto:daveliga@gmail.com"
-           class="block hover:text-amber-500 transition">
-          daveliga@gmail.com
-        </a>
-        <a href="mailto:davide.dalpos@ucf.edu"
-           class="block hover:text-amber-500 transition">
-          davide.dalpos@ucf.edu
-        </a>
-      </div>
-    </li>
-
-    <!-- Address -->
-    <li class="flex items-start gap-4">
-      <i class="fas fa-university text-amber-400 mt-1"></i>
-      <div class="leading-relaxed">
-        <p class="text-sm font-semibold uppercase tracking-wide text-gray-600 mb-1">
-          Address
-        </p>
-        <span class="font-medium">
-          University of Central Florida
-        </span><br>
-        Department of Biology<br>
-        4110 Libra Dr., Room 301<br>
-        Orlando, FL 32816, USA
-      </div>
-    </li>
-
-  </ul>
-
-  <!-- Logo -->
-  <div class="mt-10 flex justify-center">
-    <img 
-      src="/images/logoWid_wasp.png" 
-      alt="WID Logo"
-      class="w-full max-w-[220px] opacity-90"
-    />
-  </div>
-
-</div>
-
-
-        <!-- Map / Quick Info Card -->
-        <div class="bg-gray-100 border border-gray-400 rounded-xl p-8 shadow-md hover:shadow-lg transition duration-300 flex flex-col items-center justify-center">
-          <h2 class="text-2xl font-semibold text-amber-400 mb-6">Office Location</h2>
-          <p class="text-gray-700 mb-4 text-center">Visit the campus or see the location on the map below.</p>
-          <!-- Simple embedded Google Map -->
-          <iframe
-            class="w-full h-64 rounded-lg border-0"
-            :src="mapUrl"
-            allowfullscreen=""
-            loading="lazy"
-          ></iframe>
+          <p class="label mt-8">Where to find us</p>
+          <address class="mt-2 not-italic leading-relaxed">
+            <b>EPIC Lab · {{ lab.museum.name }}</b><br />
+            {{ lab.division }}<br />
+            {{ lab.university }}<br />
+            Columbia, MO 65211, USA
+          </address>
+          <a :href="lab.museum.url" target="_blank" rel="noopener" class="mt-4 inline-block text-sm font-semibold text-lav-deep underline underline-offset-4">Plan a visit to the museum ↗</a>
         </div>
 
-      </div>
-
-      <!-- Social Media / Connect Online Section -->
-      <div class="mt-20">
-        <div class="bg-gray-100 backdrop-blur-sm border border-gray-400 rounded-2xl p-10 shadow-xl">
-
-          <h2 class="text-2xl font-semibold text-amber-400 text-center mb-10">
-            Connect Online
-          </h2>
-
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-12 justify-items-center">
-
-            <!-- ORCID -->
-            <a :href="orcid" target="_blank" rel="noopener"
-               class="group flex flex-col items-center transition-all duration-300">
-              <div class="w-24 h-24 flex items-center justify-center
-                          bg-gray-300/20 backdrop-blur-sm
-                          rounded-2xl border border-gray-400
-                          shadow-md
-                          transition-all duration-300 ease-out
-                          group-hover:-translate-y-1 group-hover:scale-105
-                          group-hover:border-amber-400">
-                <IconOrcid class="w-14 h-14 text-yellow-400 transition-transform duration-300 group-hover:scale-110" />
-              </div>
-              <span class="mt-3 text-sm text-gray-600 group-hover:text-amber-400 transition">
-                ORCID
+        <div v-reveal="100" class="card p-8">
+          <p class="label">Online</p>
+          <div class="mt-5 grid grid-cols-2 gap-3">
+            <a
+              v-for="s in socials"
+              :key="s.label"
+              :href="s.href"
+              target="_blank"
+              rel="noopener"
+              class="social group flex items-center gap-3 rounded-md border border-line p-3"
+              :style="{ '--c': s.color }"
+            >
+              <span class="flex h-10 w-10 items-center justify-center rounded-md bg-paper-2 transition-colors group-hover:text-white" :style="{ color: s.color }">
+                <component :is="s.icon" class="h-5 w-5" />
               </span>
+              <span class="text-sm font-semibold">{{ s.label }}</span>
             </a>
-
-            <!-- ResearchGate -->
-            <a :href="researchgate" target="_blank" rel="noopener"
-               class="group flex flex-col items-center transition-all duration-300">
-              <div class="w-24 h-24 flex items-center justify-center
-                          bg-gray-300/20 backdrop-blur-sm
-                          rounded-2xl border border-gray-400
-                          shadow-md
-                          transition-all duration-300 ease-out
-                          group-hover:-translate-y-1 group-hover:scale-105
-                          group-hover:border-green-400">
-                <IconResearchGate class="w-14 h-14 text-green-500 transition-transform duration-300 group-hover:scale-110" />
-              </div>
-              <span class="mt-3 text-sm text-gray-600 group-hover:text-green-400 transition">
-                ResearchGate
-              </span>
-            </a>
-
-            <!-- GitHub -->
-            <a :href="github" target="_blank" rel="noopener"
-               class="group flex flex-col items-center transition-all duration-300">
-              <div class="w-24 h-24 flex items-center justify-center
-                          bg-gray-300/20 backdrop-blur-sm
-                          rounded-2xl border border-gray-400
-                          shadow-md
-                          transition-all duration-300 ease-out
-                          group-hover:-translate-y-1 group-hover:scale-105
-                          group-hover:border-gray-600">
-                <IconGithub class="w-14 h-14 text-gray-700 transition-transform duration-300 group-hover:scale-110" />
-              </div>
-              <span class="mt-3 text-sm text-gray-600 group-hover:text-gray-800 transition">
-                GitHub
-              </span>
-            </a>
-
-            <!-- Google Scholar -->
-            <a :href="googleScholar" target="_blank" rel="noopener"
-               class="group flex flex-col items-center transition-all duration-300">
-              <div class="w-24 h-24 flex items-center justify-center
-                          bg-gray-300/20 backdrop-blur-sm
-                          rounded-2xl border border-gray-400
-                          shadow-md
-                          transition-all duration-300 ease-out
-                          group-hover:-translate-y-1 group-hover:scale-105
-                          group-hover:border-blue-400">
-                <IconGoogleScholar class="w-14 h-14 text-blue-500 transition-transform duration-300 group-hover:scale-110" />
-              </div>
-              <span class="mt-3 text-sm text-gray-600 group-hover:text-blue-400 transition">
-                Scholar
-              </span>
-            </a>
-
           </div>
         </div>
       </div>
 
-    </div>
-  </section>
+      <div v-reveal="160" class="card overflow-hidden lg:col-span-7">
+        <iframe
+          class="h-full min-h-[26rem] w-full border-0"
+          :src="mapUrl"
+          title="Map: University of Missouri, Columbia"
+          loading="lazy"
+          allowfullscreen
+        />
+      </div>
+    </section>
+  </div>
 </template>
 
 <script setup>
-const props = defineProps({
-  email: { type: String, default: 'daveliga@gmail.com' },
-  institution: { type: String, default: 'University of Central Florida' },
-  department: { type: String, default: 'Department of Biology' },
-  address: { type: String, default: '4110 Libra Dr., Room 442, Orlando, FL 32816, USA' },
-  orcid: { type: String, default: 'https://orcid.org/0000-0002-9122-934X' },
-  researchgate: { type: String, default: 'https://www.researchgate.net/profile/Davide-Dal-Pos-2' },
-  linkedin: { type: String, default: 'https://www.linkedin.com/' },
-  twitter: { type: String, default: 'https://twitter.com/' },
-  github: { type: String, default: 'https://github.com/DavideDalPos' },
-  googleScholar: { type: String, default: 'https://scholar.google.com/citations?user=wYj3d_oAAAAJ' }
-})
+import IconGithub from '../Icon/IconGithub.vue'
+import IconGoogleScholar from '../Icon/IconGoogleScholar.vue'
+import IconOrcid from '../Icon/IconOrcid.vue'
+import IconResearchGate from '../Icon/IconResearchGate.vue'
+import { lab } from '~/components/Lab/labData.js'
 
-const mapUrl = "https://maps.google.com/maps?q=4110+Libra+Dr,+Orlando,+FL+32816&output=embed"
+useHead({ title: 'Contact' })
+
+const personal = 'daveliga@gmail.com'
+const socials = [
+  { label: 'ORCID', href: 'https://orcid.org/0000-0002-9122-934X', icon: IconOrcid, color: '#8c5e2a' },
+  { label: 'Scholar', href: 'https://scholar.google.com/citations?user=wYj3d_oAAAAJ', icon: IconGoogleScholar, color: '#8c5e2a' },
+  { label: 'ResearchGate', href: 'https://www.researchgate.net/profile/Davide-Dal-Pos-2', icon: IconResearchGate, color: '#8c5e2a' },
+  { label: 'GitHub', href: 'https://github.com/DavideDalPos', icon: IconGithub, color: '#6e4a22' }
+]
+const mapUrl = 'https://maps.google.com/maps?q=Enns+Entomology+Museum,+University+of+Missouri,+Columbia,+MO&z=15&output=embed'
 </script>
 
 <style scoped>
-/* Fade-in animation */
-@keyframes fade-in {
-  0% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
+.label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
 }
-.animate-fade-in { animation: fade-in 1s ease forwards; }
+.social {
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+.social:hover {
+  border-color: var(--c);
+  transform: translateY(-2px);
+}
+.social:hover span:first-child {
+  background: var(--c);
+}
 </style>

@@ -1,12 +1,8 @@
-<script setup lang="ts">
-import ResearchTaxonomy from '~/components/Research/ResearchTaxonomy.vue';
-import ResearchTaxonomyBib from '~/components/Research/ResearchTaxonomyBib.vue';
-
+<script setup>
+// This page moved: the research is now organised by the four EPIC pillars.
+definePageMeta({ redirect: '/research/exploration' })
 </script>
 
 <template>
-    
-    <ResearchTaxonomy />
-    <ResearchTaxonomyBib />
-
+  <div />
 </template>

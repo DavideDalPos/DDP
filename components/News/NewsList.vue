@@ -1,7 +1,7 @@
 <template>
-  <section class="bg-gray-50 text-gray-800 py-16">
+  <section class="text-gray-800 py-16">
     <div class="container mx-auto px-6 max-w-4xl">
-      <h1 class="text-4xl font-extrabold mb-12 text-gray-900">News</h1>
+      
 
       <div class="relative pl-8">
         <!-- Vertical line -->
@@ -10,7 +10,7 @@
         <template v-for="[year, items] in grouped" :key="year">
           <!-- Year marker -->
           <div class="relative flex items-center gap-4 mb-6 mt-10 first:mt-0">
-            <div class="absolute -left-8 w-4 h-4 rounded-full bg-white border-2 border-amber-500 z-10"></div>
+            <div class="absolute -left-8 w-4 h-4 rounded-full bg-white border-2 border-lav-deep z-10"></div>
             <h2 class="text-2xl font-bold text-gray-700">{{ year }}</h2>
           </div>
 
@@ -46,7 +46,7 @@
 
               <span
                 v-if="news.meta.clickable"
-                class="mt-3 inline-block text-xs font-semibold text-amber-700 hover:underline"
+                class="mt-3 inline-block text-xs font-semibold text-lav-deep hover:underline"
               >
                 Read more →
               </span>

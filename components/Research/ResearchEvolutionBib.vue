@@ -3,7 +3,7 @@
     <div class="container mx-auto px-6 my-16 max-w-5xl">
 
       <!-- Card Container -->
-      <div class="bg-white border border-gray-200 rounded-xl shadow-md p-6 w-full max-h-[500px] flex flex-col">
+      <div class="bg-white border border-gray-200 rounded-md p-6 sm:p-8 w-full max-h-[500px] flex flex-col">
         
         <!-- Card Heading (fixed) -->
         <h3 class="text-gray-800 font-bold text-lg mb-4 flex-shrink-0">
@@ -22,7 +22,7 @@
             <!-- Title + Year -->
             <NuxtLink
               :to="publication.path"
-              class="font-semibold text-gray-900 hover:text-amber-400 hover:underline text-sm sm:text-base"
+              class="font-semibold text-gray-900 hover:text-lav-deep hover:underline text-sm sm:text-base"
               itemprop="name"
               title="View publication"
               target="_blank"
@@ -45,7 +45,7 @@
                 <span v-if="publication.meta.issue">({{ publication.meta.issue }})</span>,
                 {{ publication.meta.pagination }}.
               </span>
-        <span v-if="publication.meta.doi" class="text-amber-600 hover:text-amber-700">
+        <span v-if="publication.meta.doi" class="text-lav-deep hover:text-ink">
           <a
             :href="publication.meta.doi.startsWith('http') ? publication.meta.doi : 'https://doi.org/' + publication.meta.doi"
             target="_blank"
@@ -64,7 +64,7 @@
                 :href="publication.meta.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center border border-gray-300 rounded-full px-2 py-0.5 gap-1 text-gray-800 hover:bg-amber-100 hover:text-amber-600 transition shadow-sm"
+                class="inline-flex items-center border border-gray-300 rounded-full px-2 py-0.5 gap-1 text-gray-800 hover:bg-lav-soft hover:text-lav-deep transition shadow-sm"
                 title="Download PDF"
               >
                 PDF
@@ -72,7 +72,7 @@
 
               <NuxtLink
                 :to="publication.path"
-                class="inline-flex border border-gray-300 rounded-full px-2 py-0.5 items-center gap-1 text-gray-800 hover:bg-amber-100 hover:text-amber-600 transition shadow-sm"
+                class="inline-flex border border-gray-300 rounded-full px-2 py-0.5 items-center gap-1 text-gray-800 hover:bg-lav-soft hover:text-lav-deep transition shadow-sm"
                 title="View full publication"
                 target="_blank"
               >

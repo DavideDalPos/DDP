@@ -1,3 +1,150 @@
 @import 'tailwindcss';
 @config "../../tailwind.config.js";
 @import './vars.css';
+
+/* ── Base ─────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-ink);
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-lav);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Small building blocks used across pages ─────────────────── */
+@layer components {
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-accent-deep);
+  }
+  .kicker::before {
+    content: '';
+    width: 1.5rem;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .btn .arrow {
+    transition: transform 0.25s ease;
+  }
+  .btn:hover .arrow {
+    transform: translateX(3px);
+  }
+  .btn-primary {
+    background: var(--color-ink);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: var(--color-accent-deep);
+  }
+  .btn-ghost {
+    border: 1px solid currentColor;
+  }
+  .btn-light {
+    background: #fff;
+    color: var(--color-ink);
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: 6px;
+  }
+
+  /* Long-form text on research pages */
+  .prose-epic p {
+    font-size: 1.075rem;
+    line-height: 1.8;
+    color: #33363c;
+    margin-bottom: 1.15rem;
+  }
+  .prose-epic strong,
+  .prose-epic b {
+    color: var(--color-ink);
+    font-weight: 650;
+  }
+  .prose-epic a {
+    color: var(--color-lav-deep);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .prose-epic a:hover {
+    text-decoration-thickness: 2px;
+  }
+}
+
+/* ── Scroll reveal (see plugins/reveal.ts) ───────────────────── */
+.reveal-on .reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal-on .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Page transitions ────────────────────────────────────────── */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+.page-enter-from {
+  opacity: 0;
+}
+.page-leave-to {
+  opacity: 0;
+}
+
+/* ── Respect reduced-motion preferences ──────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-on .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

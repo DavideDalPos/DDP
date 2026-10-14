@@ -1,7 +1,7 @@
 <template>
   <div class="map-intro p-4 rounded-xl shadow-md mb-4" 
        style="background:#fdfdfd; border:1px solid #e0e0e0;">
-    <h2 style="font-size:1.25rem; font-weight:bold; margin-bottom:0.5rem; color:#ffb86c;">
+    <h2 style="font-size:1.25rem; font-weight:bold; margin-bottom:0.5rem; color:#6046b8;">
       Collaborators
     </h2>
     <p style="color:#555; margin-bottom:0.5rem;">
@@ -9,14 +9,14 @@
     </p>
     <p style="color:#555; margin-bottom:0.5rem;">
       Use the checkboxes on the map's legend to filter between 
-      <span style="display:inline-block; background:#ffb86c; color:white; padding:1px 6px; border-radius:12px; font-size:11px; margin-left:4px; margin-right:2px;">Active</span> 
+      <span style="display:inline-block; background:#b07a3c; color:white; padding:1px 6px; border-radius:12px; font-size:11px; margin-left:4px; margin-right:2px;">Active</span> 
       and 
       <span style="display:inline-block; background:#c7a0f7; color:white; padding:1px 6px; border-radius:12px; font-size:11px; margin-left:2px;">Published</span> 
       collaborators. Click a marker to see details such as name, institution, and related projects.
     </p>
     <ul style="color:#555; list-style:disc; margin-left:1.25rem; margin-top:0.5rem;">
       <li>
-        <span style="display:inline-block; width:12px; height:12px; background:#ffb86c; border-radius:50%; margin-right:6px; vertical-align:middle;"></span>
+        <span style="display:inline-block; width:12px; height:12px; background:#b07a3c; border-radius:50%; margin-right:6px; vertical-align:middle;"></span>
         Active collaborators
       </li>
       <li>

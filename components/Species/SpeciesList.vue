@@ -2,7 +2,7 @@
   <div class="container mx-auto px-6 my-16 max-w-10xl">
 
     <!-- Header -->
-    <h1 class="text-4xl md:text-5xl font-bold text-amber-400 text-center mb-12">
+    <h1 class="text-4xl md:text-5xl font-bold text-lav-deep text-center mb-12">
       Complete Taxa List
     </h1>
 
@@ -31,7 +31,7 @@
               class="flex items-center gap-2"
             >
               <div>
-                <i class="font-medium text-amber-600 tracking-wide">{{ species.name }}</i>
+                <i class="font-medium text-lav-deep tracking-wide">{{ species.name }}</i>
                 <span class="text-sm text-gray-500 ml-1">
                   {{ formatAuthorsAndYear(species.authors, species.year) }}
                 </span>

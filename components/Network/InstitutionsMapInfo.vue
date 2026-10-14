@@ -1,6 +1,6 @@
 <template>
   <div class="map-intro p-4 rounded-xl shadow-md bg-white mb-4 mt-10">
-    <h2 class="text-xl font-bold mb-2" style="color:#FFB85C;">Institutions</h2>
+    <h2 class="text-xl font-bold mb-2" style="color:#6046b8;">Institutions</h2>
     
     <p style="color:#555; margin-bottom:0.5rem;">
       This map shows all institutions associated with our projects. Each marker represents an institution, and clusters indicate multiple institutions in the same region.
@@ -13,7 +13,7 @@
     
     <ul style="color:#555; list-style-type:disc; margin-left:1.25rem;">
       <li>
-        <span style="display:inline-block; width:12px; height:12px; background-color:#FFB85C; border-radius:50%; margin-right:6px;"></span>
+        <span style="display:inline-block; width:12px; height:12px; background-color:#b07a3c; border-radius:50%; margin-right:6px;"></span>
         Pastel amber circle markers represent institutions.
       </li>
       <li>

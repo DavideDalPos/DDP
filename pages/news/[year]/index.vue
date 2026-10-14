@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="container mx-auto px-6 my-16 max-w-5xl">
-      <h1 class="text-4xl font-extrabold mb-2 text-gray-700">newss</h1>
+      <h1 class="text-4xl font-extrabold mb-2 text-gray-700">News</h1>
 
       <h3 class="text-lg font-medium mb-6 text-gray-600">
         Total news: {{ filteredData.length }}

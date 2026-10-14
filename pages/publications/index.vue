@@ -5,6 +5,8 @@ import PublicationIntro from '~/components/Publications/PublicationIntro.vue';
 </script>
 
 <template>
+  <div>
   <PublicationIntro />
   <PublicationsList />
+  </div>
 </template>

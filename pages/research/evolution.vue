@@ -1,11 +1,8 @@
-<script setup lang="ts">
-import ResearchEvolution from '~/components/Research/ResearchEvolution.vue';
-import ResearchEvolutionBib from '~/components/Research/ResearchEvolutionBib.vue';
-
+<script setup>
+// This page moved: the research is now organised by the four EPIC pillars.
+definePageMeta({ redirect: '/research/phenomics' })
 </script>
 
 <template>
-    <ResearchEvolution />
-    <ResearchEvolutionBib />
-
+  <div />
 </template>

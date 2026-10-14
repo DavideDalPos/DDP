@@ -1,12 +1,15 @@
-<script setup lang="ts">
-
-import { HomeLatestNewsCard } from '#components';
-import HomeWelcome from '~/components/Home/HomeWelcome.vue';
-
+<script setup>
+useHead({ title: '' })
 </script>
 
 <template>
-<HomeWelcome />
-<HomeLatestNewsCard />
-
+  <div>
+    <HomeHero />
+    <HomeAbout />
+    <HomePillars />
+    <HomeStats />
+    <HomeBase />
+    <HomeJoin />
+    <HomeLatestNewsCard />
+  </div>
 </template>

@@ -2,11 +2,11 @@
 <section class="container mx-auto px-6 mt-12 mb-8 max-w-6xl">
 
     <!-- Hero Intro -->
-    <div class="bg-white p-12 rounded-md shadow-lg mb-12 text-center border-t-15 border-[#ffb86c]">
+    <div class="bg-white p-12 rounded-md shadow-lg mb-12 text-center border-t-15 border-lav">
       <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 text-gray-700">
         Systematics of Parasitoid Wasps
       </h1>
-      <div class="mx-auto w-24 h-1 bg-[#ffb86c] rounded mb-6"></div>
+      <div class="mx-auto w-24 h-1 bg-lav rounded mb-6"></div>
       <p class="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
         One of my primary research interests is the systematics, taxonomy, and classification of parasitoid wasps, 
         with a particular emphasis on <span class="font-semibold">Ichneumonidae</span> (Hymenoptera, Ichneumonoidea), a hyperdiverse family with approximately 
@@ -28,7 +28,7 @@
         <p class="text-base sm:text-lg leading-relaxed">
           My research includes the description of new species, revisions of key genera, and the development of comprehensive resources such as the 
           <a href="https://worldichneumonidae.com" target="_blank" 
-          class="font-semibold text-sky-400 hover:underline hover:text-sky-300">
+          class="font-semibold text-teal hover:underline hover:text-teal">
   World Ichneumonidae Database (WID)
 </a>, which provides researchers worldwide with essential tools for studying the evolution, ecology, and diversity of these ecologically important insects.
         </p>
@@ -54,14 +54,14 @@
     <a
       href="https://worldichneumonidae.com"
       target="_blank"
-      class="text-center bg-indigo-300 hover:bg-sky-400 text-white shadow-md font-medium py-2 rounded transition transform hover:-translate-y-1"
+      class="text-center bg-teal-deep hover:bg-teal text-white shadow-md font-medium py-2 rounded transition transform hover:-translate-y-1"
     >
       World Ichneumonidae Database (WID)
     </a>
 
     <router-link
       to="/species"
-      class="text-center bg-amber-500 hover:bg-amber-400 text-white shadow-md font-medium py-2 rounded transition transform hover:-translate-y-1"
+      class="text-center bg-lav-deep hover:bg-lav-deep text-white shadow-md font-medium py-2 rounded transition transform hover:-translate-y-1"
     >
       Explore Species I Described
     </router-link>

@@ -2,18 +2,18 @@
 <section class="container mx-auto px-6 mt-12 mb-8 max-w-6xl">
 
     <!-- Hero Intro -->
-    <div class="bg-white p-12 rounded-lg shadow-lg mb-12 text-center border-t-15 border-[#ffb86c]">
+    <div class="bg-white p-12 rounded-lg shadow-lg mb-12 text-center border-t-15 border-lav">
       <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-700 mb-4">
         Collections & Biodiversity Informatics
       </h1>
-      <div class="mx-auto w-24 h-1 bg-amber-400 rounded mb-6"></div>
+      <div class="mx-auto w-24 h-1 bg-lav-deep rounded mb-6"></div>
       <p class="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
         I work with <span class="font-semibold">entomological collections</span> as dynamic research infrastructures, integrating specimen-based research with <span class="font-semibold">biodiversity informatics</span>. 
         Through the management of databases such as <a href="https://worldichneumonidae.com" 
-        target="_blank" class="font-semibold text-sky-300 hover:underline hover:text-sky-400">
+        target="_blank" class="font-semibold text-teal hover:underline hover:text-teal">
   World Ichneumonidae Database (WID)
 </a> and <a href="https://syrphidaeitaly.com" target="_blank" 
-class="font-semibold text-amber-400 hover:underline hover:text-amber-500">
+class="font-semibold text-lav-deep hover:underline hover:text-lav-deep">
   Syrphidae of Italy (SoI)
 </a>, I connect specimen data, literature, and morphological information to support taxonomy, evolutionary research, and global biodiversity studies.
       </p>
@@ -55,7 +55,7 @@ class="font-semibold text-amber-400 hover:underline hover:text-amber-500">
             <a
               href="https://www.worldichneumonidae.com"
               target="_blank"
-              class="text-center bg-sky-300 shadow-md text-white/90 font-medium py-2 rounded hover:bg-sky-500 transition transform hover:-translate-y-1"
+              class="text-center bg-teal shadow-md text-white/90 font-medium py-2 rounded hover:bg-teal transition transform hover:-translate-y-1"
             >
               World Ichneumonidae Database (WID)
             </a>
@@ -64,14 +64,14 @@ class="font-semibold text-amber-400 hover:underline hover:text-amber-500">
             <a
               href="https://syrphidaeitaly.com"
               target="_blank"
-              class="text-center bg-amber-500 shadow-md text-white font-medium py-2 rounded hover:bg-amber-400 transition transform hover:-translate-y-1"
+              class="text-center bg-lav-deep shadow-md text-white font-medium py-2 rounded hover:bg-lav-deep transition transform hover:-translate-y-1"
             >
               Syrphidae of Italy (SoI) 
             </a>
                         <a
               href="https://slkelly1.github.io/UCFC_Database/#/"
               target="_blank"
-              class="text-center bg-indigo-300 shadow-md text-white font-medium py-2 rounded hover:bg-indigo-400 transition transform hover:-translate-y-1"
+              class="text-center bg-teal-deep shadow-md text-white font-medium py-2 rounded hover:bg-indigo-400 transition transform hover:-translate-y-1"
             >
               University of Central Florida Collection (UCFC) 
             </a>

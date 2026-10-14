@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gray-100 p-5 rounded-md">
     <!-- Heading with amber accent -->
-    <h3 class="font-bold mb-4 text-amber-600 text-lg">Skills</h3>
+    <h3 class="font-bold mb-4 text-lav-deep text-lg">Skills</h3>
 
     <!-- Skills list as smaller pills -->
     <ul class="flex flex-wrap gap-2">
