@@ -2,9 +2,9 @@
 title: 'DNA barcodes on their own are not enough to describe a species'
 date: '2022-01-22' 
 journal: 'Systematic Entomology'
-volume: '20'
-issue: '1'
-pagination: '1-14'
+volume: '47'
+issue: '3'
+pagination: '385-389'
 doi: 'https://doi.org/10.1111/syen.12538'
 pdf: '/PDFs/2022/Zamani_etal_2022.pdf'
 

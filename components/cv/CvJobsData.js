@@ -25,10 +25,10 @@ export const jobs = [
   },
   {
     id: 2,
-    title: 'Collection Assistant & Database Specialist',
+    title: 'Bioinformatics Manager',
     institution: 'University of Central Florida Collection (UCFC)',
     start: '2025',
-    end: '2026',
+    end: 'Present',
     description: [
       'Specimen databasing and digitization',
       'Website content management and updates',
@@ -50,6 +50,14 @@ export const jobs = [
     start: '2019',
     end: 'Present',
     description: 'Identification and curation of Ichneumonidae specimens'
+  },
+  {
+    id: 9,
+    title: 'Research Associate',
+    institution: 'Natural History Museum of Venice (MSNVE), Italy',
+    start: '2018',
+    end: 'Present',
+    description: 'Research on the Hymenoptera collections, including the Giordani Soika collection of Vespidae'
   },
     {
     id: 6,

@@ -10,14 +10,14 @@ export const education = [
     degree: 'M.Sc. in Natural Sciences',
     institution: 'University of Padua',
     year: '2016',
-    advisor: 'Dr. Daniele Sommaggio',
+    advisor: 'Dr. Lucio Bonato & Dr. Daniele Sommaggio',
     title: 'Ichneumonidae (Hymenoptera) as Bioindicators: the Case Study of Berici Hills'
   },
   {
-    degree: 'B.Sc. in  Science & Technology for Nature',
-    institution: 'University of Padua',
+    degree: 'B.Sc. in Science & Technology for Nature',
+    institution: 'University of Pavia',
     year: '2013',
     advisor: 'Dr. Riccardo Groppali',
-    title: 'Public Fruition in Zoological Park'
+    title: 'Fruition in Parks with Animals (in Italian)'
   }
 ]

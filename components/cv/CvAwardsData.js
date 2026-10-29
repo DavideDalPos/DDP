@@ -2,11 +2,18 @@
 
 export const awards = [
   {
-    name: "Outstanding Ph.D. Dissertation Award",
+    name: "SysEB Snodgrass Memorial Research Award",
+    year: 2026,
+    term: "Fall",
+    org: "Entomological Society of America (ESA)",
+    value: 750
+  },
+  {
+    name: "UCF Biology Outstanding Ph.D. Student",
     year: 2026,
     term: "Spring",
     org: "Department of Biology, University of Central Florida",
-    type: "Honor"
+    type: "Honor (plaque)"
   },
   {
     name: "UCF Biology Excellence in Research Award",

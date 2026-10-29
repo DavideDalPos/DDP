@@ -34,23 +34,11 @@
         </div>
       </div>
 
-      <!-- Specimen -->
-      <div class="fade hidden lg:col-span-5 lg:block" style="animation-delay: 400ms">
-        <figure class="mx-auto max-w-sm">
-          <div class="overflow-hidden rounded-md border border-white/15 bg-ink-2">
-            <img
-              src="/images/lab/misetus-head.jpg"
-              alt="Frontal view of the head of a Misetus wasp (Ichneumonidae)"
-              class="aspect-[4/5] w-full object-cover"
-              width="696"
-              height="900"
-            />
-          </div>
-          <figcaption class="mt-3 flex items-baseline justify-between gap-4 border-t border-white/15 pt-3 text-sm text-white/60">
-            <span><i class="font-display text-base text-white/85">Misetus</i>, head in frontal view</span>
-            <span class="text-xs uppercase tracking-[0.14em]">Ichneumonidae</span>
-          </figcaption>
-        </figure>
+      <!-- Self-drawing Darwin wasp -->
+      <div class="fade lg:col-span-5" style="animation-delay: 400ms">
+        <ClientOnly>
+          <HomeSpecimenExplorer />
+        </ClientOnly>
       </div>
     </div>
   </section>
