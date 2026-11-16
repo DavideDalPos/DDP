@@ -13,7 +13,7 @@ export const lab = {
   email: 'davide.dalpos@missouri.edu',
   museum: {
     name: 'Enns Entomology Museum',
-    url: 'https://enns-entomology-museum.github.io/Enns_Entomology_Museum_Database/',
+    url: 'https://ennsmuseum.missouri.edu/',
     holdings: 'more than 7 million'
   }
 }
@@ -105,7 +105,7 @@ export const resources = [
   {
     name: 'Enns Entomology Museum',
     short: 'Enns',
-    url: 'https://enns-entomology-museum.github.io/Enns_Entomology_Museum_Database/',
+    url: 'https://ennsmuseum.missouri.edu/',
     text: 'Missouri’s insect collection — specimens, images and data online.'
   },
   {

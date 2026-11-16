@@ -1,5 +1,5 @@
 <template>
-  <section class="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-28">
+  <section class="mx-auto max-w-[92rem] px-5 py-24 lg:px-8 lg:py-28">
     <div class="flex flex-wrap items-end justify-between gap-6 border-b border-line pb-6">
       <div>
         <p v-reveal class="kicker">News</p>
@@ -19,7 +19,15 @@
               class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
               loading="lazy"
             />
-            <LabMark v-else class="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 opacity-60" body="#15171c" />
+            <NewsCover
+              v-else
+              :category="item.category"
+              :title="item.title"
+              :description="item.description"
+              :text="item.coverText"
+              :seed="item.link"
+              class="transition-transform duration-500 group-hover:scale-[1.02]"
+            />
           </div>
           <time class="text-xs font-semibold uppercase tracking-[0.14em] text-muted">{{ formatDate(item.date) }}</time>
           <h3 class="mt-2 text-xl font-semibold leading-snug group-hover:text-accent-deep" v-html="item.title" />
@@ -32,9 +40,10 @@
 </template>
 
 <script setup>
+import { loadNewsFeed } from '~/utils/newsFeed.js'
 import { computed } from 'vue'
 
-const { data: newsData } = await useAsyncData('home-news', () => queryCollection('news').all())
+const { data: newsData } = await useAsyncData('home-news-feed', () => loadNewsFeed(), { default: () => [] })
 
 const recentNews = computed(() => {
   if (!newsData.value?.length) return []
@@ -47,7 +56,10 @@ const recentNews = computed(() => {
       date: item.meta?.date,
       image: item.meta?.image || '',
       imageAlt: item.meta?.imageAlt || '',
-      excerpt: item.description || item.meta?.summary || ''
+      excerpt: item.description || item.meta?.summary || '',
+      description: item.description || item.meta?.description || '',
+      category: item.meta?.categories?.[0] || '',
+      coverText: item.meta?.coverText || ''
     }))
 })
 

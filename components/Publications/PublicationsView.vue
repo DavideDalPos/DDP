@@ -2,7 +2,7 @@
   <div v-if="publication">
     <!-- Header -->
     <section class="border-b border-line bg-paper-2">
-      <div class="mx-auto max-w-7xl px-5 pb-12 pt-10 lg:px-8">
+      <div class="mx-auto max-w-[92rem] px-5 pb-12 pt-10 lg:px-8">
         <NuxtLink to="/publications" class="inline-block text-sm font-semibold text-muted hover:text-ink">← All publications</NuxtLink>
         <p class="kicker !flex mt-8">
           {{ m.journal }} · {{ year }}
@@ -29,7 +29,7 @@
       </div>
     </section>
 
-    <section class="mx-auto grid max-w-7xl gap-12 px-5 py-12 lg:grid-cols-12 lg:px-8">
+    <section class="mx-auto grid max-w-[92rem] gap-12 px-5 py-12 lg:grid-cols-12 lg:px-8">
       <!-- Abstract + PDF -->
       <article class="lg:col-span-8">
         <div v-if="m.abstract">
@@ -91,7 +91,7 @@
 
     <!-- Previous / next -->
     <nav v-if="prev || next" class="border-t border-line">
-      <div class="mx-auto grid max-w-7xl gap-6 px-5 py-10 sm:grid-cols-2 lg:px-8">
+      <div class="mx-auto grid max-w-[92rem] gap-6 px-5 py-10 sm:grid-cols-2 lg:px-8">
         <NuxtLink v-if="next" :to="next.path" class="group">
           <span class="label">← Newer</span>
           <span class="mt-1 block font-display text-lg font-semibold leading-snug group-hover:text-accent-deep" v-html="next.title" />

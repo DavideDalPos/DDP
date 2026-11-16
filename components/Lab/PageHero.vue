@@ -1,6 +1,6 @@
 <template>
   <section class="hero relative border-b border-line">
-    <div class="relative mx-auto max-w-7xl px-5 pb-14 pt-16 sm:pb-16 sm:pt-20 lg:px-8">
+    <div class="relative mx-auto max-w-[92rem] px-5 pb-14 pt-16 sm:pb-16 sm:pt-20 lg:px-8">
       <p v-if="kicker" class="kicker fade">{{ kicker }}</p>
       <h1 class="fade mt-4 max-w-4xl text-4xl font-semibold leading-[1.08] text-ink sm:text-[3.4rem]" style="animation-delay: 80ms">
         {{ title }}

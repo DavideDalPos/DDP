@@ -1,6 +1,6 @@
 <template>
   <section class="bg-ink py-16 text-white">
-    <div class="mx-auto grid max-w-7xl gap-10 px-5 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
+    <div class="mx-auto grid max-w-[92rem] gap-10 px-5 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
       <div
         v-for="(s, i) in stats"
         :key="s.label"

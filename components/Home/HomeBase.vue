@@ -1,5 +1,5 @@
 <template>
-  <section class="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-28">
+  <section class="mx-auto max-w-[92rem] px-5 py-24 lg:px-8 lg:py-28">
     <div class="grid items-start gap-14 lg:grid-cols-12">
       <!-- Photographs -->
       <div v-reveal class="grid grid-cols-3 gap-3 lg:col-span-6">
@@ -28,7 +28,7 @@
           target="_blank"
           rel="noopener"
           class="btn btn-ghost mt-7 text-ink hover:bg-ink hover:text-white"
-          >Visit the museum website <span class="arrow">↗</span></a
+          >Visit ennsmuseum.missouri.edu <span class="arrow">↗</span></a
         >
 
         <p v-reveal="180" class="mt-12 text-xs font-bold uppercase tracking-[0.16em] text-muted">Databases and resources</p>

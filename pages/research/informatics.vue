@@ -8,7 +8,7 @@ const focus = [
 const links = [
   { label: 'World Ichneumonidae Database', href: 'https://worldichneumonidae.com' },
   { label: 'Syrphidae of Italy', href: 'https://syrphidaeitaly.com' },
-  { label: 'Enns Entomology Museum', href: 'https://enns-entomology-museum.github.io/Enns_Entomology_Museum_Database/' },
+  { label: 'Enns Entomology Museum', href: 'https://ennsmuseum.missouri.edu/' },
   { label: 'University of Central Florida Collection', href: 'https://slkelly1.github.io/UCFC_Database/#/' }
 ]
 const figure = {
@@ -49,7 +49,7 @@ const figure = {
     </p>
     <p>
       At the
-      <a href="https://enns-entomology-museum.github.io/Enns_Entomology_Museum_Database/" target="_blank" rel="noopener">Enns Entomology Museum</a>
+      <a href="https://ennsmuseum.missouri.edu/" target="_blank" rel="noopener">Enns Entomology Museum</a>
       we are digitizing Missouri’s insect collection in TaxonWorks and sharing specimens, images and data online.
     </p>
 

@@ -59,17 +59,18 @@
 </template>
 
 <script setup>
+import { loadNewsFeed } from '~/utils/newsFeed.js'
 import { NuxtLink } from '#components'
 
 const route = useRoute()
-const { data } = await useAsyncData(route.path, () => queryCollection('news').all())
+const { data } = await useAsyncData('news-list', () => loadNewsFeed(), { default: () => [] })
 
 const searchQuery = ref('')
 
 const filteredData = computed(() => {
-  if (!searchQuery.value) return data.value
+  if (!searchQuery.value) return data.value || []
   const q = searchQuery.value.toLowerCase()
-  return data.value.filter(item => item.title.toLowerCase().includes(q))
+  return (data.value || []).filter(item => item.title.toLowerCase().includes(q))
 })
 
 const grouped = computed(() => {

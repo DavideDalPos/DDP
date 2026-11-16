@@ -2,7 +2,7 @@
   <div>
     <CVIntro />
 
-    <div class="mx-auto grid max-w-7xl gap-12 px-5 py-14 lg:grid-cols-12 lg:px-8">
+    <div class="mx-auto grid max-w-[92rem] gap-12 px-5 py-14 lg:grid-cols-12 lg:px-8">
       <!-- Contents -->
       <nav class="hidden lg:col-span-3 lg:block" aria-label="CV sections">
         <div class="sticky top-24">

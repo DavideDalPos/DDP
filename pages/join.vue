@@ -10,7 +10,7 @@
     </LabPageHero>
 
     <!-- Why -->
-    <section class="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+    <section class="mx-auto max-w-[92rem] px-5 py-20 lg:px-8">
       <p v-reveal class="kicker">The research environment</p>
       <h2 v-reveal="60" class="mt-4 max-w-3xl text-4xl font-semibold leading-tight">Research based in a major insect collection</h2>
       <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -24,7 +24,7 @@
 
     <!-- Positions -->
     <section id="positions" class="scroll-mt-20 bg-paper-2">
-      <div class="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+      <div class="mx-auto max-w-[92rem] px-5 py-20 lg:px-8">
         <p v-reveal class="kicker">Positions</p>
         <h2 v-reveal="60" class="mt-4 text-4xl font-semibold">Open positions</h2>
 
@@ -72,7 +72,7 @@
     </section>
 
     <!-- Steps -->
-    <section class="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+    <section class="mx-auto max-w-[92rem] px-5 py-20 lg:px-8">
       <p v-reveal class="kicker">Getting in touch</p>
       <h2 v-reveal="60" class="mt-4 text-4xl font-semibold">How to apply</h2>
       <ol v-reveal class="steps relative mt-12 grid gap-8 md:grid-cols-4">
@@ -86,7 +86,7 @@
 
     <!-- Values -->
     <section class="border-y border-line bg-paper-2">
-      <div class="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+      <div class="mx-auto max-w-[92rem] px-5 py-20 lg:px-8">
         <p v-reveal class="kicker">Lab principles</p>
         <div class="mt-10 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div v-for="(v, i) in values" :key="v.title" v-reveal="i * 90">

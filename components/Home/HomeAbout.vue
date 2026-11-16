@@ -1,7 +1,7 @@
 <template>
   <section
     id="about"
-    class="mx-auto grid max-w-7xl scroll-mt-20 gap-14 px-5 py-24 lg:grid-cols-12 lg:px-8 lg:py-32"
+    class="mx-auto grid max-w-[92rem] scroll-mt-20 gap-14 px-5 py-24 lg:grid-cols-12 lg:px-8 lg:py-32"
   >
     <div class="lg:col-span-7">
       <p v-reveal class="kicker">About the lab</p>

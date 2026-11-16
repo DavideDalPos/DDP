@@ -8,7 +8,7 @@
       <a :href="`mailto:${lab.email}`" class="btn btn-primary">{{ lab.email }} <span class="arrow">→</span></a>
     </LabPageHero>
 
-    <section class="mx-auto grid max-w-7xl gap-6 px-5 py-16 lg:grid-cols-12 lg:px-8">
+    <section class="mx-auto grid max-w-[92rem] gap-6 px-5 py-16 lg:grid-cols-12 lg:px-8">
       <div class="space-y-6 lg:col-span-5">
         <div v-reveal class="card p-8">
           <p class="label">Email</p>

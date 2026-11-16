@@ -3,7 +3,7 @@
     <TeachingIntro />
 
     <!-- University of Missouri courses -->
-    <section class="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+    <section class="mx-auto max-w-[92rem] px-5 py-16 lg:px-8">
       <div class="flex flex-wrap items-end justify-between gap-4 border-b border-line pb-5">
         <div>
           <p class="kicker">University of Missouri</p>
@@ -38,7 +38,7 @@
 
     <!-- Approach -->
     <section class="border-y border-line bg-paper-2">
-      <div class="mx-auto grid max-w-7xl gap-12 px-5 py-16 lg:grid-cols-12 lg:px-8">
+      <div class="mx-auto grid max-w-[92rem] gap-12 px-5 py-16 lg:grid-cols-12 lg:px-8">
         <div class="lg:col-span-4">
           <p class="kicker">Approach</p>
           <h2 class="mt-4 text-3xl font-semibold sm:text-4xl">How I teach</h2>
@@ -57,7 +57,7 @@
     </section>
 
     <!-- Full statement -->
-    <section class="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+    <section class="mx-auto max-w-[92rem] px-5 py-16 lg:px-8">
       <details class="statement group mx-auto max-w-3xl border-y border-line">
         <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-5">
           <span class="font-display text-2xl font-semibold">Teaching statement</span>
@@ -73,7 +73,7 @@
     </section>
 
     <!-- Experience -->
-    <section class="mx-auto grid max-w-7xl gap-12 px-5 pb-20 lg:grid-cols-12 lg:px-8">
+    <section class="mx-auto grid max-w-[92rem] gap-12 px-5 pb-20 lg:grid-cols-12 lg:px-8">
       <div class="lg:col-span-7">
         <h2 class="border-b border-line pb-4 text-3xl font-semibold">Teaching experience</h2>
         <ol class="divide-y divide-line">

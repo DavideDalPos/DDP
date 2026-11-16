@@ -1,5 +1,5 @@
 <template>
-  <section class="mx-auto max-w-7xl px-5 pb-24 lg:px-8">
+  <section class="mx-auto max-w-[92rem] px-5 pb-24 lg:px-8">
     <!-- Overview: numbers + publications per year -->
     <div class="grid gap-10 border-b border-line py-12 lg:grid-cols-12">
       <dl class="grid grid-cols-2 gap-x-6 gap-y-8 lg:col-span-5">

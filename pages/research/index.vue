@@ -6,7 +6,7 @@
       lede="We discover and describe insect species, study their anatomy and its evolution, organise the resulting knowledge as open data, and use collections to document how diversity changes."
     />
 
-    <section class="mx-auto grid max-w-7xl items-center gap-14 px-5 py-20 lg:grid-cols-12 lg:px-8">
+    <section class="mx-auto grid max-w-[92rem] items-center gap-14 px-5 py-20 lg:grid-cols-12 lg:px-8">
       <!-- Diagram -->
       <div v-reveal class="relative mx-auto w-full max-w-[26rem] lg:col-span-5">
         <svg viewBox="0 0 400 400" class="w-full" role="img" aria-label="The four research areas form a cycle: Species Exploration, Phenomics, Informatics, Conservation">
@@ -58,7 +58,7 @@
 
     <!-- How they connect -->
     <section class="border-t border-line bg-paper-2">
-      <div class="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+      <div class="mx-auto max-w-[92rem] px-5 py-20 lg:px-8">
         <p v-reveal class="kicker">How the areas connect</p>
         <div class="mt-10 grid gap-10 md:grid-cols-4">
           <div v-for="(c, i) in links" :key="c.from" v-reveal="i * 80" class="border-t border-ink/20 pt-5">
@@ -69,7 +69,7 @@
       </div>
     </section>
 
-    <section class="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+    <section class="mx-auto max-w-[92rem] px-5 py-20 lg:px-8">
       <div v-reveal class="flex flex-col items-start justify-between gap-6 border-y border-line py-10 sm:flex-row sm:items-center">
         <div>
           <p class="font-display text-2xl font-semibold">Species described</p>

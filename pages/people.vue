@@ -7,7 +7,7 @@
     />
 
     <!-- PI -->
-    <section class="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-20">
+    <section class="mx-auto max-w-[92rem] px-5 py-16 lg:px-8 lg:py-20">
       <div v-reveal class="pi grid overflow-hidden rounded-lg border border-line bg-white lg:grid-cols-12">
         <div class="relative lg:col-span-5">
           <img src="/images/lab/davide.jpg" alt="Davide Dal Pos" class="h-full max-h-[34rem] w-full object-cover" />
@@ -40,7 +40,7 @@
     </section>
 
     <!-- Members by group -->
-    <section v-for="g in filled" :key="g.key" class="mx-auto max-w-7xl px-5 pb-16 lg:px-8">
+    <section v-for="g in filled" :key="g.key" class="mx-auto max-w-[92rem] px-5 pb-16 lg:px-8">
       <h2 v-reveal class="text-3xl font-semibold">{{ g.label }}</h2>
       <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         <article
@@ -68,7 +68,7 @@
     </section>
 
     <!-- Open seats -->
-    <section class="mx-auto max-w-7xl px-5 pb-20 lg:px-8">
+    <section class="mx-auto max-w-[92rem] px-5 pb-20 lg:px-8">
       <h2 v-reveal class="text-3xl font-semibold">{{ members.length ? 'Open positions' : 'Lab members' }}</h2>
       <p v-reveal="60" class="mt-3 max-w-2xl text-muted">
         The lab is recruiting graduate students and undergraduate researchers, and welcomes postdoctoral fellowship applicants. See the positions page for details.
@@ -90,7 +90,7 @@
 
     <!-- Collaborators -->
     <section class="bg-paper-2">
-      <div class="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-5 py-16 sm:flex-row sm:items-center lg:px-8">
+      <div class="mx-auto flex max-w-[92rem] flex-col items-start justify-between gap-6 px-5 py-16 sm:flex-row sm:items-center lg:px-8">
         <div v-reveal>
           <p class="kicker">Collaborators</p>
           <p class="mt-3 font-display text-3xl font-semibold">{{ collaborators.length }} collaborators worldwide</p>

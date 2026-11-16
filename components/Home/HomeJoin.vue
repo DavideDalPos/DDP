@@ -1,6 +1,6 @@
 <template>
   <section class="border-y border-line bg-paper-2">
-    <div class="mx-auto grid max-w-7xl gap-10 px-5 py-20 lg:grid-cols-12 lg:px-8">
+    <div class="mx-auto grid max-w-[92rem] gap-10 px-5 py-20 lg:grid-cols-12 lg:px-8">
       <div class="lg:col-span-7">
         <p v-reveal class="kicker">Opportunities</p>
         <h2 v-reveal="60" class="mt-5 text-4xl font-semibold leading-tight">Join the lab</h2>

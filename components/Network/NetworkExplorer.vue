@@ -1,5 +1,5 @@
 <template>
-  <section class="mx-auto max-w-7xl px-5 pb-24 lg:px-8">
+  <section class="mx-auto max-w-[92rem] px-5 pb-24 lg:px-8">
     <!-- Summary -->
     <dl class="grid grid-cols-2 gap-x-6 gap-y-8 border-b border-line py-12 sm:grid-cols-4">
       <div v-for="s in summary" :key="s.label" class="border-l border-ink/20 pl-4">

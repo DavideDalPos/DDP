@@ -7,7 +7,7 @@
       :tone="p.key"
     />
 
-    <section class="mx-auto grid max-w-7xl gap-12 px-5 py-16 lg:grid-cols-12 lg:px-8 lg:py-20">
+    <section class="mx-auto grid max-w-[92rem] gap-12 px-5 py-16 lg:grid-cols-12 lg:px-8 lg:py-20">
       <!-- Main text -->
       <article class="prose-epic lg:col-span-7" :style="{ '--c': p.hex }">
         <slot />
@@ -67,7 +67,7 @@
 
     <!-- Other pillars -->
     <section class="border-t border-line bg-paper-2">
-      <div class="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+      <div class="mx-auto max-w-[92rem] px-5 py-16 lg:px-8">
         <p class="kicker">Other research areas</p>
         <div class="mt-8 grid gap-4 sm:grid-cols-3">
           <NuxtLink

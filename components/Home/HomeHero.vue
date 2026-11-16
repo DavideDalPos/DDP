@@ -5,7 +5,7 @@
     </ClientOnly>
     <div class="shade" />
 
-    <div class="relative mx-auto grid max-w-7xl items-center gap-14 px-5 pb-24 pt-16 sm:pt-24 lg:grid-cols-12 lg:px-8 lg:pb-28">
+    <div class="relative mx-auto grid max-w-[92rem] items-center gap-14 px-5 pb-24 pt-16 sm:pt-24 lg:grid-cols-12 lg:px-8 lg:pb-28">
       <!-- Text -->
       <div class="lg:col-span-7">
         <p class="fade text-xs font-semibold uppercase tracking-[0.22em] text-accent-light" style="animation-delay: 80ms">

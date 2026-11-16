@@ -1,6 +1,6 @@
 <template>
   <section class="border-y border-line bg-paper-2 py-24 lg:py-28">
-    <div class="mx-auto max-w-7xl px-5 lg:px-8">
+    <div class="mx-auto max-w-[92rem] px-5 lg:px-8">
       <div class="grid gap-10 lg:grid-cols-12">
         <div class="lg:col-span-4">
           <p v-reveal class="kicker">Research programme</p>

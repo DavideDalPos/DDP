@@ -2,7 +2,7 @@
   <footer class="relative overflow-hidden bg-ink text-white/80">
     <div class="h-px bg-accent/60" />
 
-    <div class="mx-auto grid max-w-7xl gap-12 px-5 py-14 lg:grid-cols-12 lg:px-8">
+    <div class="mx-auto grid max-w-[92rem] gap-12 px-5 py-14 lg:grid-cols-12 lg:px-8">
       <!-- Lab -->
       <div class="lg:col-span-5">
         <NuxtLink
@@ -117,7 +117,7 @@
 
     <div class="border-t border-white/10">
       <div
-        class="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-5 text-xs text-white/45 sm:flex-row sm:justify-between lg:px-8"
+        class="mx-auto flex max-w-[92rem] flex-col gap-2 px-5 py-5 text-xs text-white/45 sm:flex-row sm:justify-between lg:px-8"
       >
         <p>© {{ year }} Davide Dal Pos · EPIC Lab, University of Missouri</p>
         <p>Content licensed under CC BY 4.0</p>

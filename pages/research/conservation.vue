@@ -7,8 +7,8 @@ const focus = [
   { title: 'Names that matter', text: 'Taxonomy as the foundation for protecting species.' }
 ]
 const links = [
-  { label: 'Insects of Missouri checklist', href: 'https://enns-entomology-museum.github.io/Enns_Entomology_Museum_Database/#/missouri' },
-  { label: 'Enns Entomology Museum', href: 'https://enns-entomology-museum.github.io/Enns_Entomology_Museum_Database/' },
+  { label: 'Insects of Missouri checklist', href: 'https://ennsmuseum.missouri.edu/#/missouri' },
+  { label: 'Enns Entomology Museum', href: 'https://ennsmuseum.missouri.edu/' },
   { label: 'Join the lab', to: '/join' }
 ]
 const figure = {
@@ -53,7 +53,7 @@ const figure = {
     </p>
 
     <template #after>
-      <section class="mx-auto max-w-7xl px-5 pb-16 lg:px-8">
+      <section class="mx-auto max-w-[92rem] px-5 pb-16 lg:px-8">
         <div v-reveal class="flex flex-col items-start justify-between gap-6 rounded-md border border-line bg-paper-2 p-8 sm:flex-row sm:items-center sm:p-10">
           <div>
             <p class="font-display text-2xl font-semibold">A developing research area</p>

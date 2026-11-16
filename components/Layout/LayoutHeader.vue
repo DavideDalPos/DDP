@@ -3,7 +3,7 @@
     class="sticky top-0 z-50 text-white transition-[background-color,box-shadow] duration-300"
     :class="scrolled ? 'bg-ink/92 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.6)] backdrop-blur-md' : 'bg-ink'"
   >
-    <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 lg:px-8">
+    <nav class="mx-auto flex max-w-[92rem] items-center justify-between gap-4 px-5 py-3 lg:px-8">
       <!-- Brand -->
       <NuxtLink
         to="/"
@@ -53,12 +53,6 @@
             :class="{ active: isActive(item) }"
           >
             {{ item.label }}
-            <span
-              v-if="item.dot === 'news' ? isNewNews : item.dot === 'pubs' ? isNewPublication : false"
-              class="absolute right-1 top-1.5 h-1.5 w-1.5 rounded-full bg-amber"
-            >
-              <span class="absolute inset-0 animate-ping rounded-full bg-amber opacity-60" />
-            </span>
           </NuxtLink>
 
           <!-- Dropdown -->
@@ -120,6 +114,9 @@
         </span>
       </button>
     </nav>
+
+    <!-- What's new: latest news and papers -->
+    <LayoutLatestStrip />
 
     <!-- Mobile menu -->
     <Transition name="drop">
@@ -222,23 +219,6 @@ watch(
   }
 )
 
-// Small dot next to News / Publications when something was added in the last 30 days
-const THIRTY_DAYS = 1000 * 60 * 60 * 24 * 30
-const [{ data: newsData }, { data: pubData }] = await Promise.all([
-  useAsyncData('header-news', () => queryCollection('news').all()),
-  useAsyncData('header-pubs', () => queryCollection('publications').all())
-])
-function hasRecent(items) {
-  if (!items?.length) return false
-  let latest = 0
-  for (const it of items) {
-    const t = new Date(it.meta?.date).getTime()
-    if (!Number.isNaN(t) && t > latest) latest = t
-  }
-  return latest > 0 && Date.now() - latest < THIRTY_DAYS
-}
-const isNewNews = computed(() => hasRecent(newsData.value))
-const isNewPublication = computed(() => hasRecent(pubData.value))
 </script>
 
 <style scoped>
